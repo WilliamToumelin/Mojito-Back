@@ -27,6 +27,12 @@ class Step
      */
     private $content;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Cocktail::class, inversedBy="steps")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $cocktail;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -52,6 +58,18 @@ class Step
     public function setContent(string $content): self
     {
         $this->content = $content;
+
+        return $this;
+    }
+
+    public function getCocktail(): ?Cocktail
+    {
+        return $this->cocktail;
+    }
+
+    public function setCocktail(?Cocktail $cocktail): self
+    {
+        $this->cocktail = $cocktail;
 
         return $this;
     }

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CategoryRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -22,6 +24,16 @@ class Category
      */
     private $name;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Cocktail::class, mappedBy="categories")
+     */
+    private $cocktails;
+
+    public function __construct()
+    {
+        $this->cocktails = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -35,6 +47,33 @@ class Category
     public function setName(string $name): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Cocktail>
+     */
+    public function getCocktails(): Collection
+    {
+        return $this->cocktails;
+    }
+
+    public function addCocktail(Cocktail $cocktail): self
+    {
+        if (!$this->cocktails->contains($cocktail)) {
+            $this->cocktails[] = $cocktail;
+            $cocktail->addCategory($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCocktail(Cocktail $cocktail): self
+    {
+        if ($this->cocktails->removeElement($cocktail)) {
+            $cocktail->removeCategory($this);
+        }
 
         return $this;
     }

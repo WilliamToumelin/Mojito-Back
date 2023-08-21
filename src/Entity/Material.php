@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\MaterialRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -22,6 +24,22 @@ class Material
      */
     private $name;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=TypeMaterial::class, inversedBy="materials")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $typematerial;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Cocktail::class, mappedBy="materials")
+     */
+    private $cocktails;
+
+    public function __construct()
+    {
+        $this->cocktails = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -35,6 +53,45 @@ class Material
     public function setName(string $name): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    public function getTypematerial(): ?TypeMaterial
+    {
+        return $this->typematerial;
+    }
+
+    public function setTypematerial(?TypeMaterial $typematerial): self
+    {
+        $this->typematerial = $typematerial;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Cocktail>
+     */
+    public function getCocktails(): Collection
+    {
+        return $this->cocktails;
+    }
+
+    public function addCocktail(Cocktail $cocktail): self
+    {
+        if (!$this->cocktails->contains($cocktail)) {
+            $this->cocktails[] = $cocktail;
+            $cocktail->addMaterial($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCocktail(Cocktail $cocktail): self
+    {
+        if ($this->cocktails->removeElement($cocktail)) {
+            $cocktail->removeMaterial($this);
+        }
 
         return $this;
     }

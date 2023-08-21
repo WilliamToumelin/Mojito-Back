@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CocktailRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -66,6 +68,46 @@ class Cocktail
      * @ORM\Column(type="float")
      */
     private $rating;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Material::class, inversedBy="cocktails")
+     */
+    private $materials;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Step::class, mappedBy="cocktail", orphanRemoval=true)
+     */
+    private $steps;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="cocktails")
+     */
+    private $categories;
+
+    /**
+     * @ORM\OneToMany(targetEntity=CocktailUse::class, mappedBy="cocktail")
+     */
+    private $cocktailUses;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="cocktails")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="cocktail")
+     */
+    private $comments;
+
+    public function __construct()
+    {
+        $this->materials = new ArrayCollection();
+        $this->steps = new ArrayCollection();
+        $this->categories = new ArrayCollection();
+        $this->cocktailUses = new ArrayCollection();
+        $this->comments = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -188,6 +230,156 @@ class Cocktail
     public function setRating(float $rating): self
     {
         $this->rating = $rating;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Material>
+     */
+    public function getMaterials(): Collection
+    {
+        return $this->materials;
+    }
+
+    public function addMaterial(Material $material): self
+    {
+        if (!$this->materials->contains($material)) {
+            $this->materials[] = $material;
+        }
+
+        return $this;
+    }
+
+    public function removeMaterial(Material $material): self
+    {
+        $this->materials->removeElement($material);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Step>
+     */
+    public function getSteps(): Collection
+    {
+        return $this->steps;
+    }
+
+    public function addStep(Step $step): self
+    {
+        if (!$this->steps->contains($step)) {
+            $this->steps[] = $step;
+            $step->setCocktail($this);
+        }
+
+        return $this;
+    }
+
+    public function removeStep(Step $step): self
+    {
+        if ($this->steps->removeElement($step)) {
+            // set the owning side to null (unless already changed)
+            if ($step->getCocktail() === $this) {
+                $step->setCocktail(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Category>
+     */
+    public function getCategories(): Collection
+    {
+        return $this->categories;
+    }
+
+    public function addCategory(Category $category): self
+    {
+        if (!$this->categories->contains($category)) {
+            $this->categories[] = $category;
+        }
+
+        return $this;
+    }
+
+    public function removeCategory(Category $category): self
+    {
+        $this->categories->removeElement($category);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, CocktailUse>
+     */
+    public function getCocktailUses(): Collection
+    {
+        return $this->cocktailUses;
+    }
+
+    public function addCocktailUse(CocktailUse $cocktailUse): self
+    {
+        if (!$this->cocktailUses->contains($cocktailUse)) {
+            $this->cocktailUses[] = $cocktailUse;
+            $cocktailUse->setCocktail($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCocktailUse(CocktailUse $cocktailUse): self
+    {
+        if ($this->cocktailUses->removeElement($cocktailUse)) {
+            // set the owning side to null (unless already changed)
+            if ($cocktailUse->getCocktail() === $this) {
+                $cocktailUse->setCocktail(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Comment>
+     */
+    public function getComments(): Collection
+    {
+        return $this->comments;
+    }
+
+    public function addComment(Comment $comment): self
+    {
+        if (!$this->comments->contains($comment)) {
+            $this->comments[] = $comment;
+            $comment->setCocktail($this);
+        }
+
+        return $this;
+    }
+
+    public function removeComment(Comment $comment): self
+    {
+        if ($this->comments->removeElement($comment)) {
+            // set the owning side to null (unless already changed)
+            if ($comment->getCocktail() === $this) {
+                $comment->setCocktail(null);
+            }
+        }
 
         return $this;
     }

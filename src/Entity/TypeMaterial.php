@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\TypeMaterialRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -22,6 +24,16 @@ class TypeMaterial
      */
     private $name;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Material::class, mappedBy="typematerial", orphanRemoval=true)
+     */
+    private $materials;
+
+    public function __construct()
+    {
+        $this->materials = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -35,6 +47,36 @@ class TypeMaterial
     public function setName(string $name): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Material>
+     */
+    public function getMaterials(): Collection
+    {
+        return $this->materials;
+    }
+
+    public function addMaterial(Material $material): self
+    {
+        if (!$this->materials->contains($material)) {
+            $this->materials[] = $material;
+            $material->setTypematerial($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMaterial(Material $material): self
+    {
+        if ($this->materials->removeElement($material)) {
+            // set the owning side to null (unless already changed)
+            if ($material->getTypematerial() === $this) {
+                $material->setTypematerial(null);
+            }
+        }
 
         return $this;
     }
