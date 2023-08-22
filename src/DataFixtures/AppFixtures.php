@@ -7,6 +7,7 @@ use Faker\Factory;
 use App\Entity\Unit;
 use App\Entity\Category;
 use App\Entity\Cocktail;
+use App\Entity\CocktailUse;
 use App\Entity\Ingredient;
 use App\Entity\Material;
 use App\Entity\TypeMaterial;
@@ -24,7 +25,7 @@ class AppFixtures extends Fixture
 
     private $passwordHasher;
 
-   public function __construct(UserPasswordHasherInterface $passwordHasher)
+    public function __construct(UserPasswordHasherInterface $passwordHasher)
     {
         $this->passwordHasher = $passwordHasher;
     }
@@ -57,7 +58,8 @@ class AppFixtures extends Fixture
             $manager->persist($TypeIngredient);
         }
 
-        // ! CATEGORY
+        // ! CATEGORY    
+        //!!!!!!!!!!!!!! FAIRE SLUG !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!//
 
         $categoryList = [];
         for ($i = 1; $i < 6; $i++) {
@@ -91,7 +93,7 @@ class AppFixtures extends Fixture
             $user->setDateOfBirth(new DateTimeImmutable($faker->date()));
             $user->setCreatedAt(new \DateTimeImmutable());
             $user->setLastLogin(new DateTimeImmutable($faker->date()));
-            $user->setVerified(mt_rand(0,1));
+            $user->setVerified(mt_rand(0, 1));
             $user->setIpAdress($faker->ipv4());
             $user->setWarning(mt_rand(0, 10));
             $user->setPicture($faker->imageUrl(640, 480, 'animals', true));
@@ -123,10 +125,44 @@ class AppFixtures extends Fixture
             $materialList[] = $material;
             $manager->persist($material);
         }
-        
+
+        // ! COCKTAIL
+        for ($i = 1; $i < 6; $i++) {
+            $cocktailUnique = [];
+            $cocktail = new Cocktail();
+            $cocktail->setName($faker->word());
+            $cocktail->setDescription($faker->paragraph());
+            $cocktail->setPicture("https://picsum.photos/id/" . mt_rand(50, 120) . "/768/1024");
+            $cocktail->setDifficulty(mt_rand(1, 3));
+            $cocktail->setVisible(1);
+            $cocktail->setPreparationTime(mt_rand(3, 15));
+            $randomNumber = mt_rand(0, 1);
+            if ($randomNumber) {
+                $cocktail->setTrick($faker->paragraph());
+            }
+            $cocktail->setAlcool(mt_rand(0, 1));
+            $cocktail->setSlug($faker->slug());
+            $cocktail->setRating($faker->randomFloat(1, 1, 5));
+            $cocktail->setUser($userList[array_rand($userList)]);
+            $randomIndexArrayMaterial = array_rand($materialList, 3);
+            for ($j = 0; $j < mt_rand(0, 3); $j++) { 
+                $cocktail->addMaterial($materialList[$randomIndexArrayMaterial[$j]]);
+            }
+
+            $cocktailUnique[] = $cocktail;
+
+
+            for ($k = 0; $k < mt_rand(1, 3); $k++) { 
+                $cocktailUse = new CocktailUse();
+                $cocktailUse->setCocktail($cocktailUnique[0]);
+                $cocktailUse->setQuantity(mt_rand(1,10));
+                $cocktailUse->setUnit($unitList[array_rand($unitList)]);
+                $cocktailUse->setIngredient($ingredientList[array_rand($ingredientList)]);
+                $manager->persist($cocktailUse);
+            }
+            $manager->persist($cocktail);
+        }
 
         $manager->flush();
     }
-
-
 }
