@@ -35,7 +35,7 @@ class Cocktail
     private $picture;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="integer")
      */
     private $difficulty;
 
