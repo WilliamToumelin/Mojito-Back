@@ -28,7 +28,7 @@ class CocktailUse
     private $unit;
 
     /**
-     * 
+     * @ORM\Id
      * @ORM\ManyToOne(targetEntity=Cocktail::class, inversedBy="cocktailUses")
      */
     private $cocktail;
