@@ -102,7 +102,7 @@ class AppFixtures extends Fixture
             $user->setVerified(mt_rand(0, 1));
             $user->setIpAdress($faker->ipv4());
             $user->setWarning(mt_rand(0, 10));
-            $user->setPicture($faker->imageUrl(640, 480, 'animals', true));
+            $user->setPicture("https://picsum.photos/id/" . mt_rand(50, 120) . "/768/1024");
 
             $userList[] = $user;
 
