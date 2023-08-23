@@ -43,6 +43,8 @@ class AppFixtures extends Fixture
 
 
         // ! TYPE MATERIAL
+        // I create my different types of materials
+
         $typeMaterialList = [];
 
         for ($i = 1; $i < 6; $i++) {
@@ -54,6 +56,8 @@ class AppFixtures extends Fixture
 
 
         // ! TYPE INGREDIENT
+        // I create my different types of ingredients
+
         $typeIngredientList = [];
         for ($i = 1; $i < 6; $i++) {
             $TypeIngredient = new TypeIngredient();
@@ -63,11 +67,12 @@ class AppFixtures extends Fixture
         }
 
         // ! CATEGORY    
+        // I create my different categories
 
         $categoryList = [];
-        for ($i = 1; $i < 6; $i++) {
+        for ($i = 1; $i < 12; $i++) {
             $slugify = new Slugify();
-            $categoryName = $faker->words(3, true);
+            $categoryName = $faker->unique()->category();
             $category = new Category($categoryName);
             $category->setName($categoryName);
             $category->setSlug($slugify->slugify($categoryName));
@@ -76,16 +81,19 @@ class AppFixtures extends Fixture
         }
 
         // ! UNIT
+        // I create my different units
 
         $unitList = [];
         for ($i = 1; $i < 6; $i++) {
             $unit = new Unit();
-            $unit->setName('unit' . $i);
+            $unit->setName($faker->unique()->unit());
             $unitList[] = $unit;
             $manager->persist($unit);
         }
 
         // ! USER
+        // I create my different users
+
         $userList = [];
         for ($i = 1; $i < 24; $i++) {
             $dataUser = $faker->unique()->user();
@@ -111,35 +119,40 @@ class AppFixtures extends Fixture
 
 
         // ! INGREDIENT
+        // I create my different ingredients
 
         $ingredientList = [];
         for ($i = 1; $i < 6; $i++) {
             $ingredient = new Ingredient();
-            $ingredient->setName('ingredient' . $i);
+            $ingredient->setName($faker->unique()->ingredient());
             $ingredient->setTypeingredient($typeIngredientList[array_rand($typeIngredientList)]);
             $ingredientList[] = $ingredient;
             $manager->persist($ingredient);
         }
 
         // ! MATERIAL
+        // I create my different materials
 
         $materialList = [];
         for ($i = 1; $i < 6; $i++) {
             $material = new Material();
-            $material->setName('material' . $i);
+            $material->setName($faker->unique()->material());
             $material->setTypematerial($typeMaterialList[array_rand($typeMaterialList)]);
             $materialList[] = $material;
             $manager->persist($material);
         }
 
         // ! COCKTAIL
-        for ($i = 1; $i < 40; $i++) {
+        // I create my different cocktails
+
+        for ($i = 1; $i < 25; $i++) {
             $cocktailUnique = [];
             $cocktail = new Cocktail();
-            $cocktailName = $faker->words(3, true);
+            $dataCocktail = $faker->unique()->cocktail();
+            $cocktailName = $dataCocktail["name"];
             $cocktail->setName($cocktailName);
             $cocktail->setDescription($faker->paragraph());
-            $cocktail->setPicture("https://picsum.photos/id/" . mt_rand(50, 120) . "/768/1024");
+            $cocktail->setPicture($dataCocktail["image"]);
             $cocktail->setDifficulty(mt_rand(1, 3));
             $cocktail->setVisible(1);
             $cocktail->setPreparationTime(mt_rand(3, 15));
@@ -152,7 +165,7 @@ class AppFixtures extends Fixture
             $cocktail->setRating($faker->randomFloat(1, 1, 5));
             $cocktail->setUser($userList[array_rand($userList)]);
             $randomIndexArrayMaterial = array_rand($materialList, 3);
-            for ($j = 0; $j < mt_rand(0, 3); $j++) { 
+            for ($j = 0; $j < mt_rand(0, 3); $j++) {
                 $cocktail->addMaterial($materialList[$randomIndexArrayMaterial[$j]]);
             }
 
@@ -163,34 +176,41 @@ class AppFixtures extends Fixture
 
 
             // I loop to randomly add 1 to 4 cocktails use per cocktail ( quantity, unit, ingredient, cocktail )
-            for ($k = 0; $k < mt_rand(1, 3); $k++) { 
+            for ($k = 0; $k < mt_rand(1, 3); $k++) {
                 $cocktailUse = new CocktailUse();
                 // I send my cocktail in the cocktail_use table using the index of my array ($cocktailUnique)
                 $cocktailUse->setCocktail($cocktailUnique[0]);
                 // I set a random quantity for my ingredients
-                $cocktailUse->setQuantity(mt_rand(1,10));
+                $cocktailUse->setQuantity(mt_rand(1, 10));
                 // I define a unit of measurement by searching randomly in my unit array
                 $cocktailUse->setUnit($unitList[array_rand($unitList)]);
                 //I link an ingredient from my random array to my cocktail use
                 $cocktailUse->setIngredient($ingredientList[$randomindexIngredient[$k]]);
                 $manager->persist($cocktailUse);
             }
-
+            // I get two random indexes in my category list
             $randomindexCategory = array_rand($categoryList, 2);
+            // I randomly add 1 to 2 categories to my cocktail
             for ($l = 0; $l < mt_rand(1, 2); $l++) {
                 $cocktail->addCategory($categoryList[$randomindexCategory[$l]]);
             }
 
-            for ($l = 0; $l < mt_rand(2, 5); $l++) {
+            // ! COMMENT 
+            // I create my different comments for each cocktail (Daiquiri, mojito, etc ...)
+            // I randomly add 1 to 5 comments per cocktail
+            for ($l = 0; $l < mt_rand(1, 5); $l++) {
                 $comment = new Comment();
                 $comment->setContent($faker->paragraph());
-                $comment->setRating(mt_rand(1,5));
+                $comment->setRating(mt_rand(1, 5));
                 $comment->setPostedAt(new \DateTimeImmutable());
                 $comment->setCocktail($cocktailUnique[0]);
                 $comment->setUser($userList[array_rand($userList)]);
 
                 $manager->persist($comment);
             }
+
+            // ! STEP
+            // I create my different steps for each cocktail (step 1, step2, etc ...)
 
             for ($m = 1; $m < mt_rand(1, 6); $m++) {
                 $step = new Step();
@@ -199,7 +219,7 @@ class AppFixtures extends Fixture
                 $step->setCocktail($cocktailUnique[0]);
                 $manager->persist($step);
             }
-            
+
 
             $manager->persist($cocktail);
         }
