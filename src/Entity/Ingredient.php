@@ -6,6 +6,8 @@ use App\Repository\IngredientRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
+
 
 /**
  * @ORM\Entity(repositoryClass=IngredientRepository::class)
@@ -16,17 +18,20 @@ class Ingredient
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"cocktailsWithRelations"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"cocktailsWithRelations"})
      */
     private $name;
 
     /**
      * @ORM\ManyToOne(targetEntity=TypeIngredient::class, inversedBy="ingredients")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"cocktailsWithRelations"})
      */
     private $typeingredient;
 

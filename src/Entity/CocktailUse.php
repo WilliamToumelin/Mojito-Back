@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\CocktailUseRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
+
 
 /**
  * @ORM\Entity(repositoryClass=CocktailUseRepository::class)
@@ -12,18 +14,21 @@ class CocktailUse
 {
     /**
      * @ORM\Column(type="float")
+     * @Groups({"cocktailsWithRelations"})
      */
     private $quantity;
 
     /**
      * @ORM\Id
      * @ORM\ManyToOne(targetEntity=Ingredient::class, inversedBy="cocktailUses")
+     * @Groups({"cocktailsWithRelations"})
      */
     private $ingredient;
 
     /**
      * @ORM\Id
      * @ORM\ManyToOne(targetEntity=Unit::class, inversedBy="cocktailUses")
+     * @Groups({"cocktailsWithRelations"})
      */
     private $unit;
 

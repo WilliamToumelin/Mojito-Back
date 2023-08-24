@@ -39,20 +39,19 @@ class CocktailRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @return Cocktail[] Returns an array of Cocktail objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('c')
-//            ->andWhere('c.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('c.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+   /**
+    * @return Cocktail[] Returns an array of Cocktail objects where visible is true
+    */
+   public function findAllCocktailByVisible($visible = true): array
+   {
+       return $this->createQueryBuilder('c')
+           ->Where('c.visible = :val')
+           ->setParameter('val', $visible)
+           ->orderBy('c.id', 'ASC')
+           ->getQuery()
+           ->getResult()
+       ;
+   }
 
 //    public function findOneBySomeField($value): ?Cocktail
 //    {
