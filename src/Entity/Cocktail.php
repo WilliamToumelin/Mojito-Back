@@ -120,18 +120,21 @@ class Cocktail
     /**
      * @ORM\ManyToOne(targetEntity=Glass::class, inversedBy="cocktails")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"cocktailsWithRelations"})
      */
     private $glass;
 
     /**
      * @ORM\ManyToOne(targetEntity=Ice::class, inversedBy="cocktails")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"cocktailsWithRelations"})
      */
     private $ice;
 
     /**
      * @ORM\ManyToOne(targetEntity=Technical::class, inversedBy="cocktails")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"cocktailsWithRelations"})
      */
     private $technical;
 
