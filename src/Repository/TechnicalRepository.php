@@ -2,26 +2,26 @@
 
 namespace App\Repository;
 
-use App\Entity\TypeMaterial;
+use App\Entity\Technical;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<TypeMaterial>
+ * @extends ServiceEntityRepository<Technical>
  *
- * @method TypeMaterial|null find($id, $lockMode = null, $lockVersion = null)
- * @method TypeMaterial|null findOneBy(array $criteria, array $orderBy = null)
- * @method TypeMaterial[]    findAll()
- * @method TypeMaterial[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Technical|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Technical|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Technical[]    findAll()
+ * @method Technical[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class TypeMaterialRepository extends ServiceEntityRepository
+class TechnicalRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, TypeMaterial::class);
+        parent::__construct($registry, Technical::class);
     }
 
-    public function add(TypeMaterial $entity, bool $flush = false): void
+    public function add(Technical $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -30,7 +30,7 @@ class TypeMaterialRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(TypeMaterial $entity, bool $flush = false): void
+    public function remove(Technical $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -40,7 +40,7 @@ class TypeMaterialRepository extends ServiceEntityRepository
     }
 
 //    /**
-//     * @return TypeMaterial[] Returns an array of TypeMaterial objects
+//     * @return Technical[] Returns an array of Technical objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -54,7 +54,7 @@ class TypeMaterialRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?TypeMaterial
+//    public function findOneBySomeField($value): ?Technical
 //    {
 //        return $this->createQueryBuilder('t')
 //            ->andWhere('t.exampleField = :val')

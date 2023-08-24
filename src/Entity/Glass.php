@@ -2,15 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\MaterialRepository;
+use App\Repository\GlassRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=MaterialRepository::class)
+ * @ORM\Entity(repositoryClass=GlassRepository::class)
  */
-class Material
+class Glass
 {
     /**
      * @ORM\Id
@@ -25,13 +25,7 @@ class Material
     private $name;
 
     /**
-     * @ORM\ManyToOne(targetEntity=TypeMaterial::class, inversedBy="materials")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $typematerial;
-
-    /**
-     * @ORM\ManyToMany(targetEntity=Cocktail::class, mappedBy="materials")
+     * @ORM\OneToMany(targetEntity=Cocktail::class, mappedBy="glass", orphanRemoval=true)
      */
     private $cocktails;
 
@@ -57,18 +51,6 @@ class Material
         return $this;
     }
 
-    public function getTypematerial(): ?TypeMaterial
-    {
-        return $this->typematerial;
-    }
-
-    public function setTypematerial(?TypeMaterial $typematerial): self
-    {
-        $this->typematerial = $typematerial;
-
-        return $this;
-    }
-
     /**
      * @return Collection<int, Cocktail>
      */
@@ -81,7 +63,7 @@ class Material
     {
         if (!$this->cocktails->contains($cocktail)) {
             $this->cocktails[] = $cocktail;
-            $cocktail->addMaterial($this);
+            $cocktail->setGlass($this);
         }
 
         return $this;
@@ -90,7 +72,10 @@ class Material
     public function removeCocktail(Cocktail $cocktail): self
     {
         if ($this->cocktails->removeElement($cocktail)) {
-            $cocktail->removeMaterial($this);
+            // set the owning side to null (unless already changed)
+            if ($cocktail->getGlass() === $this) {
+                $cocktail->setGlass(null);
+            }
         }
 
         return $this;
