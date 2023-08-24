@@ -4,10 +4,6 @@ body {
 
 .navbar-toggler {
   border: 0;
-}
-
-
-.navbar-toggler {
   margin: 0;
 }
 
@@ -28,6 +24,19 @@ body {
   margin: 0 auto 80px auto;
 }
 
+.container-dynamic-block-group-item {
+  display: flex;
+  width: 380px;
+  margin: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.224);
+  padding: 15px;
+}
+
+.container-dynamic-block-group-item:hover {
+  border-color: rgb(0, 100, 128);
+  transition: 1s ease;
+}
+
 .container-dynamic-block-group-item-properties {
   font-size: 0.9rem;
 }
@@ -41,13 +50,6 @@ body {
   margin-right: 10px;
 }
 
-.container-dynamic-block-group-item {
-  display: flex;
-  width: 380px;
-  margin: 20px;
-  border: 1px solid rgba(0, 0, 0, 0.224);
-  padding: 15px;
-}
 
 .icon-container {
   margin-top: 15px;
@@ -56,6 +58,10 @@ body {
 .icon {
 font-size: 1.05rem;
 color: rgb(81, 80, 80)
+}
+
+.icon:hover {
+color: rgb(0, 100, 128);
 }
 
 .footer {
