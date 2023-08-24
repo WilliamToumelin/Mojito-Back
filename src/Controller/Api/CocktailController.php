@@ -21,4 +21,6 @@ class CocktailController extends AbstractController
 
         return $this->json($cocktails, Response::HTTP_OK, [], ["groups" => "cocktailsWithRelations"]);
     }
+
+    
 }

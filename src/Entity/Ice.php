@@ -2,7 +2,7 @@
 
 namespace App\Entity;
 
-use App\Repository\TypeMaterialRepository;
+use App\Repository\IceRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -10,9 +10,9 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 
 /**
- * @ORM\Entity(repositoryClass=TypeMaterialRepository::class)
+ * @ORM\Entity(repositoryClass=IceRepository::class)
  */
-class TypeMaterial
+class Ice
 {
     /**
      * @ORM\Id
@@ -29,13 +29,13 @@ class TypeMaterial
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity=Material::class, mappedBy="typematerial", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=Cocktail::class, mappedBy="ice", orphanRemoval=true)
      */
-    private $materials;
+    private $cocktails;
 
     public function __construct()
     {
-        $this->materials = new ArrayCollection();
+        $this->cocktails = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -56,29 +56,29 @@ class TypeMaterial
     }
 
     /**
-     * @return Collection<int, Material>
+     * @return Collection<int, Cocktail>
      */
-    public function getMaterials(): Collection
+    public function getCocktails(): Collection
     {
-        return $this->materials;
+        return $this->cocktails;
     }
 
-    public function addMaterial(Material $material): self
+    public function addCocktail(Cocktail $cocktail): self
     {
-        if (!$this->materials->contains($material)) {
-            $this->materials[] = $material;
-            $material->setTypematerial($this);
+        if (!$this->cocktails->contains($cocktail)) {
+            $this->cocktails[] = $cocktail;
+            $cocktail->setIce($this);
         }
 
         return $this;
     }
 
-    public function removeMaterial(Material $material): self
+    public function removeCocktail(Cocktail $cocktail): self
     {
-        if ($this->materials->removeElement($material)) {
+        if ($this->cocktails->removeElement($cocktail)) {
             // set the owning side to null (unless already changed)
-            if ($material->getTypematerial() === $this) {
-                $material->setTypematerial(null);
+            if ($cocktail->getIce() === $this) {
+                $cocktail->setIce(null);
             }
         }
 

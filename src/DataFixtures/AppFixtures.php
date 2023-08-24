@@ -11,17 +11,19 @@ use DateTimeImmutable;
 use App\Entity\Comment;
 use App\Entity\Category;
 use App\Entity\Cocktail;
-use App\Entity\Material;
 use App\Entity\Ingredient;
 use Cocur\Slugify\Slugify;
 use App\Entity\CocktailUse;
-use App\Entity\TypeMaterial;
 use App\Entity\TypeIngredient;
 use Doctrine\Persistence\ObjectManager;
 use App\DataFixtures\Provider\AppProvider;
+use App\Entity\Glass;
+use App\Entity\Ice;
 use App\Entity\Rating;
+use App\Entity\Technical;
 use Symfony\Component\VarDumper\VarDumper;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\DBAL\Cache\ArrayResult;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class AppFixtures extends Fixture
@@ -43,16 +45,40 @@ class AppFixtures extends Fixture
         $faker->addProvider(new AppProvider());
 
 
-        // ! TYPE MATERIAL
-        // I create my different types of materials
+        // ! ICE
+        // I create my different ices
 
-        $typeMaterialList = [];
+        $iceList = [];
 
         for ($i = 1; $i < 6; $i++) {
-            $TypeMaterial = new TypeMaterial();
-            $TypeMaterial->setName('typeMaterial' . $i);
-            $typeMaterialList[] = $TypeMaterial;
-            $manager->persist($TypeMaterial);
+            $ice = new Ice();
+            $ice->setName('Ice' . $i);
+            $iceList[] = $ice;
+            $manager->persist($ice);
+        }
+
+         // ! GLASS
+        // I create my different ices
+
+        $glassList = [];
+
+        for ($i = 1; $i < 6; $i++) {
+            $glass = new Glass();
+            $glass->setName('Glass' . $i);
+            $glassList[] = $glass;
+            $manager->persist($glass);
+        }
+
+         // ! TECHNICAL
+        // I create my different ices
+
+        $technicalList = [];
+
+        for ($i = 1; $i < 6; $i++) {
+            $technical = new Technical();
+            $technical->setName('technical' . $i);
+            $technicalList[] = $technical;
+            $manager->persist($technical);
         }
 
 
@@ -131,18 +157,6 @@ class AppFixtures extends Fixture
             $manager->persist($ingredient);
         }
 
-        // ! MATERIAL
-        // I create my different materials
-
-        $materialList = [];
-        for ($i = 1; $i < 6; $i++) {
-            $material = new Material();
-            $material->setName($faker->unique()->material());
-            $material->setTypematerial($typeMaterialList[array_rand($typeMaterialList)]);
-            $materialList[] = $material;
-            $manager->persist($material);
-        }
-
         // ! COCKTAIL
         // I create my different cocktails
 
@@ -165,10 +179,10 @@ class AppFixtures extends Fixture
             $cocktail->setSlug($slugify->slugify($cocktailName));
             $cocktail->setRating($faker->randomFloat(1, 1, 5));
             $cocktail->setUser($userList[array_rand($userList)]);
-            $randomIndexArrayMaterial = array_rand($materialList, 3);
-            for ($j = 0; $j < mt_rand(0, 3); $j++) {
-                $cocktail->addMaterial($materialList[$randomIndexArrayMaterial[$j]]);
-            }
+            $cocktail->setIce($iceList[array_rand($iceList)]);
+            $cocktail->setGlass($glassList[array_rand($glassList)]);
+            $cocktail->setTechnical($technicalList[array_rand($technicalList)]);
+            
 
             // I store the cocktail at each turn of the loop
             $cocktailUnique[] = $cocktail;

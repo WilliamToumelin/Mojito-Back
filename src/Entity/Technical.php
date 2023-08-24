@@ -2,41 +2,35 @@
 
 namespace App\Entity;
 
-use App\Repository\CategoryRepository;
+use App\Repository\TechnicalRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
- * @ORM\Entity(repositoryClass=CategoryRepository::class)
+ * @ORM\Entity(repositoryClass=TechnicalRepository::class)
  */
-class Category
+class Technical
 {
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"cocktailsWithRelations", "categories"})
+     * @Groups({"cocktailsWithRelations"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"cocktailsWithRelations", "categories"})
+     * @Groups({"cocktailsWithRelations"})
      */
     private $name;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Cocktail::class, mappedBy="categories")
+     * @ORM\OneToMany(targetEntity=Cocktail::class, mappedBy="technical", orphanRemoval=true)
      */
     private $cocktails;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     * @Groups({"cocktailsWithRelations", "categories"})
-     */
-    private $slug;
 
     public function __construct()
     {
@@ -72,7 +66,7 @@ class Category
     {
         if (!$this->cocktails->contains($cocktail)) {
             $this->cocktails[] = $cocktail;
-            $cocktail->addCategory($this);
+            $cocktail->setTechnical($this);
         }
 
         return $this;
@@ -81,20 +75,11 @@ class Category
     public function removeCocktail(Cocktail $cocktail): self
     {
         if ($this->cocktails->removeElement($cocktail)) {
-            $cocktail->removeCategory($this);
+            // set the owning side to null (unless already changed)
+            if ($cocktail->getTechnical() === $this) {
+                $cocktail->setTechnical(null);
+            }
         }
-
-        return $this;
-    }
-
-    public function getSlug(): ?string
-    {
-        return $this->slug;
-    }
-
-    public function setSlug(string $slug): self
-    {
-        $this->slug = $slug;
 
         return $this;
     }
