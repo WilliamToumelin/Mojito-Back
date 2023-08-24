@@ -6,6 +6,7 @@ use App\Repository\CocktailRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=CocktailRepository::class)
@@ -16,87 +17,104 @@ class Cocktail
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"cocktailsWithRelations"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Groups({"cocktailsWithRelations"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="text")
+     * @Groups({"cocktailsWithRelations"})
      */
     private $description;
 
     /**
      * @ORM\Column(type="text")
+     * @Groups({"cocktailsWithRelations"})
      */
     private $picture;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"cocktailsWithRelations"})
      */
     private $difficulty;
 
     /**
      * @ORM\Column(type="boolean")
+     * @Groups({"cocktailsWithRelations"})
      */
     private $visible;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"cocktailsWithRelations"})
      */
     private $preparation_time;
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Groups({"cocktailsWithRelations"})
      */
     private $trick;
 
     /**
      * @ORM\Column(type="boolean")
+     * @Groups({"cocktailsWithRelations"})
      */
     private $alcool;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"cocktailsWithRelations"})
      */
     private $slug;
 
     /**
      * @ORM\Column(type="float")
+     * @Groups({"cocktailsWithRelations"})
      */
     private $rating;
 
     /**
      * @ORM\ManyToMany(targetEntity=Material::class, inversedBy="cocktails")
+     * @Groups({"cocktailsWithRelations"})
      */
     private $materials;
 
     /**
      * @ORM\OneToMany(targetEntity=Step::class, mappedBy="cocktail", orphanRemoval=true)
+     * @Groups({"cocktailsWithRelations"})
      */
     private $steps;
 
     /**
      * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="cocktails")
+     * @Groups({"cocktailsWithRelations"})
      */
     private $categories;
 
     /**
      * @ORM\OneToMany(targetEntity=CocktailUse::class, mappedBy="cocktail")
+     * @Groups({"cocktailsWithRelations"})
      */
     private $cocktailUses;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="cocktails")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"cocktailsWithRelations"})
      */
     private $user;
 
     /**
      * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="cocktail")
+     * @Groups({"cocktailsWithRelations"})
      */
     private $comments;
 

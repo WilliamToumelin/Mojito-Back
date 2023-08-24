@@ -6,6 +6,8 @@ use App\Repository\MaterialRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
+
 
 /**
  * @ORM\Entity(repositoryClass=MaterialRepository::class)
@@ -16,17 +18,20 @@ class Material
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"cocktailsWithRelations"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"cocktailsWithRelations"})
      */
     private $name;
 
     /**
      * @ORM\ManyToOne(targetEntity=TypeMaterial::class, inversedBy="materials")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"cocktailsWithRelations"})
      */
     private $typematerial;
 
