@@ -118,6 +118,11 @@ class Cocktail
      */
     private $comments;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Rating::class, mappedBy="cocktail", orphanRemoval=true)
+     */
+    private $ratings;
+
     public function __construct()
     {
         $this->materials = new ArrayCollection();
@@ -125,6 +130,7 @@ class Cocktail
         $this->categories = new ArrayCollection();
         $this->cocktailUses = new ArrayCollection();
         $this->comments = new ArrayCollection();
+        $this->ratings = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -396,6 +402,36 @@ class Cocktail
             // set the owning side to null (unless already changed)
             if ($comment->getCocktail() === $this) {
                 $comment->setCocktail(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Rating>
+     */
+    public function getRatings(): Collection
+    {
+        return $this->ratings;
+    }
+
+    public function addRating(Rating $rating): self
+    {
+        if (!$this->ratings->contains($rating)) {
+            $this->ratings[] = $rating;
+            $rating->setCocktail($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRating(Rating $rating): self
+    {
+        if ($this->ratings->removeElement($rating)) {
+            // set the owning side to null (unless already changed)
+            if ($rating->getCocktail() === $this) {
+                $rating->setCocktail(null);
             }
         }
 
