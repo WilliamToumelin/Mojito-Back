@@ -82,12 +82,6 @@ class Cocktail
     private $rating;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Material::class, inversedBy="cocktails")
-     * @Groups({"cocktailsWithRelations"})
-     */
-    private $materials;
-
-    /**
      * @ORM\OneToMany(targetEntity=Step::class, mappedBy="cocktail", orphanRemoval=true)
      * @Groups({"cocktailsWithRelations"})
      */
@@ -123,9 +117,26 @@ class Cocktail
      */
     private $ratings;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Glass::class, inversedBy="cocktails")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $glass;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Ice::class, inversedBy="cocktails")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $ice;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Technical::class, inversedBy="cocktails")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $technical;
+
     public function __construct()
     {
-        $this->materials = new ArrayCollection();
         $this->steps = new ArrayCollection();
         $this->categories = new ArrayCollection();
         $this->cocktailUses = new ArrayCollection();
@@ -254,30 +265,6 @@ class Cocktail
     public function setRating(float $rating): self
     {
         $this->rating = $rating;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Material>
-     */
-    public function getMaterials(): Collection
-    {
-        return $this->materials;
-    }
-
-    public function addMaterial(Material $material): self
-    {
-        if (!$this->materials->contains($material)) {
-            $this->materials[] = $material;
-        }
-
-        return $this;
-    }
-
-    public function removeMaterial(Material $material): self
-    {
-        $this->materials->removeElement($material);
 
         return $this;
     }
@@ -434,6 +421,42 @@ class Cocktail
                 $rating->setCocktail(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getGlass(): ?Glass
+    {
+        return $this->glass;
+    }
+
+    public function setGlass(?Glass $glass): self
+    {
+        $this->glass = $glass;
+
+        return $this;
+    }
+
+    public function getIce(): ?Ice
+    {
+        return $this->ice;
+    }
+
+    public function setIce(?Ice $ice): self
+    {
+        $this->ice = $ice;
+
+        return $this;
+    }
+
+    public function getTechnical(): ?Technical
+    {
+        return $this->technical;
+    }
+
+    public function setTechnical(?Technical $technical): self
+    {
+        $this->technical = $technical;
 
         return $this;
     }
