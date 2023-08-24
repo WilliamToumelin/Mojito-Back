@@ -19,6 +19,7 @@ use App\Entity\TypeMaterial;
 use App\Entity\TypeIngredient;
 use Doctrine\Persistence\ObjectManager;
 use App\DataFixtures\Provider\AppProvider;
+use App\Entity\Rating;
 use Symfony\Component\VarDumper\VarDumper;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
@@ -201,12 +202,23 @@ class AppFixtures extends Fixture
             for ($l = 0; $l < mt_rand(1, 5); $l++) {
                 $comment = new Comment();
                 $comment->setContent($faker->paragraph());
-                $comment->setRating(mt_rand(1, 5));
                 $comment->setPostedAt(new \DateTimeImmutable());
                 $comment->setCocktail($cocktailUnique[0]);
                 $comment->setUser($userList[array_rand($userList)]);
 
                 $manager->persist($comment);
+            }
+
+            // ! RATING 
+            
+            for ($l = 0; $l < mt_rand(1, 10); $l++) {
+                $rating = new Rating();
+                $rating->setRating(mt_rand(1,5));
+                $rating->setCocktail($cocktailUnique[0]);
+                $rating->setUser($userList[array_rand($userList)]);
+            
+
+                $manager->persist($rating);
             }
 
             // ! STEP
