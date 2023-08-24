@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+    {% block body %}
+
+    <div class="container-dynamic-block">
+      <h1 class="display-6 fw-bold container-dynamic-block-title">Liste des cocktails</h1>
+      <div class="container-dynamic-block-group">
+     {% for cocktail in cocktails %}
+        <div class="container-dynamic-block-group-item">
+          <a href="#"> <img class="picture-cocktail-small"
+              src="https://www.liquor.com/thmb/d8ISqwKZVgLgrMsMbHGmRAuhSuc=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/mojito-720x720-primary-6a57f80e200c412e9a77a1687f312ff7.jpg"
+              alt="">
+          </a>
+          <div class="container-dynamic-block-group-item-properties">
+             <div class="container-dynamic-block-group-item-properties-name mb-2"> {{cocktail.name|capitalize}} </div>
+            <div class="mb-2 container-dynamic-block-group-item-properties"> Alcool : {{cocktail.isAlcool? 'oui' : 'non'}} </div>
+            
+            {% if cocktail.isAlcool == 1 %}
+            <div class="mb-2 container-dynamic-block-group-item-properties"> Difficulté : intermédiaire </div>
+            {% elseif cocktail.isAlcool == 2 %}
+            {% else %}
+            <div class="mb-2 container-dynamic-block-group-item-properties"> Difficulté : difficile </div>
+            {% endif %}
+            <div class="mb-2 container-dynamic-block-group-item-properties"> Note : {{cocktail.rating}} </div>
+            <div class="icon-container d-flex">
+            <a href="#"> <i class="bi bi-eye-fill me-2 icon"></i> </a>
+            <a href="#"> <i class="bi bi-pencil-square me-2 icon"></i> </a>
+            <a href="#"> <i class="bi bi-trash-fill me-2 icon"></i> </a>
+            </div>
+          </div>
+        </div>
+    {% endfor %} 
+      </div>
+    </div>
+    {% endblock %}
