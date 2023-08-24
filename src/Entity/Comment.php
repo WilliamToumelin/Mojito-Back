@@ -21,12 +21,6 @@ class Comment
      * @ORM\Column(type="text")
      */
     private $content;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $rating;
-
     /**
      * @ORM\Column(type="datetime_immutable")
      */
@@ -57,18 +51,6 @@ class Comment
     public function setContent(string $content): self
     {
         $this->content = $content;
-
-        return $this;
-    }
-
-    public function getRating(): ?int
-    {
-        return $this->rating;
-    }
-
-    public function setRating(int $rating): self
-    {
-        $this->rating = $rating;
 
         return $this;
     }
