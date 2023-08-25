@@ -292,25 +292,6 @@ class AppProvider
       ],
   ];
 
-  private $materials = [
-    'Doseur',
-    'Shaker Boston',
-    'Passoire à cocktail',
-    'Passoire fine',
-    'Verre à mélanger',
-    'Cuillère de bar',
-    'Presse-agrumes',
-    'Pilon',
-    'Économe',
-    'Shaker',
-    'Atomiseur cocktail',
-    'Bec verseur',
-    'Tire bouchon',
-    'Rape manuelle',
-    'Couteau japonais',
-    'Mesure multi-niveaux'
-  ];
-
   private $units = [
     'oz',
     'cl',
@@ -325,6 +306,21 @@ class AppProvider
     'partie'
   ];
 
+  private $typesingredients = [
+    'alcool',
+    'soft',
+    'aromates'
+  ];
+
+
+   /**
+   * get a random typeIngredient name from the provider
+   * @return string random TypeIngredient name
+   */
+  public function typeIngredient(): string
+  {
+    return $this->typesingredients[array_rand($this->typesingredients)];
+  }
 
   /**
    * get a random unit name from the provider
@@ -334,17 +330,6 @@ class AppProvider
   {
     return $this->units[array_rand($this->units)];
   }
-
-
-  /**
-   * get a random material name from the provider
-   * @return string random material name
-   */
-  public function material(): string
-  {
-    return $this->materials[array_rand($this->materials)];
-  }
-
 
    /**
    * get a random cocktail name and image from the provider

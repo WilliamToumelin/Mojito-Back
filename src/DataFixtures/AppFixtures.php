@@ -86,9 +86,9 @@ class AppFixtures extends Fixture
         // I create my different types of ingredients
 
         $typeIngredientList = [];
-        for ($i = 1; $i < 6; $i++) {
+        for ($i = 1; $i < 4; $i++) {
             $TypeIngredient = new TypeIngredient();
-            $TypeIngredient->setName('typeIngredient' . $i);
+            $TypeIngredient->setName($faker->unique()->typeIngredient());
             $typeIngredientList[] = $TypeIngredient;
             $manager->persist($TypeIngredient);
         }
@@ -149,7 +149,7 @@ class AppFixtures extends Fixture
         // I create my different ingredients
 
         $ingredientList = [];
-        for ($i = 1; $i < 6; $i++) {
+        for ($i = 1; $i < 15; $i++) {
             $ingredient = new Ingredient();
             $ingredient->setName($faker->unique()->ingredient());
             $ingredient->setTypeingredient($typeIngredientList[array_rand($typeIngredientList)]);
