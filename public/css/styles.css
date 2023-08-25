@@ -2,6 +2,15 @@ body {
   margin: 0;
 }
 
+a{
+  width: 21,60;
+}
+
+ul {
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
 .navbar-toggler {
   border: 0;
   margin: 0;
@@ -12,7 +21,7 @@ body {
 }
 
 .container-dynamic-block-title {
-  margin: 30px 0 50px 0;
+  margin: 30px 0;
   text-align: center;
   font-size: 1.5rem;
 }
@@ -27,8 +36,8 @@ body {
 .container-dynamic-block-group-item {
   display: flex;
   width: 380px;
-  margin: 20px;
-  border: 1px solid rgba(0, 0, 0, 0.224);
+  margin: 40px;
+ /* border: 1px solid rgba(0, 0, 0, 0.224);*/
   padding: 15px;
 }
 
@@ -43,6 +52,7 @@ body {
 
 .container-dynamic-block-group-item-properties-name {
   font-weight: bold;
+  font-size: 1rem;
 }
 
 .picture-cocktail-small {
@@ -50,17 +60,18 @@ body {
   margin-right: 10px;
 }
 
+
 .icon-container {
   margin-top: 15px;
 }
 
 .icon {
-  font-size: 1.2rem;
-  color: rgb(81, 80, 80);
+font-size: 1.22rem;
+color: rgb(81, 80, 80)
 }
 
 .icon:hover {
-  color: rgb(0, 100, 128);
+color: rgb(0, 100, 128);
 }
 
 .footer {
@@ -81,11 +92,66 @@ body {
   margin-bottom: 0;
 }
 
+
+.container-picture-alcool {
+  width: 265px;
+  margin: 0 auto;
+  // border: 1px solid rgba(0, 0, 0, 0.224);
+}
+
+.container-picture-preparationTime {
+  font-size: 0.7rem;
+}
+
+.cocktail-is-alcool{
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  display: inline-block;
+}
+
+.cocktail-description,
+.cocktail-preparation,
+.cocktail-trick,
+.cocktail-ingredient {
+  font-weight: bold;
+  font-size: 1rem;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.cocktail-description-content,
+.cocktail-preparation-content,
+.cocktail-trick-content {
+  font-size: 0.8rem;
+  text-align: justify;
+}
+
+.cocktail-ingredients-list {
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+.container-icons {
+  height: 45px;
+  justify-content: space-between;
+}
+
+.icon-cocktail {
+  width: 25px;
+}
+
+.container-icon-glass{
+  height: 190px;
+}
+
+
 /**********************/
 /* MEDIA QUERIES */
 /**********************/
 
+
 @media (min-width: 959px) {
+
   .container {
     display: flex;
   }
@@ -135,15 +201,18 @@ body {
   }
 }
 
+
 @media (min-width: 959px) {
   .footer-content {
     font-size: 0.9rem;
   }
 }
 
+
 @media (min-width: 1400px) {
   .container-dynamic-block {
     max-width: 1600px;
     margin: 50px auto;
   }
+
 }

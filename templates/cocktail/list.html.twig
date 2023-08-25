@@ -7,9 +7,8 @@
       <div class="container-dynamic-block-group">
      {% for cocktail in cocktails %}
         <div class="container-dynamic-block-group-item">
-          <a href="#"> <img class="picture-cocktail-small"
-              src="{{cocktail.picture}}"
-              alt="">
+          <a href="{{ path('app_cocktail_show', {id:cocktail.id})}}"> <img class="picture-cocktail-small  rounded-circle"
+              src="{{cocktail.picture}}" alt="{{cocktail.name|capitalize}}">
           </a>
           <div class="container-dynamic-block-group-item-properties">
              <div class="container-dynamic-block-group-item-properties-name mb-2"> {{cocktail.name|capitalize}} </div>
@@ -23,7 +22,7 @@
             {% endif %}
             <div class="mb-2 container-dynamic-block-group-item-properties"> Note : {{cocktail.rating}} </div>
             <div class="icon-container d-flex">
-            <a href="#"> <i class="bi bi-eye-fill me-2 icon"></i> </a>
+            <a href="{{ path('app_cocktail_show', {id:cocktail.id})}}"> <i class="bi bi-eye-fill me-2 icon"></i> </a>
             <a href="#"> <i class="bi bi-pencil-square me-2 icon"></i> </a>
             <a href="#"> <i class="bi bi-trash-fill me-2 icon"></i> </a>
             </div>
