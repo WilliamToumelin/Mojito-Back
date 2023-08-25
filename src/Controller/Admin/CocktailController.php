@@ -11,10 +11,10 @@ use Symfony\Component\Routing\Annotation\Route;
 class CocktailController extends AbstractController
 {
     /**
-     * List all cocktails
-     * @Route("/admin/home", name="app_admin_home")
+     * Display all cocktails
+     * @Route("/admin/cocktails", name="app_cocktail_list")
      */
-    public function index(CocktailRepository $cocktailRepository): Response
+    public function list(CocktailRepository $cocktailRepository): Response
     {
         return $this->render('cocktail/list.html.twig', [
             'cocktails' => $cocktailRepository->findAll(),
