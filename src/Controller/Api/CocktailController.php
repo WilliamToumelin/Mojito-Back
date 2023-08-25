@@ -22,5 +22,18 @@ class CocktailController extends AbstractController
         return $this->json($cocktails, Response::HTTP_OK, [], ["groups" => "cocktailsWithRelations"]);
     }
 
+
+    /**
+     * @Route("/api/cocktails/comments", name="app_api_cocktails_getCocktailsComments")
+     */
+    public function getCocktailsComments(CocktailRepository $cocktailRepository): JsonResponse
+    {
+
+        $cocktails = $cocktailRepository->findAll();
+
+
+        return $this->json($cocktails, Response::HTTP_OK, [], ["groups" => "comments"]);
+    }
+
     
 }

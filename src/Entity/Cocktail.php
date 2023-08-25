@@ -17,7 +17,7 @@ class Cocktail
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"cocktailsWithRelations"})
+     * @Groups({"cocktailsWithRelations", "comments"})
      */
     private $id;
 
@@ -71,7 +71,7 @@ class Cocktail
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"cocktailsWithRelations"})
+     * @Groups({"cocktailsWithRelations", "comments"})
      */
     private $slug;
 
@@ -108,7 +108,7 @@ class Cocktail
 
     /**
      * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="cocktail")
-     * @Groups({"cocktailsWithRelations"})
+     * @Groups({"cocktailsWithRelations", "comments"})
      */
     private $comments;
 

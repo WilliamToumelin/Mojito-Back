@@ -21,7 +21,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"cocktailsWithRelations"})
+     * @Groups({"cocktailsWithRelations", "comments"})
      */
     private $id;
 
@@ -54,7 +54,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * @ORM\Column(type="string", length=100, unique=true)
-     * @Groups({"cocktailsWithRelations"})
+     * @Groups({"cocktailsWithRelations", "comments"})
      */
     private $pseudonym;
 

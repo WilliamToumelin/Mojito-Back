@@ -16,25 +16,25 @@ class Comment
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"cocktailsWithRelations"})
+     * @Groups({"cocktailsWithRelations", "comments"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="text")
-     * @Groups({"cocktailsWithRelations"})
+     * @Groups({"cocktailsWithRelations", "comments"})
      */
     private $content;
     /**
      * @ORM\Column(type="datetime_immutable")
-     * @Groups({"cocktailsWithRelations"})
+     * @Groups({"cocktailsWithRelations", "comments"})
      */
     private $posted_at;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="comments")
      * @ORM\JoinColumn(nullable=false)
-     * @Groups({"cocktailsWithRelations"})
+     * @Groups({"cocktailsWithRelations", "comments"})
      */
     private $user;
 
