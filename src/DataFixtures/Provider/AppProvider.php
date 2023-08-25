@@ -307,8 +307,8 @@ class AppProvider
   ];
 
   private $typesingredients = [
-    'alcool',
-    'soft',
+    'alcools',
+    'softs',
     'aromates'
   ];
 
