@@ -30,7 +30,7 @@ class TypeIngredient
 
     /**
      * @ORM\OneToMany(targetEntity=Ingredient::class, mappedBy="typeingredient")
-     * @Groups({"cocktailsWithRelations", "typeingredientsWithRelations"})
+     * @Groups({"typeingredientsWithRelations"})
      */
     private $ingredients;
 
