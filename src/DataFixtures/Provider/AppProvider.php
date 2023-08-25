@@ -312,6 +312,21 @@ class AppProvider
     'aromates'
   ];
 
+  private $technicals = [
+    'au shaker',
+    'à la cuillère',
+    'en assemblage'
+  ];
+
+  /**
+   * get a random technical name from the provider
+   * @return string random technical name
+   */
+  public function technical(): string
+  {
+    return $this->technicals[array_rand($this->technicals)];
+  }
+
 
    /**
    * get a random typeIngredient name from the provider
