@@ -1,0 +1,89 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+	<div class="container-dynamic-block">
+		<h1 class="display-6 fw-bold container-dynamic-block-title">{{cocktail.name}}</h1>
+		<div class="row mb-2">
+
+			<div class="col mt-3">
+
+				<div class="row g-0 overflow-hidden flex-md-row align-items-start mb-4 position-relative justify-content-center">
+
+					<div class="col-2 d-flex align-items-start p-3 container-picture-alcool">
+						<div>
+							<img class="w-100 cocktail__poster rounded-circle" src="{{cocktail.picture}}">
+						</div>
+						<div class="ms-3 container-icon-glass d-flex flex-column align-items-center justify-content-between">
+							<div>
+                            <img src="{{asset('images/svgviewer-output.svg')}}" class="icon-cocktail" alt="">
+                            
+                                
+								{% if cocktail.isAlcool == 0 %}
+                                <p class="cocktail-is-alcool mb-1 fw-bold">
+                                    Free
+                                    </p>
+								{% endif %}          
+							
+                            </div>
+                            <div class="d-flex flex-column align-items-center container-icons">
+                                <a href="#"> <i class="bi bi-pencil-square  icon"></i> </a>
+                                <a href="#"> <i class="bi bi-trash-fill  icon"></i> </a>
+                            </div>
+						</div>
+					</div>
+					<p class="fw-bold container-picture-preparationTime text-center mt-2">Temps de préparation : {{cocktail.preparationTime}} min
+                    {% if cocktail.difficulty == 1 %}
+                    <small class="fw-bold container-picture-preparationTime "> (facile) </small>
+                    {% elseif cocktail.difficulty == 2 %}
+                    <small class="fw-bold container-picture-preparationTime"> (intermédiaire) </small>
+                    {% else %}          
+                     <small class="fw-bold container-picture-preparationTime"> (difficile) </small>
+                    {% endif %}
+                    </p>
+
+
+					<div class="col-8 pse-4 d-flex flex-column position-static">
+
+						<h2 class="cocktail-description">Description</h2>
+						<p class="cocktail-description-content">{{cocktail.description}}</p>
+
+						<h2 class="cocktail-ingredient">Ingrédients</h2>
+                        <ul class="list-unstyled mb-3">                       
+                        {% for ingredients in cocktail.cocktailUses %}
+
+                            <li class="mb-2 cocktail-ingredients-list">{{ingredients.quantity}} {{ingredients.unit.name}} de {{ingredients.ingredient.name}}</li>
+								
+						{% endfor %}
+                        </ul>
+
+						<h2 class="cocktail-preparation">Préparation</h2>
+						<ul class="list-unstyled mb-3">
+
+							{% for key, step in cocktail.steps %}
+								<li class="my-2">
+									<span class="fw-bold cocktail-preparation-content mb-2">Etape
+										{{key + 1 }}
+										:
+									</span>
+									<small class="ms-1 cocktail-preparation-content">
+										{{step.content}}
+									</small>
+								</li>
+							{% endfor %}
+						</ul>
+
+						{# Displays trick if cocktail has one #}
+						{% if cocktail.trick != "" %}
+							<h2 class="cocktail-trick">Astuces</h2>
+							<p class="cocktail-trick-content">{{cocktail.trick}}</p>
+						{% endif %}
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+{% endblock %}
+
