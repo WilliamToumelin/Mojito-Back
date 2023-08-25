@@ -74,9 +74,9 @@ class AppFixtures extends Fixture
 
         $technicalList = [];
 
-        for ($i = 1; $i < 6; $i++) {
+        for ($i = 1; $i < 4; $i++) {
             $technical = new Technical();
-            $technical->setName('technical' . $i);
+            $technical->setName($faker->unique()->technical());
             $technicalList[] = $technical;
             $manager->persist($technical);
         }
