@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class UnitController extends AbstractController
 {
     /**
-     * @Route("/api/units", name="app_api_units_getUnits")
+     * @Route("/api/units", name="app_api_units_getUnits", methods={"GET"})
      */
     public function getUnits(UnitRepository $unitRepository): JsonResponse
     {

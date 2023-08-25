@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class TypeIngredientController extends AbstractController
 {
     /**
-     * @Route("/api/typeingredients/ingredients", name="app_api_typeIngredients_getTypeIngredients")
+     * @Route("/api/typeingredients/ingredients", name="app_api_typeIngredients_getTypeIngredients", methods={"GET"})
      */
     public function getTypeIngredients(TypeIngredientRepository $typeIngreRepository): JsonResponse
     {

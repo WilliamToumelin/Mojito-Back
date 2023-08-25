@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class CocktailController extends AbstractController
 {
     /**
-     * @Route("/api/cocktails", name="app_api_cocktails_getCocktails")
+     * @Route("/api/cocktails", name="app_api_cocktails_getCocktails", methods={"GET"})
      */
     public function getCocktails(CocktailRepository $cocktailRepository): JsonResponse
     {
@@ -24,7 +24,7 @@ class CocktailController extends AbstractController
 
 
     /**
-     * @Route("/api/cocktails/comments", name="app_api_cocktails_getCocktailsComments")
+     * @Route("/api/cocktails/comments", name="app_api_cocktails_getCocktailsComments", methods={"GET"})
      */
     public function getCocktailsComments(CocktailRepository $cocktailRepository): JsonResponse
     {

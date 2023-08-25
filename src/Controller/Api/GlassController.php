@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class GlassController extends AbstractController
 {
     /**
-     * @Route("/api/glass", name="app_api_glass_getGlass")
+     * @Route("/api/glass", name="app_api_glass_getGlass", methods={"GET"})
      */
     public function getGlass(GlassRepository $glassRepository): JsonResponse
     {

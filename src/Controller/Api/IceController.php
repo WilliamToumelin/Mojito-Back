@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class IceController extends AbstractController
 {
     /**
-     * @Route("/api/ices", name="app_api_ices_getIces")
+     * @Route("/api/ices", name="app_api_ices_getIces", methods={"GET"})
      */
     public function getIces(IceRepository $iceRepository): JsonResponse
     {
