@@ -1,4 +1,4 @@
-updating endpoint which lists all cocktailsupdating endpoint which lists all cocktails{
+{
     "doctrine/annotations": {
         "version": "2.0",
         "recipe": {
