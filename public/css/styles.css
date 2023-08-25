@@ -50,18 +50,17 @@ body {
   margin-right: 10px;
 }
 
-
 .icon-container {
   margin-top: 15px;
 }
 
 .icon {
-font-size: 1.05rem;
-color: rgb(81, 80, 80)
+  font-size: 1.2rem;
+  color: rgb(81, 80, 80);
 }
 
 .icon:hover {
-color: rgb(0, 100, 128);
+  color: rgb(0, 100, 128);
 }
 
 .footer {
@@ -82,15 +81,11 @@ color: rgb(0, 100, 128);
   margin-bottom: 0;
 }
 
-
-
 /**********************/
 /* MEDIA QUERIES */
 /**********************/
 
-
 @media (min-width: 959px) {
-
   .container {
     display: flex;
   }
@@ -140,18 +135,15 @@ color: rgb(0, 100, 128);
   }
 }
 
-
 @media (min-width: 959px) {
   .footer-content {
     font-size: 0.9rem;
   }
 }
 
-
 @media (min-width: 1400px) {
   .container-dynamic-block {
     max-width: 1600px;
     margin: 50px auto;
   }
-
 }
