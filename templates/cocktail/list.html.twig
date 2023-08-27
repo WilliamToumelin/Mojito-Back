@@ -29,6 +29,10 @@
           </div>
         </div>
     {% endfor %} 
-     
+      </div>
+      {# render the pagination #}
+      <div class="navigation d-flex justify-content-center">
+      {{knp_pagination_render(cocktails)}}
+      </div>
     </div>
     {% endblock %}

@@ -4,11 +4,10 @@ namespace App\Controller\Admin;
 
 use App\Entity\Cocktail;
 use App\Repository\CocktailRepository;
-use PhpParser\Node\Stmt\Foreach_;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-
+use Symfony\Component\HttpFoundation\Request;
 
 class CocktailController extends AbstractController
 {
@@ -16,10 +15,10 @@ class CocktailController extends AbstractController
      * Display all cocktails
      * @Route("/admin/cocktails", name="app_cocktail_list")
      */
-    public function list(CocktailRepository $cocktailRepository): Response
+    public function list(CocktailRepository $cocktailRepository, Request $request): Response
     {
         return $this->render('cocktail/list.html.twig', [
-            'cocktails' => $cocktailRepository->findAll(),
+            'cocktails' => $cocktailRepository->paginatorForCocktailsList($request->query->getInt('page', 1)),
         ]);
     }
 

@@ -3,8 +3,10 @@
 namespace App\Repository;
 
 use App\Entity\Cocktail;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Knp\Component\Pager\PaginatorInterface;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Knp\Component\Pager\Pagination\PaginationInterface;
 
 /**
  * @extends ServiceEntityRepository<Cocktail>
@@ -15,9 +17,12 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method Cocktail[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class CocktailRepository extends ServiceEntityRepository
-{
-    public function __construct(ManagerRegistry $registry)
-    {
+{  
+    private $paginatorInterface;
+    public function __construct(ManagerRegistry $registry, PaginatorInterface $paginatorInterface)
+    {   
+        $this->paginatorInterface = $paginatorInterface;
+        
         parent::__construct($registry, Cocktail::class);
     }
 
@@ -52,6 +57,28 @@ class CocktailRepository extends ServiceEntityRepository
            ->getResult()
        ;
    }
+
+
+    /**
+    * makes pagination to cocktails list
+    *@param int $page the page's number
+    * @return PaginationInterface
+    */
+    public function paginatorForCocktailsList (int $page): PaginationInterface
+    {   
+        // fetchs all cocktails
+        $data = $this->createQueryBuilder('c')
+            ->orderBy('c.id', 'DESC')
+            ->getQuery()
+            ->getResult();
+
+        // makes pagination
+        $cocktails = $this->paginatorInterface->paginate($data,$page,12);
+        return $cocktails;
+    }
+
+
+
 
 //    public function findOneBySomeField($value): ?Cocktail
 //    {
