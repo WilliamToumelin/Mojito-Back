@@ -24,7 +24,7 @@ class CocktailController extends AbstractController
 
     /**
      * Display one cocktail 
-     * @Route("/admin/cocktails/{id}", name="app_cocktail_show")
+     * @Route("/admin/cocktail/{id}", name="app_cocktail_show", requirements={"id"="\d+"})
      */
     public function show(CocktailRepository $cocktailRepository, Cocktail $cocktail): Response
     {
