@@ -1,0 +1,220 @@
+body {
+    margin: 0;
+  }
+  
+  a{
+    width: 21,60;
+  }
+  
+  ul {
+    margin-block-start: 0;
+    margin-block-end: 0;
+  }
+  
+  .navbar-toggler {
+    border: 0;
+    margin: 0;
+  }
+  
+  .container-dynamic-block {
+    margin: 0 auto 50px 0;
+  }
+  
+  .container-dynamic-block-title {
+    margin: 30px 0;
+    text-align: center;
+    font-size: 1.5rem;
+  }
+  
+  .container-dynamic-block-group {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 0 auto 80px auto;
+  }
+  
+  .container-dynamic-block-group-item {
+    display: flex;
+    width: 380px;
+    margin: 40px;
+   /* border: 1px solid rgba(0, 0, 0, 0.224);*/
+    padding: 15px;
+  }
+  
+  .container-dynamic-block-group-item:hover {
+    border-color: rgb(0, 100, 128);
+    transition: 1s ease;
+  }
+  
+  .container-dynamic-block-group-item-properties {
+    font-size: 0.9rem;
+  }
+  
+  .container-dynamic-block-group-item-properties-name {
+    font-weight: bold;
+    font-size: 1rem;
+  }
+  
+  .picture-cocktail-small {
+    width: 150px;
+    margin-right: 10px;
+  }
+  
+  
+  .icon-container {
+    margin-top: 15px;
+  }
+  
+  .icon {
+  font-size: 1.22rem;
+  color: rgb(81, 80, 80)
+  }
+  
+  .icon:hover {
+  color: rgb(0, 100, 128);
+  }
+  
+  .footer {
+    margin-top: 50px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 60px; /* Height of the footer */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+  }
+  
+  .footer-content {
+    font-size: 0.8rem;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  
+  
+  .container-picture-alcool {
+    width: 265px;
+    margin: 0 auto;
+    // border: 1px solid rgba(0, 0, 0, 0.224);
+  }
+  
+  .container-picture-preparationTime {
+    font-size: 0.7rem;
+  }
+  
+  .cocktail-is-alcool{
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    display: inline-block;
+  }
+  
+  .cocktail-description,
+  .cocktail-preparation,
+  .cocktail-trick,
+  .cocktail-ingredient {
+    font-weight: bold;
+    font-size: 1rem;
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+  .cocktail-description-content,
+  .cocktail-preparation-content,
+  .cocktail-trick-content {
+    font-size: 0.8rem;
+    text-align: justify;
+  }
+  
+  .cocktail-ingredients-list {
+    font-size: 0.8rem;
+    text-align: center;
+  }
+  
+  .container-icons {
+    height: 45px;
+    justify-content: space-between;
+  }
+  
+  .icon-cocktail {
+    width: 25px;
+  }
+  
+  .container-icon-glass{
+    height: 190px;
+  }
+  
+  
+  /**********************/
+  /* MEDIA QUERIES */
+  /**********************/
+  
+  
+  @media (min-width: 959px) {
+  
+    .container {
+      display: flex;
+    }
+  
+    .container-navbar {
+      width: 191.797px;
+      height: fit-content;
+      margin: 30px 0 0 30px;
+      padding-bottom: 20px;
+    }
+  
+    .container-dynamic-block {
+      width: calc(100vw - 191.797px - 50px);
+      margin: 0 auto 50px 0;
+    }
+  
+    .navbar-elements {
+      display: block;
+      overflow-x: hidden;
+    }
+  
+    .navbar-elements-title {
+      text-align: center;
+      margin: 16px 0 0 0;
+    }
+  
+    .navbar-elements-title-hr {
+      width: 150px;
+      opacity: 0.4;
+    }
+  
+    .navbar-elements-list {
+      display: block;
+      margin-top: 20px;
+    }
+  
+    .navbar-elements-list-item {
+      margin-bottom: 10px;
+    }
+  
+    .navbar-admin {
+      display: none;
+    }
+  
+    .container-dynamic-block {
+      margin-top: 70px;
+    }
+  }
+  
+  
+  @media (min-width: 959px) {
+    .footer-content {
+      font-size: 0.9rem;
+    }
+  }
+  
+  
+  @media (min-width: 1400px) {
+    .container-dynamic-block {
+      max-width: 1600px;
+      margin: 50px auto;
+    }
+  
+  }
+  
+  @import"../../node_modules/bootstrap/scss/bootstrap.scss";
