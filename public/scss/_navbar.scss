@@ -1,0 +1,83 @@
+/* use this file to customize navbar*/
+
+.navbar {
+    padding: 50px 0;
+    margin-bottom: 15px;
+    background-color: rgb(15, 82, 118);
+
+}
+
+.nav-item .nav-link, .dropdown-item {
+    font-size: 0.8rem;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 100;
+}
+
+.navbar-list-items .nav-link:hover {
+    letter-spacing: 2px;
+    transition: 0.5s ease;
+}
+
+.nav-item a.nav-link.active {
+    font-weight: bold;
+    color: white;
+}
+
+
+button.navbar-toggler{
+    border: none;
+}
+  
+  
+  /**********************/
+  /* MEDIA QUERIES */
+  /**********************/
+  
+  
+  @media (min-width: 959px) {
+  
+
+    .container-navbar {
+      width: 191.797px;
+      height: fit-content;
+      margin: 30px 0 0 30px;
+      padding-bottom: 20px;
+    }
+  
+    .container-dynamic-block {
+      width: calc(100vw - 191.797px - 50px);
+      margin: 0 auto 50px 0;
+    }
+  
+    .navbar-elements {
+      display: block;
+      overflow-x: hidden;
+    }
+  
+    .navbar-elements-title {
+      text-align: center;
+      margin: 16px 0 0 0;
+    }
+  
+    .navbar-elements-title-hr {
+      width: 150px;
+      opacity: 0.4;
+    }
+  
+    .navbar-elements-list {
+      display: block;
+      margin-top: 20px;
+    }
+  
+    .navbar-elements-list-item {
+      margin-bottom: 10px;
+    }
+  
+    .navbar-admin {
+      display: none;
+    }
+
+}
+
+@import"../../node_modules/bootstrap/scss/bootstrap.scss";
