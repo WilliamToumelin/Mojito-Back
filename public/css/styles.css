@@ -3,10 +3,6 @@ body {
   margin: 0;
 }
 
-a {
-  width: 21, 60;
-}
-
 ul {
   margin-block-start: 0;
   margin-block-end: 0;
@@ -19,22 +15,28 @@ ul {
 .container-dynamic-block-title {
   margin: 30px 0;
   text-align: center;
-  font-size: 1.5rem;
+  font-weight: 200;
+  font-size: 0.8rem;
+  font-family: Lexend;
 }
 
 .container-dynamic-block-group {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  margin: 0 auto 80px auto;
+  margin: 0 auto 10px auto;
+}
+
+.navigation {
+  margin-bottom: 80px;
 }
 
 .container-dynamic-block-group-item {
   display: flex;
   width: 380px;
-  margin: 40px;
-  /* border: 1px solid rgba(0, 0, 0, 0.224);*/
-  padding: 15px;
+  margin: 30px 40px;
+  border: 1px solid rgba(0, 0, 0, 0.152);
+  padding: 20px;
 }
 
 .container-dynamic-block-group-item:hover {
@@ -42,7 +44,8 @@ ul {
   transition: 1s ease;
 }
 
-.container-dynamic-block-group-item-properties {
+.container-dynamic-block-group-item-properties,
+.container-picture-difficulty {
   font-size: 0.9rem;
 }
 
@@ -87,9 +90,18 @@ ul {
   margin-bottom: 0;
 }
 
+.cocktail__poster {
+  width: 200px;
+}
+
 .container-picture-alcool {
   width: 265px;
   margin: 0 auto;
+  padding: 16px;
+  margin-bottom: 48px;
+  display: flex;
+  align-items: start;
+  /* border: 1px solid rgba(0, 0, 0, 0.224);*/
 }
 
 .container-picture-preparationTime {
@@ -124,6 +136,14 @@ ul {
   text-align: center;
 }
 
+.container-picture-description-ingredients-preparation-tricks {
+  width: 80%;
+  max-width: 477px;
+  margin: 0 auto;
+  background-color: rgba(0, 0, 0, 0.0352941176);
+  padding: 20px;
+}
+
 .container-icons {
   height: 45px;
   justify-content: space-between;
@@ -134,7 +154,12 @@ ul {
 }
 
 .container-icon-glass {
-  height: 190px;
+  height: 200px;
+}
+
+.footer-content a {
+  color: black;
+  text-decoration: none;
 }
 
 /**********************/
@@ -146,18 +171,50 @@ ul {
   }
   .container-dynamic-block {
     width: calc(100vw - 191.797px - 50px);
-    margin: 0 auto 50px 0;
+    margin: 0 auto;
   }
-}
-@media (min-width: 959px) {
+  .container-dynamic-block-title {
+    margin: 30px 0 50px 0;
+  }
   .footer-content {
     font-size: 0.9rem;
+  }
+  .container-cocktail {
+    display: flex;
+    align-items: center;
+    width: 717px;
+    margin: 0 auto;
+  }
+  .container-picture-alcool {
+    align-items: center;
+    width: 323px;
+    margin: 0 50px 0 0;
+    /* border: 1px solid rgba(0, 0, 0, 0.224);*/
+  }
+  .container-picture-description-ingredients-preparation-tricks {
+    max-width: 620px;
   }
 }
 @media (min-width: 1400px) {
   .container-dynamic-block {
     max-width: 1600px;
     margin: 50px auto;
+  }
+  .container-picture-description-ingredients-preparation-tricks {
+    width: 500px;
+  }
+  .container-cocktail {
+    width: 1000px;
+  }
+  .container-picture-alcool {
+    width: 450px;
+    /* border: 1px solid rgba(0, 0, 0, 0.224);*/
+  }
+  .cocktail__poster {
+    width: 300px;
+  }
+  .container-icon-glass {
+    height: 300px;
   }
 }
 /*!
@@ -12170,10 +12227,6 @@ button.navbar-toggler {
     height: fit-content;
     margin: 30px 0 0 30px;
     padding-bottom: 20px;
-  }
-  .container-dynamic-block {
-    width: calc(100vw - 191.797px - 50px);
-    margin: 0 auto 50px 0;
   }
   .navbar-elements {
     display: block;
