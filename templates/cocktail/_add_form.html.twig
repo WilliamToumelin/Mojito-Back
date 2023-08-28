@@ -1,0 +1,25 @@
+<div class="container-form">
+
+	{{ form_start(form) }}
+	{{form_row(form.name)}}
+	{{form_row(form.description)}}
+	{{form_row(form.picture)}}
+	{{form_row(form.difficulty)}}
+	{{form_row(form.visible)}}
+	{{form_row(form.preparation_time)}}
+	{{form_row(form.trick)}}
+	{{form_row(form.alcool)}}
+	{{form_row(form.categories)}}
+	{{form_row(form.glass)}}
+	{{form_row(form.ice)}}
+	{{form_row(form.technical)}}
+	<p class="add_item_link form-button-add-step" data-collection-holder-class="steps">Ajouter une étape</p>
+
+	{# the data-index attribute is required for the JavaScript code below #}
+	<ul class="steps" data-index="{{ form.steps|length > 0 ? form.steps|last.vars.name + 1 : 0 }}" data-prototype="{{ form_widget(form.steps.vars.prototype)|e('html_attr') }}"></ul>
+
+
+	<button class="btn btn-success my-2 form-btn-submit">{{ button_label|default('Save') }}</button>
+	{{ form_end(form) }}
+
+</div>
