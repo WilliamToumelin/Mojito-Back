@@ -2,7 +2,7 @@
 
 namespace App\Controller\Api;
 
-use App\Repository\CategoryRepository;
+use App\Entity\Category;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -11,13 +11,10 @@ use Symfony\Component\Routing\Annotation\Route;
 class CategoryController extends AbstractController
 {
     /**
-     * @Route("/api/categories", name="app_api_categories_getCategories", methods={"GET"})
+     * @Route("/api/categories/{id}", name="app_api_categories_getCategoriesById", requirements={"id"="\d+"}, methods={"GET"})
      */
-    public function getCategories(CategoryRepository $categoryRepository): JsonResponse
+    public function getCategoriesById(Category $category): JsonResponse
     {
-
-        $categories = $categoryRepository->findAll();
-
-        return $this->json($categories, Response::HTTP_OK, [], ["groups" => "categories"]);
+        return $this->json($category, Response::HTTP_OK, [], ["groups" => "categories"]);
     }
 }
