@@ -12,13 +12,11 @@ use Symfony\Component\Routing\Annotation\Route;
 class TypeIngredientController extends AbstractController
 {
     /**
-     * @Route("/api/typeingredients/ingredients", name="app_api_typeIngredients_getTypeIngredients", methods={"GET"})
+     * @Route("/api/typeingredients/{id}/ingredients", name="app_api_typeIngredients_getIngredientsByTypeId",requirements={"id"="\d+"}, methods={"GET"})
      */
-    public function getTypeIngredients(TypeIngredientRepository $typeIngreRepository): JsonResponse
+    public function getIngredientsByTypeId(TypeIngredient $typeIngredient): JsonResponse
     {
-        $ices = $typeIngreRepository->findAll();
 
-
-        return $this->json($ices, Response::HTTP_OK, [], ["groups" => "typeingredientsWithRelations"]);
+        return $this->json($typeIngredient, Response::HTTP_OK, [], ["groups" => "typeingredientsWithRelations"]);
     }
 }
