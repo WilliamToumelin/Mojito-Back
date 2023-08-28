@@ -33,7 +33,6 @@
         // remove the li for the tag form
         item.remove();
   
-        
     });
 }
 

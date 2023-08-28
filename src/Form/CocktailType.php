@@ -120,11 +120,7 @@ class CocktailType extends AbstractType
                 'by_reference' => false,
                
       
-            ])
-            
-                
-
-      ;
+            ]);
     }
     
 

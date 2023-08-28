@@ -55,10 +55,6 @@ class Step
         return $this->cocktail;
     }
 
-  
-
-
-
     public function setNumberStep(int $number_step): self
     {
         $this->number_step = $number_step;
