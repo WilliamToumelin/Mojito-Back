@@ -12,11 +12,29 @@ use Symfony\Component\Routing\Annotation\Route;
 class TypeIngredientController extends AbstractController
 {
     /**
-     * @Route("/api/typeingredients/{id}/ingredients", name="app_api_typeIngredients_getIngredientsByTypeId",requirements={"id"="\d+"}, methods={"GET"})
+     * @Route("/api/typeingredients/{name}/ingredients", name="app_api_typeIngredients_getIngredientsByTypeId", methods={"GET"})
      */
-    public function getIngredientsByTypeId(TypeIngredient $typeIngredient): JsonResponse
+    public function getIngredientsByTypeId(TypeIngredientRepository $typeIngredientRepository, $name): JsonResponse
     {
 
-        return $this->json($typeIngredient, Response::HTTP_OK, [], ["groups" => "typeingredientsWithRelations"]);
+        $typeIngredients = $typeIngredientRepository->findBy(array('name' => $name));
+        
+        if(($typeIngredients === [])){
+            return $this->json(['error' => 'Ingredient type does not exist'], Response::HTTP_NOT_FOUND);
+        }
+
+        return $this->json($typeIngredients, Response::HTTP_OK, [], ["groups" => "typeingredientsWithRelations"]);
+    }
+
+
+    /**
+     * @Route("/api/typeingredients/ingredients", name="app_api_typeIngredients_getTypeIngredients")
+     */
+    public function getTypeIngredients(TypeIngredientRepository $typeIngredientRepository): JsonResponse
+    {
+        $typeIngredients = $typeIngredientRepository->findAll();
+
+
+        return $this->json($typeIngredients, Response::HTTP_OK, [], ["groups" => "typeingredientsWithRelations"]);
     }
 }
