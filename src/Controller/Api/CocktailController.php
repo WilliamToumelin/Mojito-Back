@@ -2,6 +2,7 @@
 
 namespace App\Controller\Api;
 
+use App\Entity\Cocktail;
 use App\Repository\CocktailRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -16,23 +17,27 @@ class CocktailController extends AbstractController
     public function getCocktails(CocktailRepository $cocktailRepository): JsonResponse
     {
 
-        $cocktails = $cocktailRepository->findAllCocktailByVisible(true);
+        $cocktails = $cocktailRepository->findAllCocktailByVisible();
 
 
-        return $this->json($cocktails, Response::HTTP_OK, [], ["groups" => "cocktailsWithRelations"]);
+        return $this->json($cocktails, Response::HTTP_OK, [], ["groups" => "cocktailsBasicInfo"]);
+    }
+
+    /**
+     * @Route("/api/cocktails/{id}", name="app_api_cocktails_getCocktailsById",requirements={"id"="\d+"}, methods={"GET"})
+     */
+    public function getCocktailsById(Cocktail $cocktail): JsonResponse
+    {
+        return $this->json($cocktail, Response::HTTP_OK, [], ["groups" => "cocktailsAllInfo"]);
     }
 
 
     /**
-     * @Route("/api/cocktails/comments", name="app_api_cocktails_getCocktailsComments", methods={"GET"})
+     * @Route("/api/cocktails/{id}/comments", name="app_api_cocktails_getCocktailsComments",requirements={"id"="\d+"}, methods={"GET"})
      */
-    public function getCocktailsComments(CocktailRepository $cocktailRepository): JsonResponse
+    public function getCocktailsCommentsById(Cocktail $cocktail): JsonResponse
     {
-
-        $cocktails = $cocktailRepository->findAll();
-
-
-        return $this->json($cocktails, Response::HTTP_OK, [], ["groups" => "comments"]);
+        return $this->json($cocktail, Response::HTTP_OK, [], ["groups" => "comments"]);
     }
 
     

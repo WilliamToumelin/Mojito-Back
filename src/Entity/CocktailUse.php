@@ -14,21 +14,21 @@ class CocktailUse
 {
     /**
      * @ORM\Column(type="float")
-     * @Groups({"cocktailsWithRelations"})
+     * @Groups({"cocktailsAllInfo"})
      */
     private $quantity;
 
     /**
      * @ORM\Id
      * @ORM\ManyToOne(targetEntity=Ingredient::class, inversedBy="cocktailUses")
-     * @Groups({"cocktailsWithRelations"})
+     * @Groups({"cocktailsAllInfo"})
      */
     private $ingredient;
 
     /**
      * @ORM\Id
      * @ORM\ManyToOne(targetEntity=Unit::class, inversedBy="cocktailUses")
-     * @Groups({"cocktailsWithRelations"})
+     * @Groups({"cocktailsAllInfo"})
      */
     private $unit;
 

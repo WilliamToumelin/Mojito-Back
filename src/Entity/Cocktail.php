@@ -17,98 +17,96 @@ class Cocktail
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"cocktailsWithRelations", "comments"})
+     * @Groups({"cocktailsBasicInfo", "cocktailsAllInfo", "comments"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=100)
-     * @Groups({"cocktailsWithRelations"})
+     * @Groups({"cocktailsBasicInfo", "cocktailsAllInfo", "comments"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="text")
-     * @Groups({"cocktailsWithRelations"})
+     * @Groups({"cocktailsWithRelations", "cocktailsAllInfo"})
      */
     private $description;
 
     /**
      * @ORM\Column(type="text")
-     * @Groups({"cocktailsWithRelations"})
+     * @Groups({"cocktailsBasicInfo", "cocktailsAllInfo"})
      */
     private $picture;
 
     /**
      * @ORM\Column(type="integer")
-     * @Groups({"cocktailsWithRelations"})
+     * @Groups({"cocktailsBasicInfo", "cocktailsAllInfo"})
      */
     private $difficulty;
 
     /**
      * @ORM\Column(type="boolean")
-     * @Groups({"cocktailsWithRelations"})
      */
     private $visible;
 
     /**
      * @ORM\Column(type="integer")
-     * @Groups({"cocktailsWithRelations"})
+     * @Groups({"cocktailsAllInfo"})
      */
     private $preparation_time;
 
     /**
      * @ORM\Column(type="text", nullable=true)
-     * @Groups({"cocktailsWithRelations"})
+     * @Groups({"cocktailsAllInfo"})
      */
     private $trick;
 
     /**
      * @ORM\Column(type="boolean")
-     * @Groups({"cocktailsWithRelations"})
+     * @Groups({"cocktailsAllInfo"})
      */
     private $alcool;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"cocktailsWithRelations", "comments"})
+     * @Groups({"cocktailsAllInfo", "comments"})
      */
     private $slug;
 
     /**
      * @ORM\Column(type="float")
-     * @Groups({"cocktailsWithRelations"})
+     * @Groups({"cocktailsBasicInfo", "cocktailsAllInfo"})
      */
     private $rating;
 
     /**
      * @ORM\OneToMany(targetEntity=Step::class, mappedBy="cocktail", orphanRemoval=true)
-     * @Groups({"cocktailsWithRelations"})
+     * @Groups({"cocktailsAllInfo"})
      */
     private $steps;
 
     /**
      * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="cocktails")
-     * @Groups({"cocktailsWithRelations"})
+     * @Groups({"cocktailsAllInfo"})
      */
     private $categories;
 
     /**
      * @ORM\OneToMany(targetEntity=CocktailUse::class, mappedBy="cocktail")
-     * @Groups({"cocktailsWithRelations"})
+     * @Groups({"cocktailsAllInfo"})
      */
     private $cocktailUses;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="cocktails")
      * @ORM\JoinColumn(nullable=false)
-     * @Groups({"cocktailsWithRelations"})
      */
     private $user;
 
     /**
      * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="cocktail")
-     * @Groups({"cocktailsWithRelations", "comments"})
+     * @Groups({"comments"})
      */
     private $comments;
 

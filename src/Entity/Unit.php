@@ -18,13 +18,13 @@ class Unit
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"cocktailsWithRelations", "units", "propositionsData"})
+     * @Groups({"cocktailsAllInfo", "units", "propositionsData"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"cocktailsWithRelations", "units", "propositionsData"})
+     * @Groups({"cocktailsAllInfo", "units", "propositionsData"})
      */
     private $name;
 

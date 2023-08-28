@@ -17,13 +17,13 @@ class Category
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"cocktailsWithRelations", "categories"})
+     * @Groups({"cocktailsAllInfo", "categories"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"cocktailsWithRelations", "categories"})
+     * @Groups({"cocktailsAllInfo", "categories"})
      */
     private $name;
 
@@ -34,7 +34,7 @@ class Category
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"cocktailsWithRelations", "categories"})
+     * @Groups({"categories"})
      */
     private $slug;
 

@@ -16,19 +16,19 @@ class Step
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"cocktailsWithRelations"})
+     * @Groups({"cocktailsAllInfo"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="integer")
-     * @Groups({"cocktailsWithRelations"})
+     * @Groups({"cocktailsAllInfo"})
      */
     private $number_step;
 
     /**
      * @ORM\Column(type="text")
-     * @Groups({"cocktailsWithRelations"})
+     * @Groups({"cocktailsAllInfo"})
      */
     private $content;
 
