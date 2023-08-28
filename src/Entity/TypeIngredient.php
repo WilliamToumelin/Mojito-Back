@@ -18,19 +18,19 @@ class TypeIngredient
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"cocktailsWithRelations", "typeingredientsWithRelations"})
+     * @Groups({"cocktailsWithRelations", "typeingredientsWithRelations", "propositionsData"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"cocktailsWithRelations", "typeingredientsWithRelations"})
+     * @Groups({"cocktailsWithRelations", "typeingredientsWithRelations", "propositionsData"})
      */
     private $name;
 
     /**
      * @ORM\OneToMany(targetEntity=Ingredient::class, mappedBy="typeingredient")
-     * @Groups({"typeingredientsWithRelations"})
+     * @Groups({"typeingredientsWithRelations", "propositionsData"})
      */
     private $ingredients;
 

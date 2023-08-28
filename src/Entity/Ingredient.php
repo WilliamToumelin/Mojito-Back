@@ -18,13 +18,13 @@ class Ingredient
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"cocktailsWithRelations", "typeingredientsWithRelations"})
+     * @Groups({"cocktailsWithRelations", "typeingredientsWithRelations", "propositionsData"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"cocktailsWithRelations", "typeingredientsWithRelations"})
+     * @Groups({"cocktailsWithRelations", "typeingredientsWithRelations", "propositionsData"})
      */
     private $name;
 
