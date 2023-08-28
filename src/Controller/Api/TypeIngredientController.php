@@ -50,10 +50,10 @@ class TypeIngredientController extends AbstractController
     public function getPropositionsData(TypeIngredientRepository $typeIngredientRepository, GlassRepository $glassRepository, IceRepository $iceRepository, TechnicalRepository $technicalRepository, UnitRepository $unitRepository): JsonResponse
     {
         $typeIngredients['ingredients'] = $typeIngredientRepository->findAll();
-        $typeIngredients['verres'] = $glassRepository->findAll();
-        $typeIngredients['glaces'] = $iceRepository->findAll();
-        $typeIngredients['techniques'] = $technicalRepository->findAll();
-        $typeIngredients['unités'] = $unitRepository->findAll();
+        $typeIngredients['glass'] = $glassRepository->findAll();
+        $typeIngredients['ices'] = $iceRepository->findAll();
+        $typeIngredients['technicals'] = $technicalRepository->findAll();
+        $typeIngredients['units'] = $unitRepository->findAll();
 
 
         return $this->json($typeIngredients, Response::HTTP_OK, [], ["groups" => "propositionsData"]);
