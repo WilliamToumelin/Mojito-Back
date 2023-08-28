@@ -88,7 +88,7 @@ class Cocktail
 
     /**
      * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="cocktails")
-     * @Groups({"cocktailsAllInfo"})
+     * @Groups({"cocktailsAllInfo", "cocktailsBasicInfo"})
      */
     private $categories;
 
