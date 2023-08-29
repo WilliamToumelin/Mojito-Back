@@ -17,13 +17,13 @@ class Technical
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"cocktailsWithRelations", "technicals", "propositionsData"})
+     * @Groups({"cocktailsWithRelations", "technicals", "propositionsData", "cocktailsAllInfo"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"cocktailsWithRelations", "technicals", "propositionsData"})
+     * @Groups({"cocktailsWithRelations", "technicals", "propositionsData", "cocktailsAllInfo"})
      */
     private $name;
 
