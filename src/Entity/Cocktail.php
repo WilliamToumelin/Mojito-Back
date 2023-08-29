@@ -106,7 +106,7 @@ class Cocktail
 
     /**
      * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="cocktail")
-     * @Groups({"comments"})
+     * @Groups({"comments", "cocktailsAllInfo"})
      */
     private $comments;
 
@@ -118,21 +118,21 @@ class Cocktail
     /**
      * @ORM\ManyToOne(targetEntity=Glass::class, inversedBy="cocktails")
      * @ORM\JoinColumn(nullable=false)
-     * @Groups({"cocktailsWithRelations"})
+     * @Groups({"cocktailsWithRelations", "cocktailsAllInfo"})
      */
     private $glass;
 
     /**
      * @ORM\ManyToOne(targetEntity=Ice::class, inversedBy="cocktails")
      * @ORM\JoinColumn(nullable=false)
-     * @Groups({"cocktailsWithRelations"})
+     * @Groups({"cocktailsWithRelations", "cocktailsAllInfo"})
      */
     private $ice;
 
     /**
      * @ORM\ManyToOne(targetEntity=Technical::class, inversedBy="cocktails")
      * @ORM\JoinColumn(nullable=false)
-     * @Groups({"cocktailsWithRelations"})
+     * @Groups({"cocktailsWithRelations", "cocktailsAllInfo"})
      */
     private $technical;
 
