@@ -29,7 +29,7 @@ class Cocktail
 
     /**
      * @ORM\Column(type="text")
-     * @Groups({"cocktailsWithRelations", "cocktailsAllInfo"})
+     * @Groups({"cocktailsAllInfo"})
      */
     private $description;
 
@@ -118,21 +118,21 @@ class Cocktail
     /**
      * @ORM\ManyToOne(targetEntity=Glass::class, inversedBy="cocktails")
      * @ORM\JoinColumn(nullable=false)
-     * @Groups({"cocktailsWithRelations", "cocktailsAllInfo"})
+     * @Groups({"cocktailsAllInfo"})
      */
     private $glass;
 
     /**
      * @ORM\ManyToOne(targetEntity=Ice::class, inversedBy="cocktails")
      * @ORM\JoinColumn(nullable=false)
-     * @Groups({"cocktailsWithRelations", "cocktailsAllInfo"})
+     * @Groups({"cocktailsAllInfo"})
      */
     private $ice;
 
     /**
      * @ORM\ManyToOne(targetEntity=Technical::class, inversedBy="cocktails")
      * @ORM\JoinColumn(nullable=false)
-     * @Groups({"cocktailsWithRelations", "cocktailsAllInfo"})
+     * @Groups({"cocktailsAllInfo"})
      */
     private $technical;
 
