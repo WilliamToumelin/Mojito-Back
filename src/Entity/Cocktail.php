@@ -70,7 +70,7 @@ class Cocktail
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"cocktailsAllInfo", "comments"})
+     * @Groups({"cocktailsAllInfo", "comments", "cocktailsBasicInfo"})
      */
     private $slug;
 
