@@ -18,13 +18,13 @@ class Ice
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"cocktailsWithRelations", "ices", "propositionsData"})
+     * @Groups({"cocktailsWithRelations", "ices", "propositionsData", "cocktailsAllInfo"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"cocktailsWithRelations", "ices", "propositionsData"})
+     * @Groups({"cocktailsWithRelations", "ices", "propositionsData", "cocktailsAllInfo"})
      */
     private $name;
 
