@@ -38,7 +38,7 @@ class CocktailController extends AbstractController
 
       /**
      * add a cocktail 
-     * @Route("/admin/cocktail/ajouter", name="app_movie_add", methods={"GET", "POST"})
+     * @Route("/admin/cocktail/ajouter", name="app_cocktail_add", methods={"GET", "POST"})
      */
 
     public function add(Request $request, CocktailRepository $cocktailRepository): Response
