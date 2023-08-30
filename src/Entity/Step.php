@@ -3,8 +3,6 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use App\Repository\StepRepository;
-use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 
@@ -52,7 +50,7 @@ class Step
 
     public function __toString()
     {
-        return $this->cocktail;
+        return $this->content;
     }
 
     public function setNumberStep(int $number_step): self

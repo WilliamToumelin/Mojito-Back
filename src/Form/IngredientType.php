@@ -2,23 +2,26 @@
 
 namespace App\Form;
 
-use App\Entity\Step;
+use App\Entity\Ingredient;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class StepType extends AbstractType
+class IngredientType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('content');
+        ->add('number_step')
+        ->add('content')
+        ->add('cocktail');
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Step::class,
+            'data_class' => Ingredient::class,
         ]);
     }
 }

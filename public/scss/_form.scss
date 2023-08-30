@@ -1,8 +1,13 @@
+form {
+    margin-bottom : 0;
+}
+
 .container-form {
     background-color: rgba(81, 80, 80, 0.074); ;
     width: 85%;
+    max-width : 800px;
     margin: 0 auto;
-    padding: 60px;
+    padding: 30px;
 }
 
 .steps {
@@ -23,7 +28,7 @@
 
 /* button delete a step */
 form li button {
-    font-size : 0.9rem;
+    font-size: 0.9rem;
     background-color: rgba(128, 128, 128, 0) ;
     border: none;
 }
@@ -34,5 +39,27 @@ form li button {
     margin: 0 auto;
     display: block;
 }
+
+fieldset  {
+    display : none;
+    margin-bottom: 0;
+}
+
+
+.form-title-steps {
+text-align : center;
+margin-top : 30px;
+font-size : 1.2rem;
+font-weight : bold;
+}
+
+.form-add-item-link {
+    margin : 20px 0;
+}
+
+.form-add-item-link input {
+    margin-bottom : 8px
+}
+
 
 @import"../../node_modules/bootstrap/scss/bootstrap.scss";
