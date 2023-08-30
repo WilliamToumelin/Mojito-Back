@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Glass index{% endblock %}
+
+{% block body %}
+    <h1>Glass index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for glass in glasses %}
+            <tr>
+                <td>{{ glass.id }}</td>
+                <td>{{ glass.name }}</td>
+                <td>
+                    <a href="{{ path('app_glass_edit', {'id': glass.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_glass_new') }}">Create new</a>
+{% endblock %}
