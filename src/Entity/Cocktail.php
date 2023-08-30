@@ -2,7 +2,6 @@
 
 namespace App\Entity;
 
-use App\Repository\CocktailRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -29,7 +28,7 @@ class Cocktail
 
     /**
      * @ORM\Column(type="text")
-     * @Groups({"cocktailsAllInfo"})
+     * @Groups({"cocktailsWithRelations", "cocktailsAllInfo"})
      */
     private $description;
 
@@ -118,7 +117,7 @@ class Cocktail
     /**
      * @ORM\ManyToOne(targetEntity=Glass::class, inversedBy="cocktails")
      * @ORM\JoinColumn(nullable=false)
-     * @Groups({"cocktailsAllInfo"})
+     * @Groups({"cocktailsWithRelations", "cocktailsAllInfo"})
      */
     private $glass;
 
@@ -132,7 +131,7 @@ class Cocktail
     /**
      * @ORM\ManyToOne(targetEntity=Technical::class, inversedBy="cocktails")
      * @ORM\JoinColumn(nullable=false)
-     * @Groups({"cocktailsAllInfo"})
+     * @Groups({"cocktailsWithRelations", "cocktailsAllInfo"})
      */
     private $technical;
 

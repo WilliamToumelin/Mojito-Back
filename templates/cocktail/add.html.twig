@@ -3,12 +3,12 @@
 {% block body %}
 
 	<div class="container-dynamic-block">
-		<h1 class="display-6  container-dynamic-block-title">Ajouter un cocktail</h1>
+		<h1 class="display-6 container-dynamic-block-title">Ajouter un cocktail</h1>
 		{% block subBody %}
 
 			{{ include('cocktail/_add_form.html.twig') }}
 
-			<a href="{{ path('app_cocktail_list') }}">Retour à la liste des cocktails</a>
+		<p class= "container-dynamic-block-link">	<a href="{{ path('app_cocktail_list') }}">Retour à la liste des cocktails</a> </p>
 		{% endblock %}
 
 	</div>
