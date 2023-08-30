@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 
 /**
@@ -25,12 +26,14 @@ class Ice
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"ices", "propositionsData", "cocktailsAllInfo"})
+     * @Assert\NotBlank
+     * @Assert\Length(max=50)
      */
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity=Cocktail::class, mappedBy="ice", orphanRemoval=true)
-     */
+     * @ORM\OneToMany(targetEntity=Cocktail::class, mappedBy="ice", cascade={"remove"})
+     */ 
     private $cocktails;
 
     public function __construct()

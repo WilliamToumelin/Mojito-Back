@@ -123,8 +123,8 @@ class Cocktail
     private $glass;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Ice::class, inversedBy="cocktails")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToOne(targetEntity=Ice::class, inversedBy="cocktails", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false,name="ice_id",referencedColumnName="id",onDelete="CASCADE")
      * @Groups({"cocktailsAllInfo"})
      */
     private $ice;
