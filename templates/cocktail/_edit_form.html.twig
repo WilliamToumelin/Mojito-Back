@@ -1,0 +1,47 @@
+<div class="container-form">
+
+	{{error}}
+
+	{{ form_start(form) }}
+	{{form_row(form.name)}}
+	{{form_row(form.description)}}
+	{{form_row(form.picture)}}
+	{{form_row(form.difficulty)}}
+	{{form_row(form.visible)}}
+	{{form_row(form.preparation_time)}}
+	{{form_row(form.trick)}}
+	{{form_row(form.alcool)}}
+	{{form_row(form.categories)}}
+	{{form_row(form.glass)}}
+	{{form_row(form.ice)}}
+	{{form_row(form.technical)}}
+
+	<hr>
+	<div class="text-center form-title-steps">
+		Les ingrédients </div>
+	{% for key, cocktailuse in form.cocktailuses %}		
+		{{form_widget(cocktailuse, {'attr': {'class': 'form-container-ingredient'}})}}
+		<p class="button-delete-ingredient"> supprimer</p>
+	{% endfor %}
+
+	<p class="add_item_link form-button-add-cocktailuses" data-collection-holder-class="cocktailuses">Ajouter un ingrédient</p>
+	{# the data-index attribute is required for the JavaScript code below #}
+	<ul class="cocktailuses" data-index="{{ form.cocktailuses|length > 0 ? form.cocktailuses|last.vars.name + 1 : 0 }}" data-prototype="{{ form_widget(form.cocktailuses.vars.prototype)|e('html_attr') }}"></ul>
+
+	<hr>
+	<div class="text-center form-title-steps">
+		Les étapes  de préparation</div>
+	{% for key, step in form.steps %}
+		{{form_widget(step, {'attr': {'class': 'form-container-step'}})}}
+		<p class="button-delete-step"> supprimer</p>
+	{% endfor %}
+	<p class="add_item_link form-button-add-step" data-collection-holder-class="steps">Ajouter une étape</p>
+	{# the data-index attribute is required for the JavaScript code below #}
+	<ul class="steps" data-index="{{ form.steps|length > 0 ? form.steps|last.vars.name + 1 : 0 }}" data-prototype="{{ form_widget(form.steps.vars.prototype)|e('html_attr') }}"></ul>
+
+
+	<button class="btn btn-success my-2 form-btn-submit" type="submit">{{ button_label|default('valider') }}</button>
+	{{ form_end(form) }}
+
+</div>
+

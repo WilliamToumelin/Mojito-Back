@@ -32,9 +32,8 @@ const addTagFormDeleteLink = (item) => {
       e.preventDefault();
       // remove the li for the tag form
       item.remove();
-
   });
-}
+};
 
 
 document
@@ -54,6 +53,36 @@ document
   .forEach((cocktailuses) => {
       addTagFormDeleteLink(cocktailuses)
   })
+
+
+  /*********************/
+
+
+    const ingredientList = document.querySelectorAll('.form-container-ingredient');
+    const deleteButtonsIngredient = document.querySelectorAll('.button-delete-ingredient');
+
+    for (let index = 0; index < deleteButtonsIngredient.length; index++) {
+      deleteButtonsIngredient[index].addEventListener("click", function (e) {
+        e.preventDefault();
+        deleteButtonsIngredient[index].remove();
+        ingredientList[index].remove();
+      }
+    )};
+
+    /*********************/
+
+   const deleteButtonsStep = document.querySelectorAll('.button-delete-step');
+    const stepList = document.querySelectorAll('.form-container-step');
+
+    for (let index = 0; index < deleteButtonsStep.length; index++) {
+      deleteButtonsStep[index].addEventListener("click", function (e) {
+        e.preventDefault();
+        deleteButtonsStep[index].remove();
+        stepList[index].remove();
+      }
+    )};
+
+  
 
 
 

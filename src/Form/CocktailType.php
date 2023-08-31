@@ -108,8 +108,7 @@ class CocktailType extends AbstractType
                 'entry_options' => ['label' => false],
                 'allow_add' => true,    //https://symfony.com/doc/current/reference/forms/types/collection.html#field-options
                 'allow_delete' => true, // https://symfony.com/doc/current/reference/forms/types/collection.html#allow-delete
-                'by_reference' => true, // https://symfony.com/doc/current/reference/forms/types/collection.html#by-reference               
-      
+                'by_reference' => false, // https://symfony.com/doc/current/reference/forms/types/collection.html#by-reference               
             ])
 
            ->add('cocktailuses', CollectionType::class, [
@@ -117,8 +116,8 @@ class CocktailType extends AbstractType
             'entry_options' => ['label' => false],
             'allow_add' => true,    //https://symfony.com/doc/current/reference/forms/types/collection.html#field-options
             'allow_delete' => true, // https://symfony.com/doc/current/reference/forms/types/collection.html#allow-delete
-            'by_reference' => true, // https://symfony.com/doc/current/reference/forms/types/collection.html#by-reference               
-  
+            'by_reference' => false, // https://symfony.com/doc/current/reference/forms/types/collection.html#by-reference               
+            
         ]);
             
     }

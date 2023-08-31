@@ -309,7 +309,7 @@ class AppProvider
   private $typesingredients = [
     'alcools',
     'softs',
-    'aromates'
+    'aromates',
   ];
 
   private $technicals = [

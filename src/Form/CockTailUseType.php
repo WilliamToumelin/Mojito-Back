@@ -18,26 +18,28 @@ class CockTailUseType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-        ->add('quantity', IntegerType::class)
-        ->add('unit', EntityType::class, [
-            "class" => Unit::class,
-            "label" => "unit",
+        ->add('ingredient', EntityType::class, [
+            "class" => Ingredient::class,
+            "label" => "ingrédient",
             //"expanded" => true,
             "choice_label" => "name"
         ])
-        ->add('ingredient', EntityType::class, [
-            "class" => Ingredient::class,
-            "label" => "ingrédients",
+        ->add('quantity', IntegerType::class, [
+            "label" => "quantité",
+        ])
+        ->add('unit', EntityType::class, [
+            "class" => Unit::class,
+            "label" => "unité",
             //"expanded" => true,
             "choice_label" => "name"
-        ]);
-        
+        ]);        
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'data_class' => CocktailUse::class,
+
         ]);
     }
 }
