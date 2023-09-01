@@ -127,7 +127,6 @@ Dictionnaire de données
 |getCreatedAt()|setCreatedAt(\DateTimeImmutable $created_at)|-|-|
 |getLastLogin()|setLastLogin(?\DateTimeImmutable $last_login)|-|-|
 |isVerified()|setVerified(bool $verified)|-|-|
-|getIpAdress()|setIpAdress(string $ip_adress)|-|-|
 |getWarning()|setWarning(int $warning)|-|-|
 |getPicture()|setPicture(?string $picture)|-|-|
 |getCocktails()|-|addCocktail(Cocktail $cocktail)|removeCocktail(Cocktail $cocktail)|

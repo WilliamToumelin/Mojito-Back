@@ -52,6 +52,14 @@ class UserController extends AbstractController
             return $this->json($dataErrors, Response::HTTP_UNPROCESSABLE_ENTITY);
         }
 
+        // hash the password (based on the security.yaml config for the $user class)
+        $hashedPassword = $passwordHasher->hashPassword(
+            $user,
+            $user->getPassword()
+        );
+        
+        $user->setPassword($hashedPassword);
+
 
         // I persist and flush
         $entityManager->persist($user);
