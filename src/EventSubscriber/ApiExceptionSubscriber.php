@@ -2,37 +2,44 @@
 
 namespace App\EventSubscriber;
 
-use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpKernel\Event\ExceptionEvent;
+use Symfony\Component\HttpKernel\Exception\HttpException;
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class ApiExceptionSubscriber implements EventSubscriberInterface
 {
     public function onKernelException(ExceptionEvent $event): void
     {
 
-
         // je récupère le requête 
         $request = $event->getRequest();
         // si ma route ne commence pas par api, je fais un early return
-        if(strpos($request->getPathInfo(),"/api/")!== 0){
+        if (strpos($request->getPathInfo(), "/api/") !== 0) {
             // ceci est un early return ça permet de couper l'execution de la fonction
             return;
         }
 
-        //  récupérer l'exception
+         //  récupérer l'exception
         $exception = $event->getThrowable();
-        // le cas des erreurs serveur
 
-        //  renvoyer une réponse avec en JSON le contenu du message ET le bon code http
-        $response = new JsonResponse(
-            ["error" => $exception->getMessage(), 'statuscode' => $exception->getStatusCode()],
-            $exception->getStatusCode()
-        );
-        // ici je set la nouvelle réponse qui est personnalisé
-        $event->setResponse($response);
+         //  renvoyer une réponse avec en JSON le contenu du message ET le bon code http
+        if ($exception instanceof HttpException) {
+            $data = [
+                'status' => $exception->getStatusCode(),
+                'message' => $exception->getMessage()
+            ];
+
+            $event->setResponse(new JsonResponse($data));
+        } else {
+            $data = [
+                'status' => 500, // Le status n'existe pas car ce n'est pas une exception HTTP, donc on met 500 par défaut.
+                'message' => $exception->getMessage()
+            ];
 
 
+            $event->setResponse(new JsonResponse($data));
+        }
     }
 
     public static function getSubscribedEvents(): array

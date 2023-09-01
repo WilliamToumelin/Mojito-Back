@@ -2,13 +2,17 @@
 
 namespace App\Entity;
 
-use App\Repository\UserRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use Assert\Email;
+use Assert\NotBlank;
+use App\Entity\Cocktail;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
-use Symfony\Component\Security\Core\User\UserInterface;
+use App\Repository\UserRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 
 /**
@@ -26,6 +30,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $id;
 
     /**
+     * @Assert\Email
+     * @Assert\NotBlank
      * @ORM\Column(type="string", length=180, unique=true)
      */
     private $email;
@@ -38,6 +44,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
+     * @Assert\NotBlank
      */
     private $password;
 
@@ -54,11 +61,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @ORM\Column(type="string", length=100, unique=true)
      * @Groups({"comments"})
+     * @Assert\NotBlank
      */
     private $pseudonym;
 
     /**
      * @ORM\Column(type="datetime_immutable")
+     * @Assert\NotBlank
      */
     private $date_of_birth;
 
