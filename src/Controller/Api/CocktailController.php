@@ -49,7 +49,7 @@ class CocktailController extends AbstractController
 
 
      /**
-     * @Route("/api/cocktails/add", name="app_api_cocktails_add", methods={"GET"})
+     * @Route("/api/cocktails/add", name="app_api_cocktails_add", methods={"POST"})
      */
     public function add(Request $request, SerializerInterface $serializer, ValidatorInterface $validator, EntityManagerInterface $entityManager, UserPasswordHasherInterface $passwordHasher): JsonResponse
     {
