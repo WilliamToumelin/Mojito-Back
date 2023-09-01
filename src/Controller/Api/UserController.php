@@ -21,7 +21,8 @@ class UserController extends AbstractController
     /**
      * @Route("/api/register", name="app_api_register_postUser", methods={"POST"})
      */
-    public function postUserRegister(Request $request, SerializerInterface $serializer, ValidatorInterface $validator, EntityManagerInterface $entityManager, UserPasswordHasherInterface $passwordHasher): JsonResponse
+    public function postUserRegister(Request $request, SerializerInterface $serializer, ValidatorInterface $validator, 
+    EntityManagerInterface $entityManager, UserPasswordHasherInterface $passwordHasher): JsonResponse
     {
         // I retrieve a raw json
         $jsonContent = $request->getContent();
