@@ -87,7 +87,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $verified;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $ip_adress;
 
