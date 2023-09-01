@@ -135,7 +135,6 @@ class AppFixtures extends Fixture
             $user->setCreatedAt(new \DateTimeImmutable());
             $user->setLastLogin(new DateTimeImmutable($faker->date()));
             $user->setVerified(mt_rand(0, 1));
-            $user->setIpAdress($faker->ipv4());
             $user->setWarning(mt_rand(0, 10));
             $user->setPicture("https://picsum.photos/id/" . mt_rand(50, 120) . "/768/1024");
 

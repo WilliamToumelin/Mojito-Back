@@ -87,11 +87,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $verified;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $ip_adress;
-
-    /**
      * @ORM\Column(type="integer", options={"default":0}))
      */
     private $warning;
@@ -292,18 +287,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setVerified(bool $verified): self
     {
         $this->verified = $verified;
-
-        return $this;
-    }
-
-    public function getIpAdress(): ?string
-    {
-        return $this->ip_adress;
-    }
-
-    public function setIpAdress(string $ip_adress): self
-    {
-        $this->ip_adress = $ip_adress;
 
         return $this;
     }
