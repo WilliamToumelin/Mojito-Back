@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle technique{% endblock %}
+
+{% block body %}
+    <h1>Ajouter une technique</h1>
+
+    {{ include('technical/_form.html.twig') }}
+
+    <a href="{{ path('app_technical_index') }}">Retour à la liste des techniques</a>
+{% endblock %}

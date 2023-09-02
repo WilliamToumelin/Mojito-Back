@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier une technique{% endblock %}
+
+{% block body %}
+    <h1>Modifier une technique</h1>
+
+    {{ include('technical/_form.html.twig', {'button_label': 'Modifier'}) }}
+
+    <a href="{{ path('app_technical_index') }}">retour à la liste des ingrédients/a>
+{% endblock %}
