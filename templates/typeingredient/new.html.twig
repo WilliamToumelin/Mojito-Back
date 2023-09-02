@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter un type d'ingrédient{% endblock %}
+
+{% block body %}
+    <h1>Ajouter un type d'ingrédient</h1>
+
+    {{ include('typeingredient/_form.html.twig') }}
+
+    <a href="{{ path('app_typeingredient_index') }}">Retour à la liste des types d'ingrédient</a>
+{% endblock %}

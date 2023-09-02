@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des types d'ingredient{% endblock %}
+
+{% block body %}
+    <h1>Liste des types d'ingrédient</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Modifier</th>
+                <th>Supprimer</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for typeingredient in typeingredients %}
+            <tr>
+                <td>{{ typeingredient.id }}</td>
+                <td>{{ typeingredient.name }}</td>
+                <td>
+                    <a href="{{ path('app_typeingredient_edit', {'id': typeingredient.id}) }}">modifier</a>
+                </td>
+                <td>
+                     {{ include('typeingredient/_delete_form.html.twig') }}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">Aucun type ingrédient trouvé! Vous pouvez en ajouter</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_typeingredient_new') }}">Ajouter un type d'ingrédient</a>
+{% endblock %}
