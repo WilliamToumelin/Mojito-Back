@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des comments{% endblock %}
+
+{% block body %}
+    <h1>Liste des commentaires</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Texte</th>
+                <th>Date de publication</th>
+                <th>Auteur</th>
+                <th>Cocktail</th>
+                <th>Supprimer</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for comment in comments %}
+            <tr>
+                <td>{{ comment.id }}</td>
+                <td>{{ comment.content }}</td>
+                <td>{{ comment.postedAt | date('d-m-Y') }}</td> {#https://stackoverflow.com/questions/54090255/object-of-class-datetime-could-not-be-converted-to-string-symfony-php#}
+                {# <td><a href="{{ path('app_cocktail_show', {'id': comment.user.id}) }}">{{ comment.user.name }}</a></td> #}
+                <td>{{ comment.user.pseudonym }}</td>
+                <td><a href="{{ path('app_cocktail_show', {'id': comment.cocktail.id}) }}">{{ comment.cocktail.name }}</a></td>
+                <td>
+                     {{ include('comment/_delete_form.html.twig') }}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">Aucun commentaire trouvé!</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
