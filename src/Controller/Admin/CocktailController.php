@@ -16,12 +16,12 @@ class CocktailController extends AbstractController
 {
     /**
      * Display all cocktails
-     * @Route("/admin/cocktails", name="app_cocktail_list")
+     * @Route("/admin/cocktails", name="app_cocktail_index")
      */
-    public function list(CocktailRepository $cocktailRepository, Request $request): Response
+    public function index(CocktailRepository $cocktailRepository, Request $request): Response
     {
-    
-        return $this->render('cocktail/list.html.twig', [
+
+        return $this->render('cocktail/index.html.twig', [
             'cocktails' => $cocktailRepository->paginatorForCocktailsList($request->query->getInt('page', 1)),
         ]);
     }
@@ -41,10 +41,10 @@ class CocktailController extends AbstractController
 
     /**
      * add a cocktail 
-     * @Route("/admin/cocktail/ajouter", name="app_cocktail_add", methods={"GET", "POST"})
+     * @Route("/admin/cocktail/ajouter", name="app_cocktail_new", methods={"GET", "POST"})
      */
 
-    public function add(Request $request, CocktailRepository $cocktailRepository, UserRepository $userRepository, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, CocktailRepository $cocktailRepository, UserRepository $userRepository, EntityManagerInterface $entityManager): Response
     {
         $cocktail = new Cocktail();
 
@@ -85,11 +85,12 @@ class CocktailController extends AbstractController
 
             $this->addFlash("success", "Cocktail enregistré");
 
-            return $this->redirectToRoute('app_cocktail_list', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_cocktail_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('cocktail/add.html.twig', [
-            'form' => $form,
+        return $this->renderForm('cocktail/new.html.twig', [
+            'cocktail' => $cocktail,
+            'form' => $form
         ]);
     }
 
@@ -122,12 +123,11 @@ class CocktailController extends AbstractController
 
 
                 foreach ($cocktailUsesList as $key => $value) {
-                   // dd( $cocktailUsesList[$key]);
+                    // dd( $cocktailUsesList[$key]);
                     $cocktailUsesList[$key]->setCocktail($cocktail);
-                    dump( $cocktailUsesList[$key]);
                     $entityManager->persist($cocktailUsesList[$key]);
                 }
-             
+
 
 
                 // for each step, then i set the step number, associate it with the cocktail entity and persist it
@@ -142,7 +142,7 @@ class CocktailController extends AbstractController
 
                     $this->addFlash("success", "Cocktail mis à jour");
 
-                    return $this->redirectToRoute('app_cocktail_list', ["id" => $cocktail->getId()]);
+                    return $this->redirectToRoute('app_cocktail_index', ["id" => $cocktail->getId()]);
                 }
             }
 
@@ -153,5 +153,17 @@ class CocktailController extends AbstractController
             'form' => $form,
             'error' => $error,
         ]);
+    }
+
+    /**
+     * @Route("/admin/cocktail/{id}", name="app_cocktail_delete", methods={"POST"})
+     */
+    public function delete(Request $request, Cocktail $cocktail, CocktailRepository $cocktailRepository): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$cocktail->getId(), $request->request->get('_token'))) {
+            $cocktailRepository->remove($cocktail, true);
+        }
+
+        return $this->redirectToRoute('app_cocktail_index', [], Response::HTTP_SEE_OTHER);
     }
 }

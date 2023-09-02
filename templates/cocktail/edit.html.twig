@@ -6,9 +6,11 @@
 		<h1 class="display-6 container-dynamic-block-title">Modifier un cocktail</h1>
 		{% block subBody %}
 
-			{{ include('cocktail/_edit_form.html.twig') }}
+			{{ include('cocktail/_form.html.twig') }}
 
-		<p class= "container-dynamic-block-link">	<a href="{{ path('app_cocktail_list') }}">Retour à la liste des cocktails</a> </p>
+			<p class="container-dynamic-block-link">
+				<a href="{{ path('app_cocktail_index') }}">Retour à la liste des cocktails</a>
+			</p>
 		{% endblock %}
 
 	</div>

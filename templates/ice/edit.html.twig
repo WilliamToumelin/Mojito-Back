@@ -1,13 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Ice{% endblock %}
-
 {% block body %}
-    <h1>Edit Ice</h1>
 
-    {{ include('ice/_form.html.twig', {'button_label': 'Update'}) }}
+	<div class="container-dynamic-block">
+		<h1 class="display-6 container-dynamic-block-title">Modifier un glaçon</h1>
 
-    <a href="{{ path('app_ice_index') }}">back to list</a>
+		{{ include('ice/_form.html.twig', {'button_label': 'Update'}) }}
 
-    {{ include('ice/_delete_form.html.twig') }}
-{% endblock %}
+		<p class="container-dynamic-block-link">
+			<a href="{{ path('app_ice_index') }}">Retour à la liste des glaçons</a>
+		</p>
+	{% endblock %}
+

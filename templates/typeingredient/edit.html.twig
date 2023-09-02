@@ -1,11 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Modifier un type d'ingrédient{% endblock %}
-
 {% block body %}
-    <h1>Modifier un type d'ingrédient</h1>
 
-    {{ include('typeingredient/_form.html.twig', {'button_label': 'Modifier'}) }}
+	<div class="container-dynamic-block">
+		<h1 class="display-6 container-dynamic-block-title">Modifier un type d'ingrédient</h1>
 
-    <a href="{{ path('app_typeingredient_index') }}">retour à la liste des types d'ingrédient </a>
-{% endblock %}
+		{{ include('typeingredient/_form.html.twig', {'button_label': 'Modifier'}) }}
+
+		<p class="container-dynamic-block-link">
+			<a href="{{ path('app_typeingredient_index') }}">Retour à la liste des types d'ingrédient
+			</a>
+		</p>
+	{% endblock %}
+

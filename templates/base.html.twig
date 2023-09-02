@@ -40,7 +40,7 @@
 					<div class="collapse navbar-collapse" id="navbarTogglerDemo01">
 						<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 							<li class="nav-item">
-								<a class="nav-link active" aria-current="page" href="{{path ('app_cocktail_list')}}">Cocktails</a>
+								<a class="nav-link active" aria-current="page" href="{{path ('app_cocktail_index')}}">Cocktails</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="{{ path('app_ingredient_index')}}">Ingrédients</a>
@@ -58,15 +58,15 @@
 								<a class="nav-link" href="{{path ('app_glass_index')}}">Verres</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="{{path ('app_ice_index')}}">Glaces</a>
+								<a class="nav-link" href="{{path ('app_ice_index')}}">Glaçons</a>
 							</li>
-							{#
 							<li class="nav-item">
-								<a class="nav-link" href="{{path ('app_user_index')}}"> Membres</a>
+								<a class="nav-link" href="{{path ('app_user_index')}}">
+									Membres</a>
 							</li>
-							#}
 							<li class="nav-item">
-								<a class="nav-link" href="{{path ('app_comment_index')}}"> Commentaires</a>
+								<a class="nav-link" href="{{path ('app_comment_index')}}">
+									Commentaires</a>
 							</li>
 						</ul>
 						<div>
@@ -98,7 +98,6 @@
 			</nav>
 			<div class="container-fluid d-flex  justify-content-end"></div>
 		</div>
-
 		{% block body %}{% endblock %}
 
 

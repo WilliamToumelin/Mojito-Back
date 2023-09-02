@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Glass{% endblock %}
-
 {% block body %}
-    <h1>Edit Glass</h1>
 
-    {{ include('glass/_form.html.twig', {'button_label': 'Update'}) }}
+	<div class="container-dynamic-block">
+		<h1 class="display-6 container-dynamic-block-title">Modifier un verre</h1>
 
-    <a href="{{ path('app_glass_index') }}">back to list</a>
+		{{ include('glass/_form.html.twig', {'button_label': 'Update'}) }}
+		<p class="container-dynamic-block-link">
+			<a href="{{ path('app_glass_index') }}">Retour à la liste des verres</a>
+		</p>
+	{% endblock %}
 
-    {{ include('glass/_delete_form.html.twig') }}
-{% endblock %}

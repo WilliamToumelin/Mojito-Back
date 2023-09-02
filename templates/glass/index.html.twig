@@ -1,34 +1,45 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Glass index{% endblock %}
-
 {% block body %}
-    <h1>Glass index</h1>
+	<div class="container-dynamic-block">
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for glass in glasses %}
-            <tr>
-                <td>{{ glass.id }}</td>
-                <td>{{ glass.name }}</td>
-                <td>
-                    <a href="{{ path('app_glass_edit', {'id': glass.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="3">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+		<h1 class="display-6 container-dynamic-block-title">Les verres
+			<small class=" container-dynamic-block-button-add">
+				<a href="{{path('app_glass_new')}}">
+					<i class="bi bi-file-plus"></i>
+				</small>
+			</a>
+		</h1>
 
-    <a href="{{ path('app_glass_new') }}">Create new</a>
-{% endblock %}
+		<table class="table table-hover table-list ">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Nom</th>
+					<th>Modifier</th>
+					<th>Supprimer</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for glass in glasses %}
+					<tr>
+						<td>{{ glass.id }}</td>
+						<td>{{ glass.name }}</td>
+						<td>
+							<a href="{{ path('app_glass_edit', {'id': glass.id}) }}">
+								<i class="bi bi-pencil-square me-2 icon"></i>
+							</a>
+						</td>
+						<td>
+							{{ include('glass/_delete_form.html.twig') }}
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="3">no records found</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+	{% endblock %}

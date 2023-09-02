@@ -2,16 +2,17 @@
 
 {% block body %}
 
-{% include "fragments/_flash_message.html.twig" %}
+	{% include "fragments/_flash_message.html.twig" %}
 
 	<div class="container-dynamic-block">
-		<h1 class="display-6  container-dynamic-block-title">Liste des cocktails
+
+		<h1 class="display-6  container-dynamic-block-title">Les cocktails
 			<small class=" container-dynamic-block-button-add">
-				<a href="{{path('app_cocktail_add')}}">
+				<a href="{{path('app_cocktail_new')}}">
 					<i class="bi bi-file-plus"></i>
 				</small>
-			</h1>
-		</a>
+			</a>
+		</h1>
 		<div class="container-dynamic-block-group">
 
 			{% for cocktail in cocktails %}
@@ -49,10 +50,9 @@
 							<a href="{{ path('app_cocktail_edit', {id:cocktail.id})}}">
 								<i class="bi bi-pencil-square me-2 icon"></i>
 							</a>
-							<a href="#">
-								<i class="bi bi-trash-fill me-2 icon"></i>
-							</a>
+							{{ include('cocktail/_delete_form.html.twig') }}
 						</div>
+
 					</div>
 				</div>
 			{% endfor %}

@@ -24,7 +24,7 @@ class IceController extends AbstractController
     }
 
     /**
-     * @Route("/admin/glace/new", name="app_ice_new", methods={"GET", "POST"})
+     * @Route("/admin/glacon/ajouter", name="app_ice_new", methods={"GET", "POST"})
      */
     public function new(Request $request, IceRepository $iceRepository): Response
     {

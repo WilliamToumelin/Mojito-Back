@@ -1,11 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Ice{% endblock %}
-
 {% block body %}
-    <h1>Create new Ice</h1>
 
-    {{ include('ice/_form.html.twig') }}
+	<div class="container-dynamic-block">
 
-    <a href="{{ path('app_ice_index') }}">back to list</a>
-{% endblock %}
+		<h1 class="display-6 container-dynamic-block-title"> Ajouter un glaçon </h1>
+
+		{{ include('ice/_form.html.twig') }}
+
+		<p class="container-dynamic-block-link">
+			<a href="{{ path('app_ice_index') }}">Retour à la liste des glaçons</a>
+		</p>
+
+	{% endblock %}
+

@@ -1,7 +1,8 @@
 <div class="container-form">
-
-	{{error}}
-
+	{% if error is defined %}
+		{{error}}
+	{% endif %}
+	
 	{{ form_start(form) }}
 	{{form_row(form.name)}}
 	{{form_row(form.description)}}

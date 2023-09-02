@@ -1,13 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Unit{% endblock %}
-
 {% block body %}
-    <h1>Edit Unit</h1>
 
-    {{ include('unit/_form.html.twig', {'button_label': 'Update'}) }}
+	<div class="container-dynamic-block">
+		<h1 class="display-6 container-dynamic-block-title">Modifier une unité</h1>
 
-    <a href="{{ path('app_unit_index') }}">back to list</a>
+		{{ include('unit/_form.html.twig', {'button_label': 'Update'}) }}
 
-    {{ include('unit/_delete_form.html.twig') }}
-{% endblock %}
+		
+		<p class="container-dynamic-block-link">
+			<a href="{{ path('app_unit_index') }}">Retour à la liste des unités</a>
+		</p>
+
+
+	{% endblock %}
+

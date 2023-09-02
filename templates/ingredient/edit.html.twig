@@ -1,11 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Modifier un ingrédient{% endblock %}
-
 {% block body %}
-    <h1>Modifier un ingrédient</h1>
 
-    {{ include('ingredient/_form.html.twig', {'button_label': 'Modifier'}) }}
+	<div class="container-dynamic-block">
+		<h1 class="display-6 container-dynamic-block-title">Modifier un ingrédient</h1>
 
-    <a href="{{ path('app_ingredient_index') }}">retour à la liste des ingrédients/a>
-{% endblock %}
+		{{ include('ingredient/_form.html.twig', {'button_label': 'Modifier'}) }}
+
+		<p class="container-dynamic-block-link">
+			<a href="{{ path('app_ingredient_index') }}">Retour à la liste des ingrédients
+			</a>
+		</p>
+	{% endblock %}

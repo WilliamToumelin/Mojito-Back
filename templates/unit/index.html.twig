@@ -1,34 +1,45 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Unit index{% endblock %}
-
 {% block body %}
-    <h1>Unit index</h1>
+	<div class="container-dynamic-block">
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for unit in units %}
-            <tr>
-                <td>{{ unit.id }}</td>
-                <td>{{ unit.name }}</td>
-                <td>
-                    <a href="{{ path('app_unit_edit', {'id': unit.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="3">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+		<h1 class="display-6  container-dynamic-block-title">Les unités
+			<small class=" container-dynamic-block-button-add">
+				<a href="{{path('app_unit_new')}}">
+					<i class="bi bi-file-plus"></i>
+				</small>
+			</a>
+		</h1>
 
-    <a href="{{ path('app_unit_new') }}">Create new</a>
-{% endblock %}
+		<table class="table table-hover table-list ">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Nom</th>
+					<th>actions</th>
+					<th>Supprimer</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for unit in units %}
+					<tr>
+						<td>{{ unit.id }}</td>
+						<td>{{ unit.name }}</td>
+						<td>
+							<a href="{{ path('app_unit_edit', {'id': unit.id}) }}">
+								<i class="bi bi-pencil-square me-2 icon"></i>
+							</a>
+						</td>
+						<td>
+							{{ include('unit/_delete_form.html.twig') }}
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="3">no records found</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+	{% endblock %}

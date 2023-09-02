@@ -1,11 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Nouvelle technique{% endblock %}
-
 {% block body %}
-    <h1>Ajouter une technique</h1>
 
-    {{ include('technical/_form.html.twig') }}
+	<div class="container-dynamic-block">
+		<h1 class="display-6 container-dynamic-block-title">Ajouter une technique</h1>
 
-    <a href="{{ path('app_technical_index') }}">Retour à la liste des techniques</a>
-{% endblock %}
+		{{ include('technical/_form.html.twig') }}
+		<p class="container-dynamic-block-link">
+
+			<a href="{{ path('app_technical_index') }}">Retour à la liste des techniques</a>
+		</p>
+	{% endblock %}
+
