@@ -44,6 +44,7 @@ class Ingredient
         $this->cocktailUses = new ArrayCollection();
     }
 
+
     public function getId(): ?int
     {
         return $this->id;

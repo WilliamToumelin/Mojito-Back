@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des ingredients{% endblock %}
+
+{% block body %}
+    <h1>Liste des ingrédients</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Type</th>
+                <th>Modifier</th>
+                <th>Supprimer</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for ingredient in ingredients %}
+            <tr>
+                <td>{{ ingredient.id }}</td>
+                <td>{{ ingredient.name }}</td>
+                <td>{{ ingredient.typeingredient }}</td>
+                <td>
+                    <a href="{{ path('app_ingredient_edit', {'id': ingredient.id}) }}">edit</a>
+                </td>
+                <td>
+                     {{ include('ingredient/_delete_form.html.twig') }}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">Aucun ingrédient trouvé! Vous pouvez en ajouter</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_ingredient_new') }}">Ajouter un ingrédient</a>
+{% endblock %}

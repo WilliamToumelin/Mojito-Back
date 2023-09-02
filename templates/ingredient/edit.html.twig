@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier un ingrédient{% endblock %}
+
+{% block body %}
+    <h1>Modifier un ingrédient</h1>
+
+    {{ include('ingredient/_form.html.twig', {'button_label': 'Modifier'}) }}
+
+    <a href="{{ path('app_ingredient_index') }}">retour à la liste des ingrédients/a>
+{% endblock %}

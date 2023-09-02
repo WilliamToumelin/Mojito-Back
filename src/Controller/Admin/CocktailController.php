@@ -33,8 +33,6 @@ class CocktailController extends AbstractController
     public function show(CocktailRepository $cocktailRepository, Cocktail $cocktail): Response
     {
         $cocktail = $cocktailRepository->find($cocktail);
-        dd($cocktail);
-
         return $this->render(
             'cocktail/show.html.twig',
             ['cocktail' => $cocktail]
