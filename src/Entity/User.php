@@ -25,7 +25,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"comments"})
+     * @Groups({"comments", "user"})
      */
     private $id;
 
@@ -33,6 +33,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @Assert\Email
      * @Assert\NotBlank
      * @ORM\Column(type="string", length=180, unique=true)
+     * @Groups({"user"})
      */
     private $email;
 
@@ -50,17 +51,19 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
+     * @Groups({"user"})
      */
     private $firstname;
 
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
+     * @Groups({"user"})
      */
     private $lastname;
 
     /**
      * @ORM\Column(type="string", length=100, unique=true)
-     * @Groups({"comments"})
+     * @Groups({"comments", "user"})
      * @Assert\NotBlank
      */
     private $pseudonym;
@@ -68,31 +71,37 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @ORM\Column(type="datetime_immutable")
      * @Assert\NotBlank
+     * @Groups({"user"})
      */
     private $date_of_birth;
 
     /**
      * @ORM\Column(type="datetime_immutable")
+     * @Groups({"user"})
      */
     private $created_at;
 
     /**
      * @ORM\Column(type="datetime_immutable", nullable=true)
+     * @Groups({"user"})
      */
     private $last_login;
 
     /**
      * @ORM\Column(type="boolean", options={"default":0}))
+     * @Groups({"user"})
      */
     private $verified;
 
     /**
      * @ORM\Column(type="integer", options={"default":0}))
+     * @Groups({"user"})
      */
     private $warning;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"user"})
      */
     private $picture;
 

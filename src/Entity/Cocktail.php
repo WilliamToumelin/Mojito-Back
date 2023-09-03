@@ -17,31 +17,31 @@ class Cocktail
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"cocktailsBasicInfo", "cocktailsAllInfo", "comments"})
+     * @Groups({"cocktailsBasicInfo", "cocktailsAllInfo", "comments", "user"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=100)
-     * @Groups({"cocktailsBasicInfo", "cocktailsAllInfo", "comments"})
+     * @Groups({"cocktailsBasicInfo", "cocktailsAllInfo", "comments", "user"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="text")
-     * @Groups({"cocktailsWithRelations", "cocktailsAllInfo"})
+     * @Groups({"cocktailsWithRelations", "cocktailsAllInfo", "user"})
      */
     private $description;
 
     /**
      * @ORM\Column(type="text")
-     * @Groups({"cocktailsBasicInfo", "cocktailsAllInfo"})
+     * @Groups({"cocktailsBasicInfo", "cocktailsAllInfo", "user"})
      */
     private $picture;
 
     /**
      * @ORM\Column(type="integer")
-     * @Groups({"cocktailsBasicInfo", "cocktailsAllInfo"})
+     * @Groups({"cocktailsBasicInfo", "cocktailsAllInfo", "user"})
      */
     private $difficulty;
 
@@ -52,49 +52,49 @@ class Cocktail
 
     /**
      * @ORM\Column(type="integer")
-     * @Groups({"cocktailsAllInfo"})
+     * @Groups({"cocktailsAllInfo", "user"})
      */
     private $preparation_time;
 
     /**
      * @ORM\Column(type="text", nullable=true)
-     * @Groups({"cocktailsAllInfo"})
+     * @Groups({"cocktailsAllInfo", "user"})
      */
     private $trick;
 
     /**
      * @ORM\Column(type="boolean")
-     * @Groups({"cocktailsAllInfo"})
+     * @Groups({"cocktailsAllInfo", "user"})
      */
     private $alcool;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"cocktailsAllInfo", "comments", "cocktailsBasicInfo"})
+     * @Groups({"cocktailsAllInfo", "comments", "cocktailsBasicInfo", "user"})
      */
     private $slug;
 
     /**
      * @ORM\Column(type="float")
-     * @Groups({"cocktailsBasicInfo", "cocktailsAllInfo"})
+     * @Groups({"cocktailsBasicInfo", "cocktailsAllInfo", "user"})
      */
     private $rating;
 
     /**
      * @ORM\OneToMany(targetEntity=Step::class, mappedBy="cocktail", orphanRemoval=true)
-     * @Groups({"cocktailsAllInfo"})
+     * @Groups({"cocktailsAllInfo", "user"})
      */
     private $steps;
 
     /**
      * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="cocktails")
-     * @Groups({"cocktailsAllInfo", "cocktailsBasicInfo"})
+     * @Groups({"cocktailsAllInfo", "cocktailsBasicInfo", "user"})
      */
     private $categories;
 
     /**
      * @ORM\OneToMany(targetEntity=CocktailUse::class, mappedBy="cocktail")
-     * @Groups({"cocktailsAllInfo"})
+     * @Groups({"cocktailsAllInfo", "user"})
      */
     private $cocktailUses;
 
@@ -106,7 +106,7 @@ class Cocktail
 
     /**
      * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="cocktail")
-     * @Groups({"comments", "cocktailsAllInfo"})
+     * @Groups({"comments", "cocktailsAllInfo", "user"})
      */
     private $comments;
 
@@ -118,21 +118,21 @@ class Cocktail
     /**
      * @ORM\ManyToOne(targetEntity=Glass::class, inversedBy="cocktails")
      * @ORM\JoinColumn(nullable=false)
-     * @Groups({"cocktailsWithRelations", "cocktailsAllInfo"})
+     * @Groups({"cocktailsWithRelations", "cocktailsAllInfo", "user"})
      */
     private $glass;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Ice::class, inversedBy="cocktails", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity=Ice::class, inversedBy="cocktails")
      * @ORM\JoinColumn(nullable=false,name="ice_id",referencedColumnName="id",onDelete="CASCADE")
-     * @Groups({"cocktailsAllInfo"})
+     * @Groups({"cocktailsAllInfo", "user"})
      */
     private $ice;
 
     /**
      * @ORM\ManyToOne(targetEntity=Technical::class, inversedBy="cocktails")
      * @ORM\JoinColumn(nullable=false)
-     * @Groups({"cocktailsWithRelations", "cocktailsAllInfo"})
+     * @Groups({"cocktailsWithRelations", "cocktailsAllInfo", "user"})
      */
     private $technical;
 

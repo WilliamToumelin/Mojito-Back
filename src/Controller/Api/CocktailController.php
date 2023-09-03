@@ -4,17 +4,20 @@ namespace App\Controller\Api;
 
 use App\Entity\Cocktail;
 use App\Repository\CocktailRepository;
+use App\Repository\IngredientRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use PhpParser\Node\Expr\New_;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Serializer\Exception\NotEncodableValueException;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 
 class CocktailController extends AbstractController
@@ -50,13 +53,23 @@ class CocktailController extends AbstractController
 
 
 
-     /**
+    /**
      * @Route("/api/cocktails/add", name="app_api_cocktails_add", methods={"POST"})
      */
-    public function add(Request $request, SerializerInterface $serializer, ValidatorInterface $validator, EntityManagerInterface $entityManager, UserPasswordHasherInterface $passwordHasher): JsonResponse
+    public function add(Request $request, SerializerInterface $serializer, ValidatorInterface $validator, EntityManagerInterface $entityManager, TokenStorageInterface $tokenStorage, SluggerInterface $slugger, IngredientRepository $ingredientRepository): JsonResponse
     {
+
+        // return null if token doesn't exist
+        if ($tokenStorage->getToken() == null) {
+            return null;
+        }
+
+        // I retrieve the user 
+        $user = $tokenStorage->getToken()->getUser();
+
         // I retrieve a raw json
         $jsonContent = $request->getContent();
+
 
         // I transform this json into a user entity and handle the case of a possible json format error
         // if I find an error I return a json error
@@ -65,6 +78,40 @@ class CocktailController extends AbstractController
         } catch (NotEncodableValueException $e) {
             return $this->json(["error" => "JSON INVALID"], Response::HTTP_BAD_REQUEST);
         }
+
+
+        // I slugify the name
+        $cocktail->setSlug($slugger->slug($cocktail->getName()));
+
+
+        // I associate the user with the cocktail
+        $cocktail->setUser($user);
+
+
+        // I get the list of CocktailUse entities 
+        // then I associate the cocktail with each CocktailUse entity
+        $cocktailUsesList = $cocktail->getCocktailUses();
+
+        foreach ($cocktailUsesList as $key => $value) {
+            $entityManager->persist($cocktailUsesList[$key]);
+            $entityManager->persist($cocktailUsesList[$key]->getIngredient());
+            $entityManager->persist($cocktailUsesList[$key]->getUnit());
+            $entityManager->persist($cocktailUsesList[$key]->getIngredient()->getTypeingredient());
+        }
+
+
+        // I retrieve all steps entities
+        $stepList = $cocktail->getSteps();
+
+        // I persist each step entity
+        foreach ($stepList as $key => $value) {
+            $entityManager->persist($stepList[$key]);
+        }
+        // I persist glass entity
+        $entityManager->persist($cocktail->getGlass());
+        $entityManager->persist($cocktail->getTechnical());
+        $entityManager->persist($cocktail->getIce());
+
 
         // I detect asserts errors on my entity before persisting it
         $errors = $validator->validate($cocktail);
@@ -84,14 +131,13 @@ class CocktailController extends AbstractController
             return $this->json($dataErrors, Response::HTTP_UNPROCESSABLE_ENTITY);
         }
 
-      
+
         // I persist and flush
         $entityManager->persist($cocktail);
 
         $entityManager->flush();
 
         // I return created json response
-        return $this->json([$cocktail], Response::HTTP_CREATED,);
+        return $this->json([$cocktail], Response::HTTP_CREATED, [], ["groups" => "user"]);
     }
-    
 }

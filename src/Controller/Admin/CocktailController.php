@@ -71,7 +71,7 @@ class CocktailController extends AbstractController
             $cocktail->setRating(0);
 
             // tableau des étapes
-            $stepList = $cocktail->getSteps();
+            $stepList = $cocktail->
 
             // for each step, then i set the step number, associate it with the cocktail entity and persist it
 
@@ -113,6 +113,8 @@ class CocktailController extends AbstractController
 
             // tableau des étapes
             $stepList = $cocktail->getSteps()->getValues();
+
+             // tableau des ingredients
             $ingredientList = $cocktail->getcocktailUses()->getValues();
 
 
@@ -160,7 +162,7 @@ class CocktailController extends AbstractController
      */
     public function delete(Request $request, Cocktail $cocktail, CocktailRepository $cocktailRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$cocktail->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $cocktail->getId(), $request->request->get('_token'))) {
             $cocktailRepository->remove($cocktail, true);
         }
 
