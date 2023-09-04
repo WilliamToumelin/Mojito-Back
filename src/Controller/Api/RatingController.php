@@ -3,6 +3,7 @@
 namespace App\Controller\Api;
 
 use App\Entity\Rating;
+use App\Repository\RatingRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,7 +20,7 @@ class RatingController extends AbstractController
     /**
      * @Route("/api/ratings/add", name="app_api_ratings_add", methods={"POST"})
      */
-    public function add(Request $request, SerializerInterface $serializer, ValidatorInterface $validator, EntityManagerInterface $entityManager): JsonResponse
+    public function add(Request $request, SerializerInterface $serializer, ValidatorInterface $validator, EntityManagerInterface $entityManager, RatingRepository $ratingRepository): JsonResponse
     {
 
         // I retrieve a raw json
@@ -31,6 +32,30 @@ class RatingController extends AbstractController
             $rating = $serializer->deserialize($jsonContent, Rating::class, 'json');
         } catch (NotEncodableValueException $e) {
             return $this->json(["error" => "JSON INVALID"], Response::HTTP_BAD_REQUEST);
+        }
+
+
+        $ratingNumber = $rating->getRating();
+        if ($ratingNumber < 0 || $ratingNumber > 5) {
+            return $this->json(["error" => "NOTE INVALIDE : LA NOTE DOIT ETRE COMPRISE ENTRE 0 ET 5"], Response::HTTP_BAD_REQUEST);
+        }
+
+
+        // a user cannot rate the same cocktail more than once
+        // I retrieve the user's id
+        $userId = $rating->getUser()->getId();
+        // I retrieve the cocktail's id
+        $cocktailId = $rating->getCocktail()->getId();
+
+        // I search the database for a note with the user ID and the cocktail ID
+        $ratingInDatabase = $ratingRepository->findOneBy([
+            'cocktail' => $cocktailId,
+            'user' => $userId
+        ]);
+
+        // if so, I return a json error
+        if ($ratingInDatabase) {
+            return $this->json(["error" => "IMPOSSIBLE DE NOTER PLUSIEURS FOIS UN COCKTAIL"], Response::HTTP_BAD_REQUEST);
         }
 
 
