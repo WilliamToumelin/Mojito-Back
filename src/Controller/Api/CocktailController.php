@@ -59,13 +59,6 @@ class CocktailController extends AbstractController
     public function add(Request $request, SerializerInterface $serializer, ValidatorInterface $validator, EntityManagerInterface $entityManager, TokenStorageInterface $tokenStorage, SluggerInterface $slugger, IngredientRepository $ingredientRepository): JsonResponse
     {
 
-        // return null if token doesn't exist
-        if ($tokenStorage->getToken() == null) {
-            return null;
-        }
-
-        // I retrieve the user 
-        $user = $tokenStorage->getToken()->getUser();
 
         // I retrieve a raw json
         $jsonContent = $request->getContent();
@@ -80,42 +73,16 @@ class CocktailController extends AbstractController
         }
 
 
-        // I slugify the name
-        $cocktail->setSlug($slugger->slug($cocktail->getName()));
+        $cocktail->setVisible(0);
 
 
-        // I associate the user with the cocktail
-        $cocktail->setUser($user);
-
-
-        // I get the list of CocktailUse entities 
-        // then I associate the cocktail with each CocktailUse entity
-        // $cocktailUsesList = $cocktail->getCocktailUses();
-
-        // foreach ($cocktailUsesList as $cocktailUse) {
-            
-        //     $entityManager->persist($cocktailUse);
-        //     $entityManager->persist($cocktailUse->getIngredient());
-        //     $entityManager->persist($cocktailUse->getUnit());
-        //     $entityManager->persist($cocktailUse->getIngredient()->getTypeingredient());
-        // }
-
-
-        // // I retrieve all steps entities
-        // $stepList = $cocktail->getSteps();
-
-        // // I persist each step entity
-        // foreach ($stepList as $step) {
-        //     $entityManager->persist($step);
-        // }
-        // // I persist glass entity
-        // $entityManager->persist($cocktail->getGlass());
-        // $entityManager->persist($cocktail->getTechnical());
-        // $entityManager->persist($cocktail->getIce());
-
+        if($cocktail->getDifficulty() > 3){
+            return $this->json(['error' => "La difficulté n'existe pas"], Response::HTTP_NOT_FOUND);
+        }
 
         // I detect asserts errors on my entity before persisting it
         $errors = $validator->validate($cocktail);
+
 
         // if assert errors i return a json with errors
         if (count($errors) > 0) {
@@ -139,6 +106,6 @@ class CocktailController extends AbstractController
         $entityManager->flush();
 
         // I return created json response
-        return $this->json([$cocktail], Response::HTTP_CREATED, [], ["groups" => "user"]);
+        return $this->json([$cocktail], Response::HTTP_CREATED, [], ["groups" => "ResponseCocktails"]);
     }
 }

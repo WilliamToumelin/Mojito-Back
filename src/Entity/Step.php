@@ -21,13 +21,13 @@ class Step
 
     /**
      * @ORM\Column(type="integer")
-     * @Groups({"cocktailsAllInfo"})
+     * @Groups({"cocktailsAllInfo", "ResponseCocktails"})
      */
     private $number_step;
 
     /**
      * @ORM\Column(type="text")
-     * @Groups({"cocktailsAllInfo"})
+     * @Groups({"cocktailsAllInfo", "ResponseCocktails"})
      */
     private $content;
 

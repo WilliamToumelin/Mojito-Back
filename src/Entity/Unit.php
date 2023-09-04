@@ -26,7 +26,7 @@ class Unit
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"cocktailsAllInfo", "units", "propositionsData"})
+     * @Groups({"cocktailsAllInfo", "units", "propositionsData", "ResponseCocktails"})
      * @Assert\NotBlank
      * @Assert\Length(max=50)
      */

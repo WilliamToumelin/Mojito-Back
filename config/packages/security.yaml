@@ -45,6 +45,11 @@ security:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
 
+
+
+         # ! ROUTES API
+        - { path: ^/api, roles: ROLE_USER, methods: POST }
+
 when@test:
     security:
         password_hashers:

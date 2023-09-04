@@ -24,7 +24,7 @@ class Ingredient
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"cocktailsAllInfo", "typeingredientsWithRelations", "propositionsData"})
+     * @Groups({"cocktailsAllInfo", "typeingredientsWithRelations", "propositionsData", "ResponseCocktails"})
      */
     private $name;
 

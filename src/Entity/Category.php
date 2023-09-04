@@ -23,7 +23,7 @@ class Category
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"cocktailsAllInfo", "categories", "cocktailsBasicInfo"})
+     * @Groups({"cocktailsAllInfo", "categories", "cocktailsBasicInfo", "ResponseCocktails"})
      */
     private $name;
 

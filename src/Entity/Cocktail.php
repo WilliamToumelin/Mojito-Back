@@ -13,35 +13,37 @@ use Symfony\Component\Serializer\Annotation\Groups;
  */
 class Cocktail
 {
+
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"cocktailsBasicInfo", "cocktailsAllInfo", "comments", "user"})
+     * @Groups({"cocktailsBasicInfo", "cocktailsAllInfo", "comments", "ResponseCocktails"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=100)
-     * @Groups({"cocktailsBasicInfo", "cocktailsAllInfo", "comments", "user"})
+     * @Groups({"cocktailsBasicInfo", "cocktailsAllInfo", "comments", "ResponseCocktails"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="text")
-     * @Groups({"cocktailsWithRelations", "cocktailsAllInfo", "user"})
+     * @Groups({"cocktailsWithRelations", "cocktailsAllInfo", "ResponseCocktails"})
      */
     private $description;
 
     /**
      * @ORM\Column(type="text")
-     * @Groups({"cocktailsBasicInfo", "cocktailsAllInfo", "user"})
+     * @Groups({"cocktailsBasicInfo", "cocktailsAllInfo", "ResponseCocktails"})
      */
     private $picture;
 
     /**
      * @ORM\Column(type="integer")
-     * @Groups({"cocktailsBasicInfo", "cocktailsAllInfo", "user"})
+     * @Groups({"cocktailsBasicInfo", "cocktailsAllInfo", "ResponseCocktails"})
      */
     private $difficulty;
 
@@ -52,49 +54,49 @@ class Cocktail
 
     /**
      * @ORM\Column(type="integer")
-     * @Groups({"cocktailsAllInfo", "user"})
+     * @Groups({"cocktailsAllInfo", "ResponseCocktails"})
      */
     private $preparation_time;
 
     /**
      * @ORM\Column(type="text", nullable=true)
-     * @Groups({"cocktailsAllInfo", "user"})
+     * @Groups({"cocktailsAllInfo", "ResponseCocktails"})
      */
     private $trick;
 
     /**
      * @ORM\Column(type="boolean")
-     * @Groups({"cocktailsAllInfo", "user"})
+     * @Groups({"cocktailsAllInfo", "ResponseCocktails"})
      */
     private $alcool;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"cocktailsAllInfo", "comments", "cocktailsBasicInfo", "user"})
+     * @Groups({"cocktailsAllInfo", "comments", "cocktailsBasicInfo", "ResponseCocktails"})
      */
     private $slug;
 
     /**
      * @ORM\Column(type="float")
-     * @Groups({"cocktailsBasicInfo", "cocktailsAllInfo", "user"})
+     * @Groups({"cocktailsBasicInfo", "cocktailsAllInfo"})
      */
     private $rating;
 
     /**
-     * @ORM\OneToMany(targetEntity=Step::class, mappedBy="cocktail", orphanRemoval=true)
-     * @Groups({"cocktailsAllInfo", "user"})
+     * @ORM\OneToMany(targetEntity=Step::class, mappedBy="cocktail", orphanRemoval=true, cascade={"persist"})
+     * @Groups({"cocktailsAllInfo", "ResponseCocktails"})
      */
     private $steps;
 
     /**
      * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="cocktails")
-     * @Groups({"cocktailsAllInfo", "cocktailsBasicInfo", "user"})
+     * @Groups({"cocktailsAllInfo", "cocktailsBasicInfo", "ResponseCocktails"})
      */
     private $categories;
 
     /**
-     * @ORM\OneToMany(targetEntity=CocktailUse::class, mappedBy="cocktail")
-     * @Groups({"cocktailsAllInfo", "user"})
+     * @ORM\OneToMany(targetEntity=CocktailUse::class, mappedBy="cocktail", cascade={"persist"})
+     * @Groups({"cocktailsAllInfo", "ResponseCocktails"})
      */
     private $cocktailUses;
 
@@ -106,7 +108,7 @@ class Cocktail
 
     /**
      * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="cocktail")
-     * @Groups({"comments", "cocktailsAllInfo", "user"})
+     * @Groups({"comments", "cocktailsAllInfo"})
      */
     private $comments;
 
@@ -143,6 +145,7 @@ class Cocktail
         $this->cocktailUses = new ArrayCollection();
         $this->comments = new ArrayCollection();
         $this->ratings = new ArrayCollection();
+        $this->rating = 0;
     }
 
 
