@@ -90,27 +90,28 @@ class CocktailController extends AbstractController
 
         // I get the list of CocktailUse entities 
         // then I associate the cocktail with each CocktailUse entity
-        $cocktailUsesList = $cocktail->getCocktailUses();
+        // $cocktailUsesList = $cocktail->getCocktailUses();
 
-        foreach ($cocktailUsesList as $key => $value) {
-            $entityManager->persist($cocktailUsesList[$key]);
-            $entityManager->persist($cocktailUsesList[$key]->getIngredient());
-            $entityManager->persist($cocktailUsesList[$key]->getUnit());
-            $entityManager->persist($cocktailUsesList[$key]->getIngredient()->getTypeingredient());
-        }
+        // foreach ($cocktailUsesList as $cocktailUse) {
+            
+        //     $entityManager->persist($cocktailUse);
+        //     $entityManager->persist($cocktailUse->getIngredient());
+        //     $entityManager->persist($cocktailUse->getUnit());
+        //     $entityManager->persist($cocktailUse->getIngredient()->getTypeingredient());
+        // }
 
 
-        // I retrieve all steps entities
-        $stepList = $cocktail->getSteps();
+        // // I retrieve all steps entities
+        // $stepList = $cocktail->getSteps();
 
-        // I persist each step entity
-        foreach ($stepList as $key => $value) {
-            $entityManager->persist($stepList[$key]);
-        }
-        // I persist glass entity
-        $entityManager->persist($cocktail->getGlass());
-        $entityManager->persist($cocktail->getTechnical());
-        $entityManager->persist($cocktail->getIce());
+        // // I persist each step entity
+        // foreach ($stepList as $step) {
+        //     $entityManager->persist($step);
+        // }
+        // // I persist glass entity
+        // $entityManager->persist($cocktail->getGlass());
+        // $entityManager->persist($cocktail->getTechnical());
+        // $entityManager->persist($cocktail->getIce());
 
 
         // I detect asserts errors on my entity before persisting it
