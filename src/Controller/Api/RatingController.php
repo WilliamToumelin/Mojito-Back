@@ -33,6 +33,7 @@ class RatingController extends AbstractController
             return $this->json(["error" => "JSON INVALID"], Response::HTTP_BAD_REQUEST);
         }
 
+
         // I detect asserts errors on my entity before persisting it
         $errors = $validator->validate($rating);
 
