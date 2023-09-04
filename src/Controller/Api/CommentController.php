@@ -34,7 +34,7 @@ class CommentController extends AbstractController
             return $this->json(["error" => "JSON INVALID"], Response::HTTP_BAD_REQUEST);
         }
 
-        //! a user cannot rate the same cocktail more than once
+        //! A user cannot rate the same cocktail more than once
 
         // I retrieve the user ID
         $userId = $comment->getUser()->getId();

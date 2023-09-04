@@ -41,10 +41,10 @@ class RatingController extends AbstractController
         }
 
 
-        // a user cannot rate the same cocktail more than once
-        // I retrieve the user's id
+        //! A user cannot rate the same cocktail more than once
+        // I retrieve the user ID
         $userId = $rating->getUser()->getId();
-        // I retrieve the cocktail's id
+        // I retrieve the cocktail ID
         $cocktailId = $rating->getCocktail()->getId();
 
         // I search the database for a note with the user ID and the cocktail ID
