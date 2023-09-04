@@ -176,7 +176,6 @@ class AppFixtures extends Fixture
             }
             $cocktail->setAlcool(mt_rand(0, 1));
             $cocktail->setSlug($slugify->slugify($cocktailName));
-            $cocktail->setRating($faker->randomFloat(1, 1, 5));
             $cocktail->setUser($userList[array_rand($userList)]);
             $cocktail->setIce($iceList[array_rand($iceList)]);
             $cocktail->setGlass($glassList[array_rand($glassList)]);
