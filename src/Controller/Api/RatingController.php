@@ -34,9 +34,9 @@ class RatingController extends AbstractController
             return $this->json(["error" => "JSON INVALID"], Response::HTTP_BAD_REQUEST);
         }
 
-
+        // The rating must not be less than 1 and not more than 5
         $ratingNumber = $rating->getRating();
-        if ($ratingNumber < 0 || $ratingNumber > 5) {
+        if ($ratingNumber < 1 || $ratingNumber > 5) {
             return $this->json(["error" => "NOTE INVALIDE : LA NOTE DOIT ETRE COMPRISE ENTRE 0 ET 5"], Response::HTTP_BAD_REQUEST);
         }
 

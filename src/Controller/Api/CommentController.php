@@ -3,6 +3,7 @@
 namespace App\Controller\Api;
 
 use App\Entity\Comment;
+use App\Repository\CommentRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,7 +20,7 @@ class CommentController extends AbstractController
     /**
      * @Route("/api/comments/add", name="app_api_comments_add", methods={"POST"})
      */
-    public function add(Request $request, SerializerInterface $serializer, ValidatorInterface $validator, EntityManagerInterface $entityManager): JsonResponse
+    public function add(Request $request, SerializerInterface $serializer, ValidatorInterface $validator, EntityManagerInterface $entityManager, CommentRepository $commentRepository): JsonResponse
     {
 
         // I retrieve a raw json
@@ -31,6 +32,27 @@ class CommentController extends AbstractController
             $comment = $serializer->deserialize($jsonContent, Comment::class, 'json');
         } catch (NotEncodableValueException $e) {
             return $this->json(["error" => "JSON INVALID"], Response::HTTP_BAD_REQUEST);
+        }
+
+        //! a user cannot rate the same cocktail more than once
+
+        // I retrieve the user ID
+        $userId = $comment->getUser()->getId();
+
+        
+        // I retrieve the cocktail ID
+        $cocktailId = $comment->getCocktail()->getId();
+       
+
+        // I search the database for a note with the user ID and the cocktail ID
+        $ratingInDatabase = $commentRepository->findOneBy([
+            'cocktail' => $cocktailId,
+            'user' => $userId
+        ]);
+
+        // if so, I return a json error
+        if ($ratingInDatabase) {
+            return $this->json(["error" => "IMPOSSIBLE DE COMMENTER PLUSIEURS FOIS UN COCKTAIL"], Response::HTTP_BAD_REQUEST);
         }
 
         // I detect asserts errors on my entity before persisting it
