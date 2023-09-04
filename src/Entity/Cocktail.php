@@ -19,31 +19,31 @@ class Cocktail
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"cocktailsBasicInfo", "cocktailsAllInfo", "comments", "ResponseCocktails"})
+     * @Groups({"cocktailsBasicInfo", "cocktailsAllInfo", "comments", "ResponseCocktails", "rating"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=100)
-     * @Groups({"cocktailsBasicInfo", "cocktailsAllInfo", "comments", "ResponseCocktails"})
+     * @Groups({"cocktailsBasicInfo", "cocktailsAllInfo", "comments", "ResponseCocktails", "rating"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="text")
-     * @Groups({"cocktailsWithRelations", "cocktailsAllInfo", "ResponseCocktails"})
+     * @Groups({"cocktailsWithRelations", "cocktailsAllInfo", "ResponseCocktails", "rating"})
      */
     private $description;
 
     /**
      * @ORM\Column(type="text")
-     * @Groups({"cocktailsBasicInfo", "cocktailsAllInfo", "ResponseCocktails"})
+     * @Groups({"cocktailsBasicInfo", "cocktailsAllInfo", "ResponseCocktails", "rating"})
      */
     private $picture;
 
     /**
      * @ORM\Column(type="integer")
-     * @Groups({"cocktailsBasicInfo", "cocktailsAllInfo", "ResponseCocktails"})
+     * @Groups({"cocktailsBasicInfo", "cocktailsAllInfo", "ResponseCocktails", "rating"})
      */
     private $difficulty;
 
@@ -54,25 +54,25 @@ class Cocktail
 
     /**
      * @ORM\Column(type="integer")
-     * @Groups({"cocktailsAllInfo", "ResponseCocktails"})
+     * @Groups({"cocktailsAllInfo", "ResponseCocktails", "rating"})
      */
     private $preparation_time;
 
     /**
      * @ORM\Column(type="text", nullable=true)
-     * @Groups({"cocktailsAllInfo", "ResponseCocktails"})
+     * @Groups({"cocktailsAllInfo", "ResponseCocktails", "rating"})
      */
     private $trick;
 
     /**
      * @ORM\Column(type="boolean")
-     * @Groups({"cocktailsAllInfo", "ResponseCocktails"})
+     * @Groups({"cocktailsAllInfo", "ResponseCocktails", "rating"})
      */
     private $alcool;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"cocktailsAllInfo", "comments", "cocktailsBasicInfo", "ResponseCocktails"})
+     * @Groups({"cocktailsAllInfo", "comments", "cocktailsBasicInfo", "ResponseCocktails", "rating"})
      */
     private $slug;
 
@@ -84,19 +84,19 @@ class Cocktail
 
     /**
      * @ORM\OneToMany(targetEntity=Step::class, mappedBy="cocktail", orphanRemoval=true, cascade={"persist"})
-     * @Groups({"cocktailsAllInfo", "ResponseCocktails"})
+     * @Groups({"cocktailsAllInfo", "ResponseCocktails", "rating"})
      */
     private $steps;
 
     /**
      * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="cocktails")
-     * @Groups({"cocktailsAllInfo", "cocktailsBasicInfo", "ResponseCocktails"})
+     * @Groups({"cocktailsAllInfo", "cocktailsBasicInfo", "ResponseCocktails", "rating"})
      */
     private $categories;
 
     /**
      * @ORM\OneToMany(targetEntity=CocktailUse::class, mappedBy="cocktail", cascade={"persist"})
-     * @Groups({"cocktailsAllInfo", "ResponseCocktails"})
+     * @Groups({"cocktailsAllInfo", "ResponseCocktails", "rating"})
      */
     private $cocktailUses;
 

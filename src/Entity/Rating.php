@@ -16,23 +16,27 @@ class Rating
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"rating"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"rating"})
      */
     private $rating;
 
     /**
      * @ORM\ManyToOne(targetEntity=Cocktail::class, inversedBy="ratings")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"rating"})
      */
     private $cocktail;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="ratings")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"rating"})
      */
     private $user;
 
