@@ -71,7 +71,7 @@ class CocktailController extends AbstractController
             $cocktail->setRating(0);
 
             // tableau des étapes
-            $stepList = $cocktail->
+            $stepList = $cocktail->getSteps();
 
             // for each step, then i set the step number, associate it with the cocktail entity and persist it
 

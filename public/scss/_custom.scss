@@ -7,8 +7,6 @@ ul {
   margin-block-end: 0;
 }
 
-
-
 .container-dynamic-block {
   margin: 0 auto 50px 0;
   overflow-x: auto;
@@ -65,6 +63,15 @@ ul {
 
 .icon-container {
   margin-top: 15px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.trash-icon {
+  padding: 0;
+  border: 0;
+  background-color: #ffffff00;
+
 }
 
 .icon {
@@ -75,6 +82,8 @@ color: rgb(81, 80, 80);
 .icon:hover {
 color: rgb(0, 100, 128);
 }
+
+
 
 .footer {
   margin-top: 20px;

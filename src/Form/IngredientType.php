@@ -29,7 +29,7 @@ class IngredientType extends AbstractType
             'class' => TypeIngredient::class,
             "label" => "Type",
             "attr" => [
-                "placeholder" => "type d'ingrédient"
+                "placeholder" => "Type d'ingrédient"
             ]
             ]);
 
