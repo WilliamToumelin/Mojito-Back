@@ -9,7 +9,7 @@
 		<h1 class="display-6  container-dynamic-block-title">Les cocktails
 			<small class=" container-dynamic-block-button-add">
 				<a href="{{path('app_cocktail_new')}}">
-					<i class="bi bi-file-plus"></i>
+					<i class="bi bi-patch-plus-fill"></i>
 				</small>
 			</a>
 		</h1>
@@ -43,7 +43,7 @@
 							Note :
 							{{cocktail.rating}}
 						</div>
-						<div class="icon-container">
+						<div class="icon-container d-flex">
 							<a href="{{ path('app_cocktail_show', {id:cocktail.id})}}">
 								<i class="bi bi-eye-fill me-2 icon"></i>
 							</a>
