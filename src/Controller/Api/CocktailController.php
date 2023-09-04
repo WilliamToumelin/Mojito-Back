@@ -6,7 +6,6 @@ use App\Entity\Cocktail;
 use App\Repository\CocktailRepository;
 use App\Repository\IngredientRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use PhpParser\Node\Expr\New_;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
