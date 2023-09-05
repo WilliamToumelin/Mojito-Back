@@ -106,12 +106,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $picture;
 
     /**
-     * @ORM\OneToMany(targetEntity=Cocktail::class, mappedBy="user")
+     * @ORM\OneToMany(targetEntity=Cocktail::class, mappedBy="user", cascade={"remove"})
      */
     private $cocktails;
 
     /**
-     * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="user")
+     * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="user", cascade={"remove"})
      */
     private $comments;
 

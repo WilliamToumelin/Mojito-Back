@@ -29,7 +29,7 @@ class TypeIngredient
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity=Ingredient::class, mappedBy="typeingredient")
+     * @ORM\OneToMany(targetEntity=Ingredient::class, mappedBy="typeingredient", cascade={"remove"})
      * @Groups({"propositionsData"})
      */
     private $ingredients;

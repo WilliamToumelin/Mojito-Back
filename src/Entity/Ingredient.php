@@ -35,7 +35,7 @@ class Ingredient
     private $typeingredient;
 
     /**
-     * @ORM\OneToMany(targetEntity=CocktailUse::class, mappedBy="ingredient")
+     * @ORM\OneToMany(targetEntity=CocktailUse::class, mappedBy="ingredient", cascade={"remove"})
      */
     private $cocktailUses;
 

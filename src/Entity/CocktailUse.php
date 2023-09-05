@@ -34,7 +34,7 @@ class CocktailUse
 
     /**
      * @ORM\Id
-     * @ORM\ManyToOne(targetEntity=Cocktail::class, inversedBy="cocktailUses")
+     * @ORM\ManyToOne(targetEntity=Cocktail::class, inversedBy="cocktailUses", cascade={"remove"})
      */
     private $cocktail;
 
