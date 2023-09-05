@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+	<div class="container-dynamic-block">
+		<h1 class="display-6 container-dynamic-block-title">Ajouter une catégorie</h1>
+		{{ include('category/_form.html.twig') }}
+		<p class="container-dynamic-block-link">
+			<a href="{{ path('app_category_index') }}">Retour à la liste des coktails</a>
+		</p>
+	{% endblock %}
+
