@@ -48,6 +48,7 @@ security:
 
 
          # ! ROUTES API
+        - { path: ^/api/login, roles: ROLE_USER, methods: POST }
         - { path: ^/api, roles: ROLE_USER, methods: POST }
 
 when@test:
