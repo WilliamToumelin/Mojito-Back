@@ -125,6 +125,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->cocktails = new ArrayCollection();
         $this->comments = new ArrayCollection();
         $this->ratings = new ArrayCollection();
+        $this->warning = 0;
+        $this->created_at = new \DateTimeImmutable();
+        $this->verified = false;
     }
 
     public function getId(): ?int
