@@ -48,6 +48,7 @@ security:
 
 
          # ! ROUTES API
+        - { path: ^/api/register, roles: IS_AUTHENTICATED_ANONYMOUSLY, methods: POST }
         - { path: ^/api, roles: ROLE_USER, methods: POST }
 
 when@test:

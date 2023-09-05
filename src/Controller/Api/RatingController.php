@@ -37,7 +37,7 @@ class RatingController extends AbstractController
         // The rating must not be less than 1 and not more than 5
         $ratingNumber = $rating->getRating();
         if ($ratingNumber < 1 || $ratingNumber > 5) {
-            return $this->json(["error" => "NOTE INVALIDE : LA NOTE DOIT ETRE COMPRISE ENTRE 0 ET 5"], Response::HTTP_BAD_REQUEST);
+            return $this->json(["error" => "NOTE INVALIDE : LA NOTE DOIT ETRE COMPRISE ENTRE 1 ET 5"], Response::HTTP_BAD_REQUEST);
         }
 
 

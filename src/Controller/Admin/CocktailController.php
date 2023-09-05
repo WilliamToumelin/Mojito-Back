@@ -133,7 +133,7 @@ class CocktailController extends AbstractController
     }
 
     /**
-     * @Route("/admin/cocktail/{id}", name="app_cocktail_delete", methods={"POST"})
+     * @Route("/admin/cocktail/supprimer/{id}", name="app_cocktail_delete", methods={"POST"})
      */
     public function delete(Request $request, Cocktail $cocktail, CocktailRepository $cocktailRepository): Response
     {
