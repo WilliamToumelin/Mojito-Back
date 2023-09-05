@@ -32,7 +32,7 @@ class Ice
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity=Cocktail::class, mappedBy="ice", cascade={"remove"})
+     * @ORM\OneToMany(targetEntity=Cocktail::class, mappedBy="ice", orphanRemoval=true)
      */ 
     private $cocktails;
 

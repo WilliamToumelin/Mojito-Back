@@ -95,7 +95,7 @@ class Cocktail
     private $categories;
 
     /**
-     * @ORM\OneToMany(targetEntity=CocktailUse::class, mappedBy="cocktail", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity=CocktailUse::class, mappedBy="cocktail", cascade={"persist", "remove"})
      * @Groups({"cocktailsAllInfo", "ResponseCocktails"})
      */
     private $cocktailUses;
@@ -107,7 +107,7 @@ class Cocktail
     private $user;
 
     /**
-     * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="cocktail")
+     * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="cocktail", cascade={"remove"})
      * @Groups({"comments", "cocktailsAllInfo"})
      */
     private $comments;

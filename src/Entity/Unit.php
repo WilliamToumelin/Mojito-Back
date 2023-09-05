@@ -33,7 +33,7 @@ class Unit
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity=CocktailUse::class, mappedBy="unit")
+     * @ORM\OneToMany(targetEntity=CocktailUse::class, mappedBy="unit", cascade={"remove"})
      */
     private $cocktailUses;
 
