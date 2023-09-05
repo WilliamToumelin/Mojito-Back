@@ -6,6 +6,7 @@ use App\Entity\Ice;
 use App\Entity\Glass;
 use App\Entity\Category;
 use App\Entity\Cocktail;
+use App\Entity\CocktailUse;
 use App\Entity\Technical;
 use App\Form\CockTailUseType;
 use Symfony\Component\Form\AbstractType;
@@ -101,7 +102,7 @@ class CocktailType extends AbstractType
                 "choice_label" => "name"
             ])
 
-           // https://symfony.com/doc/current/form/form_collections.html
+            // https://symfony.com/doc/current/form/form_collections.html
 
             ->add('steps', CollectionType::class, [
                 'entry_type' => StepType::class,
@@ -109,26 +110,24 @@ class CocktailType extends AbstractType
                 'allow_add' => true,    //https://symfony.com/doc/current/reference/forms/types/collection.html#field-options
                 'allow_delete' => true, // https://symfony.com/doc/current/reference/forms/types/collection.html#allow-delete
                 'by_reference' => false, // https://symfony.com/doc/current/reference/forms/types/collection.html#by-reference
-                'label' => false               
+                'label' => false
             ])
 
-           ->add('cocktailuses', CollectionType::class, [
-            'entry_type' => CockTailUseType::class,
-            'entry_options' => ['label' => false],
-            'allow_add' => true,    //https://symfony.com/doc/current/reference/forms/types/collection.html#field-options
-            'allow_delete' => true, // https://symfony.com/doc/current/reference/forms/types/collection.html#allow-delete
-            'by_reference' => false, // https://symfony.com/doc/current/reference/forms/types/collection.html#by-reference 
-            'label' => false                  
-
-        ]);
-            
+            ->add('cocktailuses', CollectionType::class, [
+                'entry_type' => CockTailUseType::class,
+                'entry_options' => ['label' => false],
+                'allow_add' => true,    //https://symfony.com/doc/current/reference/forms/types/collection.html#field-options
+                'allow_delete' => true, // https://symfony.com/doc/current/reference/forms/types/collection.html#allow-delete
+                'by_reference' => false, // https://symfony.com/doc/current/reference/forms/types/collection.html#by-reference 
+                'label' => false
+            ]);
     }
-    
+
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'data_class' => Cocktail::class,
-            
+
         ]);
     }
 }

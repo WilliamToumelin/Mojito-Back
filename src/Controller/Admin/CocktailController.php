@@ -3,9 +3,13 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Cocktail;
+use App\Entity\CocktailUse;
 use App\Form\CocktailType;
 use App\Repository\CocktailRepository;
+use App\Repository\CocktailUseRepository;
+use App\Repository\StepRepository;
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -100,55 +104,26 @@ class CocktailController extends AbstractController
      * @Route("/admin/cocktail/modifier/{id}", name="app_cocktail_edit", methods={"GET", "POST"}, requirements={"id"="\d+"})
      */
 
-    public function edit(Cocktail $cocktail, Request $request, EntityManagerInterface $entityManager): Response
+    public function edit(Cocktail $cocktail, Request $request, CocktailRepository $cocktailRepository, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(CocktailType::class, $cocktail);
         $error = '';
 
+        // Create an ArrayCollection of the current Tag objects in the database
+        foreach ($cocktail->getCocktailUses() as $cocktailuse) {
+            
+            $entityManager->remove($cocktailuse);
+        }
 
         $form->handleRequest($request);
 
-
         if ($form->isSubmitted() && $form->isValid()) {
-
-            // tableau des étapes
-            $stepList = $cocktail->getSteps()->getValues();
-
-             // tableau des ingredients
-            $ingredientList = $cocktail->getcocktailUses()->getValues();
+            $cocktailRepository->add($cocktail, true);
 
 
-            if (count($stepList) >= 1 && (count($ingredientList) >= 1)) {
-                // I get the list of CocktailUse entities 
-                // then I associate the cocktail with each CocktailUse entity
-                $cocktailUsesList = $cocktail->getCocktailUses();
+            $this->addFlash("success", "Cocktail mis à jour");
 
-
-                foreach ($cocktailUsesList as $key => $value) {
-                    // dd( $cocktailUsesList[$key]);
-                    $cocktailUsesList[$key]->setCocktail($cocktail);
-                    $entityManager->persist($cocktailUsesList[$key]);
-                }
-
-
-
-                // for each step, then i set the step number, associate it with the cocktail entity and persist it
-                if (count($stepList) !== null && $ingredientList !== null) {
-                    foreach ($stepList as $key => $value) {
-                        $stepList[$key]->setNumberStep($key + 1);
-                        $stepList[$key]->setCocktail($cocktail);
-                        $entityManager->persist($stepList[$key]);
-                    }
-
-                    $entityManager->flush();
-
-                    $this->addFlash("success", "Cocktail mis à jour");
-
-                    return $this->redirectToRoute('app_cocktail_index', ["id" => $cocktail->getId()]);
-                }
-            }
-
-            $error = 'test';
+            return $this->redirectToRoute('app_cocktail_index', ["id" => $cocktail->getId()]);
         }
 
         return $this->renderForm('cocktail/edit.html.twig', [
