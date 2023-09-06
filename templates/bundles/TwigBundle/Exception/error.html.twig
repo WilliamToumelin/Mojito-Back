@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<div class="container-dynamic-block">
+
+		{% if status_code is same as 403%}
+			<h1>
+				La page que vous recherchez n'est pas accessible - {{status_code}}</h1>
+			<div>
+				<img src="https://cdn.pixabay.com/photo/2015/07/01/23/03/cocktail-828182_1280.jpg" alt="erreur-403">
+			</div>
+		{% elseif status_code is same as 404 %}
+			<h1>Nous rencontrons actuellement un dysfonctionnement, merci de réessayer - {{status_code}}</h1>
+            <div>
+				<img src="https://cdn.pixabay.com/photo/2015/07/07/00/34/tequila-sunrise-833905_1280.jpg" alt="erreur-404">
+			</div>
+        {% elseif status_code is same as 500 %}
+			<h1>Nous rencontrons actuellement un dysfonctionnement, merci de réessayer - {{status_code}}</h1>
+            <div>
+				<img src="https://cdn.pixabay.com/photo/2015/07/07/00/34/tequila-sunrise-833905_1280.jpg" alt="erreur-500">
+			</div>
+		{% endif %}
+
+
+		<a href="{{path('app_cocktail_index')}}">
+			Retournez à la page des cocktails</a>
+	</div>
+{% endblock %}
+
