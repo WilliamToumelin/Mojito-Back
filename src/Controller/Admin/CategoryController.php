@@ -47,7 +47,7 @@ class CategoryController extends AbstractController
     }
 
         /**
-     * @Route("/admin/verre/{id}/edit", name="app_category_edit", methods={"GET", "POST"})
+     * @Route("/admin/categorie/{id}/modifier", name="app_category_edit", methods={"GET", "POST"})
      */
     public function edit(Request $request, Category $category, CategoryRepository $categoryRepository): Response
     {
@@ -67,7 +67,7 @@ class CategoryController extends AbstractController
     }
 
       /**
-     * @Route("/admin/verre/{id}", name="app_category_delete", methods={"POST"})
+     * @Route("/admin/categorie/{id}/supprimer", name="app_category_delete", methods={"POST"})
      */
     public function delete(Request $request, Category $category, CategoryRepository $categoryRepository): Response
     {

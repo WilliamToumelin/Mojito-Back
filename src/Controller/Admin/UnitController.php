@@ -44,7 +44,7 @@ class UnitController extends AbstractController
     }
 
     /**
-     * @Route("/admin/unite/{id}/edit", name="app_unit_edit", methods={"GET", "POST"})
+     * @Route("/admin/unite/{id}/modifier", name="app_unit_edit", methods={"GET", "POST"})
      */
     public function edit(Request $request, Unit $unit, UnitRepository $unitRepository): Response
     {
@@ -64,7 +64,7 @@ class UnitController extends AbstractController
     }
 
     /**
-     * @Route("/admin/unite/{id}", name="app_unit_delete", methods={"POST"})
+     * @Route("/admin/unite/{id}/supprimer", name="app_unit_delete", methods={"POST"})
      */
     public function delete(Request $request, Unit $unit, UnitRepository $unitRepository): Response
     {

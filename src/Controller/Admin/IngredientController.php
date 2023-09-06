@@ -45,7 +45,7 @@ class IngredientController extends AbstractController
 
 
     /**
-     * @Route("/admin/ingredient/{id}/edit", name="app_ingredient_edit", methods={"GET", "POST"})
+     * @Route("/admin/ingredient/{id}/modifier", name="app_ingredient_edit", methods={"GET", "POST"})
      */
     public function edit(Request $request, Ingredient $ingredient, IngredientRepository $ingredientRepository): Response
     {

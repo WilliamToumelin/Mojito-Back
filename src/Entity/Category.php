@@ -28,7 +28,7 @@ class Category
     private $name;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Cocktail::class, mappedBy="categories")
+     * @ORM\ManyToMany(targetEntity=Cocktail::class, mappedBy="categories", cascade={"remove"})
      */
     private $cocktails;
 

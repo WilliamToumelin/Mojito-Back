@@ -45,7 +45,7 @@ class GlassController extends AbstractController
 
 
     /**
-     * @Route("/admin/verre/{id}/edit", name="app_glass_edit", methods={"GET", "POST"})
+     * @Route("/admin/verre/{id}/modifier", name="app_glass_edit", methods={"GET", "POST"})
      */
     public function edit(Request $request, Glass $glass, GlassRepository $glassRepository): Response
     {
@@ -65,7 +65,7 @@ class GlassController extends AbstractController
     }
 
     /**
-     * @Route("/admin/verre/{id}", name="app_glass_delete", methods={"POST"})
+     * @Route("/admin/verre/{id}/supprimer", name="app_glass_delete", methods={"POST"})
      */
     public function delete(Request $request, Glass $glass, GlassRepository $glassRepository): Response
     {

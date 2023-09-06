@@ -16,6 +16,8 @@
 				<tr>
 					<th>Id</th>
 					<th>Nom</th>
+					<th>Modifier</th>
+					<th>Supprimer</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -23,10 +25,18 @@
 					<tr>
 						<td>{{ category.id }}</td>
 						<td>{{ category.name }}</td>
+						<td>
+							<a href="{{ path('app_category_edit', {'id': category.id}) }}">
+								<i class="bi bi-pencil-square me-2 icon"></i>
+							</a>
+						</td>
+						<td>
+							{{ include('category/_delete_form.html.twig') }}
+						</td>
 					</tr>
 				{% else %}
 					<tr>
-						<td colspan="3">no records found</td>
+						<td colspan="3">Aucune categorie trouvée! Vous pouvez en ajouter</td>
 					</tr>
 				{% endfor %}
 			</tbody>

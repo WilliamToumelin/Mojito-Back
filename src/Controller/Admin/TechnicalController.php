@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class TechnicalController extends AbstractController
 {
     /**
-     * @Route("/admin/technical", name="app_technical_index", methods={"GET"})
+     * @Route("/admin/techniques", name="app_technical_index", methods={"GET"})
      */
     public function index(TechnicalRepository $technicalRepository): Response
     {
@@ -23,7 +23,7 @@ class TechnicalController extends AbstractController
     }
 
     /**
-     * @Route("/admin/technical/ajouter", name="app_technical_new", methods={"GET", "POST"})
+     * @Route("/admin/technique/ajouter", name="app_technical_new", methods={"GET", "POST"})
      */
     public function new(Request $request, TechnicalRepository $technicalRepository): Response
     {
@@ -44,7 +44,7 @@ class TechnicalController extends AbstractController
     }
 
     /**
-     * @Route("/admin/technical/{id}/edit", name="app_technical_edit", methods={"GET", "POST"})
+     * @Route("/admin/technique/{id}/modifier", name="app_technical_edit", methods={"GET", "POST"})
      */
     public function edit(Request $request, Technical $technical, TechnicalRepository $technicalRepository): Response
     {
@@ -64,7 +64,7 @@ class TechnicalController extends AbstractController
     }
 
     /**
-     * @Route("/admin/technical/{id}", name="app_technical_delete", methods={"POST"})
+     * @Route("/admin/technique/{id}/supprimer", name="app_technical_delete", methods={"POST"})
      */
     public function delete(Request $request, Technical $technical, TechnicalRepository $technicalRepository): Response
     {

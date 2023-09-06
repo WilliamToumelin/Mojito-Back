@@ -45,7 +45,7 @@ class TypeingredientController extends AbstractController
 
 
     /**
-     * @Route("/admin/type-ingredient/{id}/edit", name="app_typeingredient_edit", methods={"GET", "POST"})
+     * @Route("/admin/type-ingredient/{id}/modifier", name="app_typeingredient_edit", methods={"GET", "POST"})
      */
     public function edit(Request $request, TypeIngredient $typeingredient, TypeIngredientRepository $typeingredientRepository): Response
     {

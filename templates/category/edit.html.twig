@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+	<div class="container-dynamic-block">
+		<h1 class="display-6 container-dynamic-block-title">Modifier une Categorie</h1>
+
+		{{ include('category/_form.html.twig', {'button_label': 'Update'}) }}
+		<p class="container-dynamic-block-link">
+			<a href="{{ path('app_category_index') }}">Retour à la liste des catégories</a>
+		</p>
+	{% endblock %}
+
