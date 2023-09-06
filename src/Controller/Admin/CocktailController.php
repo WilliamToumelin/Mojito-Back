@@ -78,7 +78,7 @@ class CocktailController extends AbstractController
             $cocktailRepository->add($cocktail, true);
 
 
-            $this->addFlash("success", "Cocktail mis à jour");
+            $this->addFlash("success", "Cocktail ajouté");
 
             return $this->redirectToRoute('app_cocktail_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -95,7 +95,7 @@ class CocktailController extends AbstractController
      * @Route("/admin/cocktail/modifier/{id}", name="app_cocktail_edit", methods={"GET", "POST"}, requirements={"id"="\d+"})
      */
 
-    public function edit(Cocktail $cocktail, Request $request, CocktailRepository $cocktailRepository, EntityManagerInterface $entityManager): Response
+    public function edit(Cocktail $cocktail, Request $request, CocktailRepository $cocktailRepository, EntityManagerInterface $entityManager, UserInterface $userInterface): Response
     {
         $form = $this->createForm(CocktailType::class, $cocktail);
         $errors = [];
@@ -109,6 +109,23 @@ class CocktailController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $cocktail->setUser($userInterface);
+
+            if(count($cocktail->getSteps()) === 0) {
+                $errors[] = 'Au moins une étape est nécessaire';
+            }
+
+            if(count($cocktail->getCocktailUses()) === 0) {
+                $errors[] = 'Au moins un ingrédient est nécessaire';
+            }
+
+            if(count($errors) > 0) {
+                return $this->renderForm('cocktail/new.html.twig', [
+                    'form' => $form,
+                    'errors' => $errors,
+                ]);
+            }
             $cocktailRepository->add($cocktail, true);
 
 
