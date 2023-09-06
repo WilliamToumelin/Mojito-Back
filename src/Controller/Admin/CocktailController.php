@@ -51,13 +51,29 @@ class CocktailController extends AbstractController
         $cocktail = new Cocktail();
 
         $form = $this->createForm(CocktailType::class, $cocktail);
-        $error = '';
+        $errors = [];
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
 
             $cocktail->setUser($userInterface);
+            
+            if(count($cocktail->getSteps()) === 0) {
+                $errors[] = 'Au moins une étape est nécessaire';
+            }
+
+            if(count($cocktail->getCocktailUses()) === 0) {
+                $errors[] = 'Au moins un ingrédient est nécessaire';
+            }
+
+            if(count($errors) > 0) {
+                return $this->renderForm('cocktail/new.html.twig', [
+                    'form' => $form,
+                    'errors' => $errors,
+                ]);
+            }
+
             
             $cocktailRepository->add($cocktail, true);
 
@@ -69,7 +85,7 @@ class CocktailController extends AbstractController
 
         return $this->renderForm('cocktail/new.html.twig', [
             'form' => $form,
-            'error' => $error,
+            'errors' => $errors,
         ]);
     }
 
@@ -82,7 +98,7 @@ class CocktailController extends AbstractController
     public function edit(Cocktail $cocktail, Request $request, CocktailRepository $cocktailRepository, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(CocktailType::class, $cocktail);
-        $error = '';
+        $errors = [];
 
         // Create an ArrayCollection of the current Tag objects in the database
         foreach ($cocktail->getCocktailUses() as $cocktailuse) {
@@ -103,7 +119,7 @@ class CocktailController extends AbstractController
 
         return $this->renderForm('cocktail/edit.html.twig', [
             'form' => $form,
-            'error' => $error,
+            'errors' => $errors,
         ]);
     }
 

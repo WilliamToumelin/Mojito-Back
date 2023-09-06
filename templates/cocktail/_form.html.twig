@@ -1,10 +1,18 @@
 <div class="container-form">
-	{% if error is defined %}
-		{{error}}
-	{% endif %}
-	
+
+		{% for error in errors %}
+			<ul>
+			<li>{{error}}</li>
+			</ul>
+		{% endfor %}
+
 	{{ form_start(form, {'attr': {'class': 'form-cocktail'}}) }}
+
+	 <div class="my-custom-class-for-errors">
+        {{ form_errors(form) }}
+    </div>
 	{{form_row(form.name)}}
+	{{form_errors(form.name)}}
 	{{form_row(form.description)}}
 	{{form_row(form.picture)}}
 	{{form_row(form.difficulty)}}

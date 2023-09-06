@@ -30,9 +30,10 @@ class CocktailType extends AbstractType
                 "label" => "Nom",
                 "attr" => [
                     "placeholder" => "Nom du cocktail"
-                ]
+                ],
+                "required" => true
             ])
-            ->add('description', TextareaType::class, [
+            ->add('description', TextAreaType::class, [
                 "label" => "Description",
                 "attr" => [
                     "placeholder" => "Description du cocktail"
@@ -110,7 +111,7 @@ class CocktailType extends AbstractType
                 'allow_add' => true,    //https://symfony.com/doc/current/reference/forms/types/collection.html#field-options
                 'allow_delete' => true, // https://symfony.com/doc/current/reference/forms/types/collection.html#allow-delete
                 'by_reference' => false, // https://symfony.com/doc/current/reference/forms/types/collection.html#by-reference
-                'label' => false
+                'label' => false,
             ])
 
             ->add('cocktailuses', CollectionType::class, [
