@@ -175,7 +175,7 @@ class Cocktail
         return $this->name;
     }
 
-    public function setName(string $name): self
+    public function setName(?string $name): self
     {
         $this->name = $name;
 
@@ -187,7 +187,7 @@ class Cocktail
         return $this->description;
     }
 
-    public function setDescription(string $description): self
+    public function setDescription(?string $description): self
     {
         $this->description = $description;
 
@@ -199,7 +199,7 @@ class Cocktail
         return $this->picture;
     }
 
-    public function setPicture(string $picture): self
+    public function setPicture(?string $picture): self
     {
         $this->picture = $picture;
 
@@ -211,7 +211,7 @@ class Cocktail
         return $this->difficulty;
     }
 
-    public function setDifficulty(string $difficulty): self
+    public function setDifficulty(?string $difficulty): self
     {
         $this->difficulty = $difficulty;
 

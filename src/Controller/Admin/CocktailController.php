@@ -96,7 +96,7 @@ class CocktailController extends AbstractController
      */
 
     public function edit(Cocktail $cocktail, Request $request, CocktailRepository $cocktailRepository, EntityManagerInterface $entityManager, UserInterface $userInterface): Response
-    {
+    {   
         $form = $this->createForm(CocktailType::class, $cocktail);
         $errors = [];
 

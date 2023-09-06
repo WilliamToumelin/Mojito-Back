@@ -31,7 +31,6 @@ class CocktailType extends AbstractType
                 "attr" => [
                     "placeholder" => "Nom du cocktail"
                 ],
-                "required" => true
             ])
             ->add('description', TextAreaType::class, [
                 "label" => "Description",
