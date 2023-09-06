@@ -130,6 +130,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->verified = false;
     }
 
+    public function __toString(): string
+    {
+        return $this->firstname;  
+    }
+
     public function getId(): ?int
     {
         return $this->id;

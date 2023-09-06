@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+	<div class="container-dynamic-block">
+		<h1 class="display-6 container-dynamic-block-title">Ajouter un membre admin</h1>
+		{{ include('user/_form.html.twig') }}
+		<p class="container-dynamic-block-link">
+			<a href="{{ path('app_user_index') }}">Retour à la liste des membres</a>
+		</p>
+	{% endblock %}
+
