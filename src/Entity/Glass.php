@@ -27,7 +27,8 @@ class Glass
      * @ORM\Column(type="string", length=255)
      * @Groups({"glass", "propositionsData", "cocktailsAllInfo"})
      * @Assert\NotBlank
-     * @Assert\Length(max=50)
+     * @Assert\Length(min = 5, max = 20, minMessage = "Minimum {{ limit }} caractères", maxMessage = "Maximum {{ limit }} caractères") 
+
      */
     private $name;
 

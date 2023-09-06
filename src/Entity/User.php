@@ -46,18 +46,21 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @var string The hashed password
      * @ORM\Column(type="string")
      * @Assert\NotBlank
+     * @Assert\Length(min = 7, minMessage = "Minimum {{ limit }} caractères")
      */
     private $password;
 
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
      * @Groups({"user"})
+     * @Assert\Length(min = 3, max = 20, minMessage = "Minimum {{ limit }} caractères", maxMessage = "Maximum {{ limit }} caractères")
      */
     private $firstname;
 
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
      * @Groups({"user"})
+     * @Assert\Length(min = 3, max = 20, minMessage = "Minimum {{ limit }} caractères", maxMessage = "Maximum {{ limit }} caractères")
      */
     private $lastname;
 
@@ -65,13 +68,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Column(type="string", length=100, unique=true)
      * @Groups({"comments", "user", "rating"})
      * @Assert\NotBlank
+     * @Assert\Length(min = 4, max = 12, minMessage = "Minimum {{ limit }} caractères", maxMessage = "Maximum {{ limit }} caractères")
      */
     private $pseudonym;
 
     /**
      * @ORM\Column(type="datetime_immutable")
-     * @Assert\NotBlank
      * @Groups({"user"})
+     * @Assert\NotBlank
      */
     private $date_of_birth;
 

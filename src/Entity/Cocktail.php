@@ -29,6 +29,7 @@ class Cocktail
      * @ORM\Column(type="string", length=100)
      * @Groups({"cocktailsBasicInfo", "cocktailsAllInfo", "comments", "ResponseCocktails", "rating"})
      * @Assert\NotBlank
+     * @Assert\Length(min = 5, max = 20, minMessage = "Minimum {{ limit }} caractères", maxMessage = "Maximum {{ limit }} caractères")
      */
     private $name;
 
@@ -36,6 +37,7 @@ class Cocktail
      * @ORM\Column(type="text")
      * @Groups({"cocktailsWithRelations", "cocktailsAllInfo", "ResponseCocktails"})
      * @Assert\NotBlank
+     * @Assert\Length(min = 30, max = 150, minMessage = "Minimum {{ limit }} caractères", maxMessage = "Maximum {{ limit }} caractères") 
      */
     private $description;
 
@@ -69,6 +71,7 @@ class Cocktail
     /**
      * @ORM\Column(type="text", nullable=true)
      * @Groups({"cocktailsAllInfo", "ResponseCocktails"})
+     * @Assert\Length(min = 10, max = 100, minMessage = "Minimum {{ limit }} caractères", maxMessage = "Maximum {{ limit }} caractères") 
      */
     private $trick;
 
@@ -160,9 +163,9 @@ class Cocktail
 
 
     public function __toString(): string
-{
-    return $this->name;  
-}
+    {
+        return $this->name;
+    }
 
 
     public function getId(): ?int

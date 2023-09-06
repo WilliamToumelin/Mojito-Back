@@ -28,7 +28,7 @@ class Unit
      * @ORM\Column(type="string", length=255)
      * @Groups({"cocktailsAllInfo", "units", "propositionsData", "ResponseCocktails"})
      * @Assert\NotBlank
-     * @Assert\Length(max=50)
+     * @Assert\Length(min = 5, max = 20, minMessage = "Minimum {{ limit }} caractères", maxMessage = "Maximum {{ limit }} caractères")
      */
     private $name;
 

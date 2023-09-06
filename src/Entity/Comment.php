@@ -26,6 +26,7 @@ class Comment
      * @ORM\Column(type="text")
      * @Groups({"comments", "cocktailsAllInfo"})
      * @Assert\NotBlank
+     * @Assert\Length(min = 20, max = 100, minMessage = "Minimum {{ limit }} caractères", maxMessage = "Maximum {{ limit }} caractères") 
      */
     private $content;
     /**
