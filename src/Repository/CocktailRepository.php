@@ -64,10 +64,12 @@ class CocktailRepository extends ServiceEntityRepository
     *@param int $page the page's number
     * @return PaginationInterface
     */
-    public function paginatorForCocktailsList (int $page): PaginationInterface
+    public function paginatorForCocktailsList (int $page, $visible = 1): PaginationInterface
     {   
         // fetchs all cocktails
         $data = $this->createQueryBuilder('c')
+            ->Where('c.visible = :val')
+            ->setParameter('val', $visible)
             ->orderBy('c.id', 'DESC')
             ->getQuery()
             ->getResult();

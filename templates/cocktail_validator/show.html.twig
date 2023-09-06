@@ -1,0 +1,99 @@
+{% extends 'base.html.twig' %}
+
+{% block propositionCocktailActive %}active{% endblock %}
+
+{% block body %}
+
+	<div class="container-dynamic-block">
+		<h1 class="display-6  container-dynamic-block-title">{{cocktail.name | capitalize}}
+			{% if cocktail.difficulty == 1 %}
+				<div class="my-2 container-picture-difficulty">
+					Difficulté : intermédiaire
+				</div>
+			{% elseif cocktail.difficulty == 2 %}
+			{% else %}
+				<div class="my-2 container-picture-difficulty">
+					Difficulté : difficile
+				</div>
+			{% endif %}
+		</h1>
+		<div class="mb-2">
+
+			<div class="mt-3">
+
+				<div class="overflow-hidden mb-4 container-cocktail">
+
+					<div class="container-picture-alcool">
+						<div>
+							<img class="cocktail__poster rounded-circle" src="{{cocktail.picture}}">
+						</div>
+						<div class="ms-3 container-icon-glass d-flex flex-column align-items-center justify-content-between">
+							<div>
+								<div class="d-flex flex-column align-items-center">
+									<img src="{{asset('images/svgviewer-output.svg')}}" class="icon-cocktail" alt="">
+
+									{% if cocktail.isAlcool == 0 %}
+										<p class="cocktail-is-alcool mb-1">
+											Free
+										</p>
+									{% endif %}
+								</div>
+								<p class="container-picture-preparationTime text-center mt-3">{{cocktail.preparationTime}}
+									min
+								</p>
+
+							</div>
+							<div class="d-flex flex-column align-items-center container-icons">
+                            {% include "cocktail_validator/_delete_form.html.twig" %}
+                            {% include "cocktail_validator/_accept_form.html.twig" %}
+                            </div>
+						</div>
+					</div>
+
+
+					<div class="pse-4 d-flex flex-column position-static container-picture-description-ingredients-preparation-tricks ">
+
+						<h2 class="cocktail-description">Description</h2>
+						<p class="cocktail-description-content">{{cocktail.description}}</p>
+
+						<h2 class="cocktail-ingredient">Ingrédients</h2>
+						<ul class="list-unstyled mb-3">
+							{% for ingredients in cocktail.cocktailUses %}
+
+								<li class="mb-2 cocktail-ingredients-list">{{ingredients.quantity}}
+									{{ingredients.unit.name}}
+									de
+									{{ingredients.ingredient.name}}</li>
+
+							{% endfor %}
+						</ul>
+
+						<h2 class="cocktail-preparation">Préparation</h2>
+						<ul class="list-unstyled mb-3">
+
+							{% for key, step in cocktail.steps %}
+								<li class="my-2">
+									<span class="fw-bold cocktail-preparation-content mb-2">Etape
+										{{key + 1 }}
+										:
+									</span>
+									<small class="ms-1 cocktail-preparation-content">
+										{{step.content}}
+									</small>
+								</li>
+							{% endfor %}
+						</ul>
+
+						{# Displays trick if cocktail has one #}
+						{% if cocktail.trick != "" %}
+							<h2 class="cocktail-trick">Astuces</h2>
+							<p class="cocktail-trick-content">{{cocktail.trick}}</p>
+						{% endif %}
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+{% endblock %}
