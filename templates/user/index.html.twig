@@ -3,7 +3,13 @@
 {% block body %}
 	<div class="container-dynamic-block">
 
-		<h1 class="display-6 container-dynamic-block-title">Les membres</h1>
+		<h1 class="display-6 container-dynamic-block-title">Les membres
+			<small class=" container-dynamic-block-button-add">
+				<a href="{{path('app_user_new')}}">
+					<i class="bi bi-patch-plus-fill"></i>
+				</small>
+			</a>
+		</h1>
 
 		<table class="table table-hover table-list ">
 			<thead>

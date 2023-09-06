@@ -1,4 +1,13 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Valider') }}</button>
-{{ form_end(form) }}
+<div class="container-form">
+	{{ form_start(form) }}
+	{{form_row(form.firstname)}}
+	{{form_row(form.lastname)}}
+	{{form_row(form.pseudonym)}}
+	{{form_row(form.roles)}}
+	{{form_row(form.email)}}
+	{{form_row(form.date_of_birth)}}
+	{{form_row(form.password)}}
+	<button class="btn btn-success my-2 form-btn-submit">{{ button_label|default('Valider') }}</button>
+	{{ form_end(form) }}
+</div>
+
