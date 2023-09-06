@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Cocktail;
+use App\Entity\User;
 use App\Form\CocktailType;
 use App\Repository\CocktailRepository;
 use App\Repository\UserRepository;
@@ -11,6 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 class CocktailController extends AbstractController
 {
@@ -44,7 +46,7 @@ class CocktailController extends AbstractController
      * @Route("/admin/cocktail/ajouter", name="app_cocktail_new", methods={"GET", "POST"})
      */
 
-    public function new(Request $request, CocktailRepository $cocktailRepository, UserRepository $userRepository, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, CocktailRepository $cocktailRepository, UserRepository $userRepository, EntityManagerInterface $entityManager, UserInterface $userInterface): Response
     {
         $cocktail = new Cocktail();
 
@@ -53,10 +55,9 @@ class CocktailController extends AbstractController
 
         $form->handleRequest($request);
 
-
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $cocktail->setUser($userRepository->find(163));
+            $cocktail->setUser($userInterface);
             
             $cocktailRepository->add($cocktail, true);
 
