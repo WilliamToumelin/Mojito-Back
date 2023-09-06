@@ -38,6 +38,7 @@ class CocktailType extends AbstractType
                 "attr" => [
                     "placeholder" => "Description du cocktail"
                 ]
+
             ])
             ->add('picture', UrlType::class, [
                 "label" => "Photo",
@@ -69,7 +70,8 @@ class CocktailType extends AbstractType
                 "label" => "Astuce",
                 "attr" => [
                     "placeholder" => "Ajouter une astuce"
-                ]
+                ],
+                'required' => false,
             ])
             ->add('alcool', ChoiceType::class, [
                 'choices'  => [

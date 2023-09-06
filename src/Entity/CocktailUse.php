@@ -5,6 +5,8 @@ namespace App\Entity;
 use App\Repository\CocktailUseRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 
 /**
@@ -15,6 +17,7 @@ class CocktailUse
     /**
      * @ORM\Column(type="float")
      * @Groups({"cocktailsAllInfo", "ResponseCocktails"})
+     * @Assert\NotBlank
      */
     private $quantity;
 
@@ -22,6 +25,7 @@ class CocktailUse
      * @ORM\Id
      * @ORM\ManyToOne(targetEntity=Ingredient::class, inversedBy="cocktailUses")
      * @Groups({"cocktailsAllInfo", "ResponseCocktails"})
+     * @Assert\NotBlank
      */
     private $ingredient;
 
@@ -29,6 +33,7 @@ class CocktailUse
      * @ORM\Id
      * @ORM\ManyToOne(targetEntity=Unit::class, inversedBy="cocktailUses")
      * @Groups({"cocktailsAllInfo", "ResponseCocktails"})
+     * @Assert\NotBlank
      */
     private $unit;
 

@@ -43,35 +43,35 @@
 						<div class="collapse navbar-collapse" id="navbarTogglerDemo01">
 							<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 								<li class="nav-item">
-									<a class="nav-link active" aria-current="page" href="{{path ('app_cocktail_index')}}">Cocktails</a>
+									<a class="nav-link {% block cocktailActive %}{% endblock %}" aria-current="page" href="{{path ('app_cocktail_index')}}">Cocktails</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link" href="{{ path('app_ingredient_index')}}">Ingrédients</a>
+									<a class="nav-link {% block ingredientActive %}{% endblock %}" href="{{ path('app_ingredient_index')}}">Ingrédients</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link" href="{{ path('app_typeingredient_index')}}">Type d'ingrédients</a>
+									<a class="nav-link {% block typeIngredientActive %}{% endblock %}" href="{{ path('app_typeingredient_index')}}">Type d'ingrédients</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link" href="{{ path('app_category_index')}}">Catégories</a>
+									<a class="nav-link {% block categoryActive %}{% endblock %}" href="{{ path('app_category_index')}}">Catégories</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link" href="{{ path('app_technical_index')}}">Techniques</a>
+									<a class="nav-link {% block technicalActive %}{% endblock %}" href="{{ path('app_technical_index')}}">Techniques</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link" href="{{path ('app_unit_index')}}">Unités</a>
+									<a class="nav-link {% block unitActive %}{% endblock %}" href="{{path ('app_unit_index')}}">Unités</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link" href="{{path ('app_glass_index')}}">Verres</a>
+									<a class="nav-link {% block glassActive %}{% endblock %}" href="{{path ('app_glass_index')}}">Verres</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link" href="{{path ('app_ice_index')}}">Glaçons</a>
+									<a class="nav-link {% block iceActive %}{% endblock %}" href="{{path ('app_ice_index')}}">Glaçons</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link" href="{{path ('app_user_index')}}">
+									<a class="nav-link {% block userActive %}{% endblock %}" href="{{path ('app_user_index')}}">
 										Membres</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link" href="{{path ('app_comment_index')}}">
+									<a class="nav-link {% block commentActive %}{% endblock %}" href="{{path ('app_comment_index')}}">
 										Commentaires</a>
 								</li>
 							</ul>

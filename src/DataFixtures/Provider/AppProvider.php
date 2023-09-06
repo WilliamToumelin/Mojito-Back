@@ -10,9 +10,9 @@ class AppProvider
       "roles" => ["ROLE_ADMIN"],
       "password" => "williamM"
     ],
-    "moderator" => [
+    "admin1" => [
       "email" => "celestinJ@gmail.com",
-      "roles" => ["ROLE_MODERATOR"],
+      "roles" => ["ROLE_ADMIN"],
       "password" => "celestinJ"
     ],
     "user" => [

@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 
 /**
@@ -22,12 +24,14 @@ class Step
     /**
      * @ORM\Column(type="integer")
      * @Groups({"cocktailsAllInfo", "ResponseCocktails"})
+     * @Assert\NotBlank
      */
     private $number_step;
 
     /**
      * @ORM\Column(type="text")
      * @Groups({"cocktailsAllInfo", "ResponseCocktails"})
+     * @Assert\NotBlank
      */
     private $content;
 
