@@ -78,5 +78,10 @@ font-weight : bold;
     margin-bottom : 8px
 }
 
+.form-error-message {
+    color: red;
+    text-align: center;
+}
+
 
 @import"../../node_modules/bootstrap/scss/bootstrap.scss";

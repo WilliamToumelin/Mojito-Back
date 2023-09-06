@@ -13,11 +13,17 @@ ul {
 }
 
 .container-dynamic-block-title {
-  margin: 30px 0;
+  margin: 30px auto;
   text-align: center;
   font-weight: 200;
-  font-size : 0.8rem;
+  font-size : 1rem;
   font-family: Lexend;
+}
+
+.container-dynamic-block-title-error-403-404-500 {
+  font-size : 1rem;
+  text-align: center;
+  margin-bottom: 30px;
 }
 
 .container-dynamic-block-group {
@@ -71,11 +77,13 @@ ul {
   padding: 0;
   border: 0;
   background-color: #ffffff00;
+  width: 19.52px;
+  height: 27px;
 
 }
 
 .icon {
-font-size: 1.22rem;
+font-size: 1.3rem;
 color: rgb(81, 80, 80);
 }
 
@@ -83,6 +91,26 @@ color: rgb(81, 80, 80);
 color: rgb(0, 100, 128);
 }
 
+.icon-accept-proposition-cocktail,
+.icon-delete-proposition-cocktail {
+  font-size : 1.3rem;
+}
+
+
+
+.icon-accept-proposition-cocktail:hover
+ {
+  color : #008000;
+}
+
+.icon-delete-proposition-cocktail:hover
+ {
+  color : #ff0000;
+}
+
+.icon-eye-validation {
+  font-size: 1.4rem;
+}
 
 
 .footer {
@@ -165,6 +193,10 @@ color: rgb(0, 100, 128);
   justify-content: space-between;
 }
 
+.container-icons form {
+  margin-top : 3px;
+}
+
 .icon-cocktail {
   width: 25px;
 }
@@ -181,6 +213,37 @@ color: rgb(0, 100, 128);
 .container-dynamic-block-link {
   text-align: center;
   margin-top: 16px;
+}
+
+.picture-error-403-404-500 {
+width: 50%;
+max-width: 850px;
+margin: 0 auto;
+display: block;
+}
+
+.link-back-to-cocktails-list {
+  width: 90vw;
+  margin : 0 auto;
+  text-align: center;
+}
+
+.container-picture-picture-error-403-404-500 {
+  margin-bottom: 30px;
+}
+
+.container-block-error-403-404-500 {
+  height: calc(100vh - 180px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.link-back-to-cocktails-list a {
+  text-decoration: none;
+  color: black;
+  font-style: italic;
 }
 
 /**********************/
@@ -203,6 +266,10 @@ color: rgb(0, 100, 128);
   .container-dynamic-block-title {
     margin: 30px 0 50px 0;
   }
+
+  .container-dynamic-block-title-error-403-404-500 {
+  font-size : 1.3rem;
+}
 
   .footer-content {
     font-size: 0.9rem;

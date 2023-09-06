@@ -1,29 +1,30 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-	<div class="container-dynamic-block">
 
+		<div class="container-block-error-403-404-500">
 		{% if status_code is same as 403%}
-			<h1>
-				La page que vous recherchez n'est pas accessible - {{status_code}}</h1>
-			<div>
-				<img src="https://cdn.pixabay.com/photo/2015/07/01/23/03/cocktail-828182_1280.jpg" alt="erreur-403">
+			<h1 class="container-dynamic-block-title-error-403-404-500"> {{status_code}} : La page que vous recherchez n'est pas accessible </h1>
+			<div class="container-picture-picture-error-403-404-500">
+				<img src="https://cdn.pixabay.com/photo/2015/07/01/23/03/cocktail-828182_1280.jpg" alt="erreur-403" class="picture-error-403-404-500">
 			</div>
 		{% elseif status_code is same as 404 %}
-			<h1>Nous rencontrons actuellement un dysfonctionnement, merci de réessayer - {{status_code}}</h1>
-            <div>
-				<img src="https://cdn.pixabay.com/photo/2015/07/07/00/34/tequila-sunrise-833905_1280.jpg" alt="erreur-404">
+			<h1 class="container-dynamic-block-title-error-403-404-500"> {{status_code}} : Nous rencontrons actuellement un dysfonctionnement, merci de réessayer </h1>
+            <div class="container-picture-picture-error-403-404-500">
+				<img src="https://cdn.pixabay.com/photo/2015/07/07/00/34/tequila-sunrise-833905_1280.jpg" alt="erreur-404" class="picture-error-403-404-500">
 			</div>
         {% elseif status_code is same as 500 %}
-			<h1>Nous rencontrons actuellement un dysfonctionnement, merci de réessayer - {{status_code}}</h1>
-            <div>
-				<img src="https://cdn.pixabay.com/photo/2015/07/07/00/34/tequila-sunrise-833905_1280.jpg" alt="erreur-500">
+			<h1 class="container-dynamic-block-title-error-403-404-500"> {{status_code}} : Nous rencontrons actuellement un dysfonctionnement, merci de réessayer </h1>
+            <div class="container-picture-picture-error-403-404-500">
+				<img src="https://cdn.pixabay.com/photo/2015/07/04/22/03/blue-hawaii-831783_1280.jpg" alt="erreur-500" class="picture-error-403-404-500">
 			</div>
 		{% endif %}
 
-
+		<div class="link-back-to-cocktails-list">
 		<a href="{{path('app_cocktail_index')}}">
 			Retournez à la page des cocktails</a>
-	</div>
+		</div>
+		</div>
+
 {% endblock %}
 
