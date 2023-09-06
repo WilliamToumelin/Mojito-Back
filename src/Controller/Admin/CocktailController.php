@@ -49,48 +49,26 @@ class CocktailController extends AbstractController
         $cocktail = new Cocktail();
 
         $form = $this->createForm(CocktailType::class, $cocktail);
+        $error = '';
 
         $form->handleRequest($request);
 
+
         if ($form->isSubmitted() && $form->isValid()) {
 
-            // I get the list of CocktailUse entities 
-            // then I associate the cocktail with each CocktailUse entity
-            $cocktailUsesList = $cocktail->getCocktailUses();
-
-            foreach ($cocktailUsesList as $key => $value) {
-                $cocktailUsesList[$key]->setCocktail($cocktail);
-
-                $entityManager->persist($cocktailUsesList[$key]);
-            }
-
-            //! TODO : The user will be the connected user to be retrieved.
-            $cocktail->setUser($userRepository->find(20));
-
-            // I set the rating to 0 because it's a new cocktail
-            $cocktail->setRating(0);
-
-            // tableau des étapes
-            $stepList = $cocktail->getSteps();
-
-            // for each step, then i set the step number, associate it with the cocktail entity and persist it
-
-            foreach ($stepList as $key => $value) {
-                $stepList[$key]->setNumberStep($key + 1);
-                $stepList[$key]->setCocktail($cocktail);
-                $entityManager->persist($stepList[$key]);
-            }
-
+            $cocktail->setUser($userRepository->find(163));
+            
             $cocktailRepository->add($cocktail, true);
 
-            $this->addFlash("success", "Cocktail enregistré");
+
+            $this->addFlash("success", "Cocktail mis à jour");
 
             return $this->redirectToRoute('app_cocktail_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('cocktail/new.html.twig', [
-            'cocktail' => $cocktail,
-            'form' => $form
+            'form' => $form,
+            'error' => $error,
         ]);
     }
 
@@ -107,7 +85,7 @@ class CocktailController extends AbstractController
 
         // Create an ArrayCollection of the current Tag objects in the database
         foreach ($cocktail->getCocktailUses() as $cocktailuse) {
-            
+
             $entityManager->remove($cocktailuse);
         }
 
