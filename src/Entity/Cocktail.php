@@ -7,6 +7,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * @ORM\Entity(repositoryClass=CocktailRepository::class)
@@ -26,24 +28,29 @@ class Cocktail
     /**
      * @ORM\Column(type="string", length=100)
      * @Groups({"cocktailsBasicInfo", "cocktailsAllInfo", "comments", "ResponseCocktails", "rating"})
+     * @Assert\NotBlank
      */
     private $name;
 
     /**
      * @ORM\Column(type="text")
      * @Groups({"cocktailsWithRelations", "cocktailsAllInfo", "ResponseCocktails"})
+     * @Assert\NotBlank
      */
     private $description;
 
     /**
      * @ORM\Column(type="text")
      * @Groups({"cocktailsBasicInfo", "cocktailsAllInfo", "ResponseCocktails"})
+     * @Assert\NotBlank
+     * @Assert\Url
      */
     private $picture;
 
     /**
      * @ORM\Column(type="integer")
      * @Groups({"cocktailsBasicInfo", "cocktailsAllInfo", "ResponseCocktails"})
+     * @Assert\NotBlank
      */
     private $difficulty;
 
@@ -55,6 +62,7 @@ class Cocktail
     /**
      * @ORM\Column(type="integer")
      * @Groups({"cocktailsAllInfo", "ResponseCocktails"})
+     * @Assert\NotBlank
      */
     private $preparation_time;
 
@@ -91,6 +99,7 @@ class Cocktail
     /**
      * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="cocktails")
      * @Groups({"cocktailsAllInfo", "cocktailsBasicInfo", "ResponseCocktails"})
+     * @Assert\NotBlank
      */
     private $categories;
 
@@ -146,6 +155,7 @@ class Cocktail
         $this->comments = new ArrayCollection();
         $this->ratings = new ArrayCollection();
         $this->rating = 0;
+        $this->visible = true;
     }
 
 
