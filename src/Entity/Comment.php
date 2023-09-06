@@ -5,6 +5,8 @@ namespace App\Entity;
 use App\Repository\CommentRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 
 /**
@@ -23,6 +25,7 @@ class Comment
     /**
      * @ORM\Column(type="text")
      * @Groups({"comments", "cocktailsAllInfo"})
+     * @Assert\NotBlank
      */
     private $content;
     /**
@@ -35,6 +38,7 @@ class Comment
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="comments")
      * @ORM\JoinColumn(nullable=false)
      * @Groups({"comments", "cocktailsAllInfo"})
+     * @Assert\NotBlank
      */
     private $user;
 
@@ -95,5 +99,10 @@ class Comment
         $this->cocktail = $cocktail;
 
         return $this;
+    }
+
+    public function __construct()
+    {
+        $this->posted_at = new \DateTimeImmutable();
     }
 }
