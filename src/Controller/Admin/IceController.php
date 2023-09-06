@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class IceController extends AbstractController
 {
     /**
-     * @Route("/admin/glaces", name="app_ice_index", methods={"GET"})
+     * @Route("/admin/glacons", name="app_ice_index", methods={"GET"})
      */
     public function index(IceRepository $iceRepository): Response
     {
@@ -46,7 +46,7 @@ class IceController extends AbstractController
 
 
     /**
-     * @Route("/admin/glace/{id}/edit", name="app_ice_edit", methods={"GET", "POST"})
+     * @Route("/admin/glacon/{id}/modifier", name="app_ice_edit", methods={"GET", "POST"})
      */
     public function edit(Request $request, Ice $ice, IceRepository $iceRepository): Response
     {
@@ -66,7 +66,7 @@ class IceController extends AbstractController
     }
 
     /**
-     * @Route("/admin/glace/{id}", name="app_ice_delete", methods={"POST"})
+     * @Route("/admin/glacon/{id}/supprimer", name="app_ice_delete", methods={"POST"})
      */
     public function delete(Request $request, Ice $ice, IceRepository $iceRepository): Response
     {

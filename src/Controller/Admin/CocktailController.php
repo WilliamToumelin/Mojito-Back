@@ -3,13 +3,9 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Cocktail;
-use App\Entity\CocktailUse;
 use App\Form\CocktailType;
 use App\Repository\CocktailRepository;
-use App\Repository\CocktailUseRepository;
-use App\Repository\StepRepository;
 use App\Repository\UserRepository;
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
