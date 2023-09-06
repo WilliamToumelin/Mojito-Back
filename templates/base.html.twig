@@ -32,73 +32,79 @@
 
 	<body>
 		<div class="container-fluid p-0">
-			<nav class="navbar navbar-expand-xl">
-				<div class="container-fluid">
-					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-						<span class="navbar-toggler-icon"></span>
-					</button>
-					<div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-						<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-							<li class="nav-item">
-								<a class="nav-link active" aria-current="page" href="{{path ('app_cocktail_index')}}">Cocktails</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="{{ path('app_ingredient_index')}}">Ingrédients</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="{{ path('app_typeingredient_index')}}">Type d'ingrédients</a>
-							</li>
+
+			{% if is_granted("IS_AUTHENTICATED_FULLY") %}
+
+				<nav class="navbar navbar-expand-xl">
+					<div class="container-fluid">
+						<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+							<span class="navbar-toggler-icon"></span>
+						</button>
+						<div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+							<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 								<li class="nav-item">
-								<a class="nav-link" href="{{ path('app_category_index')}}">Catégories</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="{{ path('app_technical_index')}}">Techniques</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="{{path ('app_unit_index')}}">Unités</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="{{path ('app_glass_index')}}">Verres</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="{{path ('app_ice_index')}}">Glaçons</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="{{path ('app_user_index')}}">
-									Membres</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="{{path ('app_comment_index')}}">
-									Commentaires</a>
-							</li>
-						</ul>
-						<div>
-							<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-								<li class="nav-item dropdown">
-									<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-										<span>Bonjour Célestin</span>
-										<i class="bi bi-person-square"></i>
-									</a>
-									<ul class="dropdown-menu">
-										<li>
-											<a class="dropdown-item" href="#">Profil</a>
-										</li>
-										<li>
-											<a class="dropdown-item" href="#">Backoffice</a>
-										</li>
-										<li>
-											<hr class="dropdown-divider">
-										</li>
-										<li>
-											<a class="dropdown-item" href="#">Déconnexion</a>
-										</li>
-									</ul>
+									<a class="nav-link active" aria-current="page" href="{{path ('app_cocktail_index')}}">Cocktails</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="{{ path('app_ingredient_index')}}">Ingrédients</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="{{ path('app_typeingredient_index')}}">Type d'ingrédients</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="{{ path('app_category_index')}}">Catégories</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="{{ path('app_technical_index')}}">Techniques</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="{{path ('app_unit_index')}}">Unités</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="{{path ('app_glass_index')}}">Verres</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="{{path ('app_ice_index')}}">Glaçons</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="{{path ('app_user_index')}}">
+										Membres</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="{{path ('app_comment_index')}}">
+										Commentaires</a>
 								</li>
 							</ul>
+							<div>
+								<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+									<li class="nav-item dropdown">
+										<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+											<span>Bonjour
+												{% if app.user.firstname %}
+													{{app.user.firstname}}
+											{% else %}
+												{{app.user.pseudonym}}</span>
+												{% endif %}
+											<i class="bi bi-person-square"></i>
+										</a>
+										<ul class="dropdown-menu">
+											<li>
+												<a class="dropdown-item" href="#">Bientôt ...</a>
+											</li>
+											<li>
+												<hr class="dropdown-divider">
+											</li>
+											<li>
+												<a class="dropdown-item" href="{{path ('app_security_logout')}}">Déconnexion</a>
+											</li>
+										</ul>
+									</li>
+								</ul>
+							</div>
 						</div>
 					</div>
-				</div>
-			</nav>
+				</nav>
+			{% endif %}
 			<div class="container-fluid d-flex  justify-content-end"></div>
 		</div>
 		{% block body %}{% endblock %}
@@ -115,4 +121,3 @@
 		<script src="{{asset('js/form.js')}}"></script>
 	</body>
 </html>
-
