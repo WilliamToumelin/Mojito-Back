@@ -21,7 +21,7 @@
 			{% for cocktail in cocktails %}
 				<div class="container-dynamic-block-group-item">
 					<a href="{{ path('app_cocktail_show', {id:cocktail.id})}}">
-						<img class="picture-cocktail-small  rounded-circle" src="{{cocktail.picture}}" alt="{{cocktail.name|capitalize}}">
+						<img class="picture-cocktail-small" src="{{cocktail.picture}}" alt="{{cocktail.name|capitalize}}">
 					</a>
 					<div class="container-dynamic-block-group-item-properties">
 						<div class="container-dynamic-block-group-item-properties-name mb-2">

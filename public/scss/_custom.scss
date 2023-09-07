@@ -64,13 +64,14 @@ ul {
 .picture-cocktail-small {
   width: 150px;
   margin-right: 10px;
+  height: 150px;
+  border-radius: 50%;
 }
 
 
 .icon-container {
-  margin-top: 15px;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .trash-icon {

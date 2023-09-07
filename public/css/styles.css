@@ -64,12 +64,13 @@ ul {
 .picture-cocktail-small {
   width: 150px;
   margin-right: 10px;
+  height: 150px;
+  border-radius: 50%;
 }
 
 .icon-container {
-  margin-top: 15px;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .trash-icon {
@@ -36341,9 +36342,15 @@ form li {
 
 .form-button-add-step, .form-button-add-cocktailuses {
   background-color: rgba(128, 128, 128, 0);
+  margin-top: 10px;
+  color: #126591;
   border: none;
   text-align: center;
   margin-bottom: 25px;
+}
+
+.form-button-add-step:hover, .form-button-add-cocktailuses:hover {
+  color: #0c3951;
 }
 
 form li button {
@@ -36352,8 +36359,10 @@ form li button {
 
 /* button delete a step */
 form li button {
-  font-size: 0.9rem;
-  background-color: rgba(128, 128, 128, 0);
+  background-color: #a1a0a0;
+  color: white;
+  padding: 5px;
+  font-size: 0.7rem;
   border: none;
 }
 
