@@ -1,4 +1,4 @@
 <form method="post" action="{{ path('app_cocktail_proposition_accept', {'id': cocktail.id}) }}" onsubmit="return confirm('Are you sure you want to accept this item?');">
     <input type="hidden" name="_token" value="{{ csrf_token('accept' ~ cocktail.id) }}">
-    <button class= "btn"><i class="bi bi-file-earmark-check icon-accept-proposition-cocktail"></i></button>
+    <button class= "btn"><i class="bi bi-file-plus-fill icon-accept-proposition-cocktail"></i></button>
 </form>
