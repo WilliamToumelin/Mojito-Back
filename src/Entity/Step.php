@@ -32,7 +32,6 @@ class Step
      * @ORM\Column(type="text")
      * @Groups({"cocktailsAllInfo", "ResponseCocktails"})
      * @Assert\NotBlank
-     * @Assert\Length(min = 20, max = 50, minMessage = "Minimum {{ limit }} caractères", maxMessage = "Maximum {{ limit }} caractères") 
      */
     private $content;
 

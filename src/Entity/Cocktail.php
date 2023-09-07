@@ -29,7 +29,6 @@ class Cocktail
      * @ORM\Column(type="string", length=100)
      * @Groups({"cocktailsBasicInfo", "cocktailsAllInfo", "comments", "ResponseCocktails", "rating"})
      * @Assert\NotBlank
-     * @Assert\Length(min = 5, max = 20, minMessage = "Minimum {{ limit }} caractères", maxMessage = "Maximum {{ limit }} caractères")
      */
     private $name;
 
