@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class CommentController extends AbstractController
 {
     /**
-     * @Route("/admin/comments", name="app_comment_index", methods={"GET"})
+     * @Route("/admin/commentaires", name="app_comment_index", methods={"GET"})
      */
     public function index(CommentRepository $commentRepository): Response
     {   
@@ -25,7 +25,7 @@ class CommentController extends AbstractController
 
 
     /**
-     * @Route("/admin/comment/{id}/supprimer", name="app_comment_delete", methods={"POST"})
+     * @Route("/admin/commentaires/{id}/supprimer", name="app_comment_delete", methods={"POST"})
      */
     public function delete(Request $request, Comment $comment, CommentRepository $commentRepository): Response
     {
