@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class UserController extends AbstractController
 {
     /**
-     * @Route("/admin/users", name="app_user_index", methods={"GET"})
+     * @Route("/admin/utilisateurs", name="app_user_index", methods={"GET"})
      */
     public function index(UserRepository $userRepository): Response
     {
@@ -25,7 +25,7 @@ class UserController extends AbstractController
 
 
     /**
-     * @Route("/admin/membre/ajouter", name="app_user_new", methods={"GET", "POST"})
+     * @Route("/admin/utilisateur/ajouter", name="app_user_new", methods={"GET", "POST"})
      */
     public function new(Request $request, UserRepository $userRepository): Response
     {
@@ -48,7 +48,7 @@ class UserController extends AbstractController
 
 
     /**
-     * @Route("/admin/user/{id}/supprimer", name="app_user_delete", methods={"POST"})
+     * @Route("/admin/utilisateur/{id}/supprimer", name="app_user_delete", methods={"POST"})
      */
     public function delete(Request $request, User $user, UserRepository $userRepository): Response
     {
