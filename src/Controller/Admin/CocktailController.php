@@ -69,15 +69,28 @@ class CocktailController extends AbstractController
             // I associate the user and the cocktail
             $cocktail->setUser($userInterface);
 
-            // I check if the cocktail has at least one step
+            // I check if the cocktail has at least one step. If not, I return an error message
             if(count($cocktail->getSteps()) === 0) {
                 $errors[] = 'Au moins une étape est nécessaire';
             }
 
-            // I check if the cocktail has at least one ingredient
-            if(count($cocktail->getCocktailUses()) === 0) {
+            // I retrieve all the cocktailUses;
+            $cocktailUsesList = $cocktail->getCocktailUses();
+
+            // I check if the cocktail has at least one ingredient. If not, I return an error message
+            if(count($cocktailUsesList) === 0) {
                 $errors[] = 'Au moins un ingrédient est nécessaire';
             }
+
+
+            // I check whether the quantity of an ingredient is greater than 0. If not, I return an error message
+           foreach ($cocktailUsesList as $cocktailUses) {
+           $quantity = $cocktailUses->getQuantity();
+           $ingredient = $cocktailUses->getIngredient()->getName();
+            if($quantity <= 0) {
+                $errors[] = "La quantité de l'ingrédient $ingredient ne peut pas être inférieure à 0";
+            }
+           }
 
             // If there are any errors, I stop sending the form and display them
             if(count($errors) > 0) {
@@ -125,7 +138,6 @@ class CocktailController extends AbstractController
             $entityManager->remove($step);
         }
 
-
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -141,15 +153,27 @@ class CocktailController extends AbstractController
            // I associate the user and the cocktail
             $cocktail->setUser($userInterface);
 
-            // I check if the cocktail has at least one step
+            // I check if the cocktail has at least one step. If not, I return an error message
             if(count($cocktail->getSteps()) === 0) {
                 $errors[] = 'Au moins une étape est nécessaire';
             }
 
-            // I check if the cocktail has at least one ingredient
-            if(count($cocktail->getCocktailUses()) === 0) {
+            // I retrieve all the cocktailUses;
+            $cocktailUsesList = $cocktail->getCocktailUses();
+
+            // I check if the cocktail has at least one ingredient. If not, I return an error message
+            if(count($cocktailUsesList) === 0) {
                 $errors[] = 'Au moins un ingrédient est nécessaire';
             }
+
+            // I check whether the quantity of an ingredient is greater than 0. If not, I return an error message
+           foreach ($cocktailUsesList as $cocktailUses) {
+           $quantity = $cocktailUses->getQuantity();
+           $ingredient = $cocktailUses->getIngredient()->getName();
+            if($quantity <= 0) {
+                $errors[] = "La quantité de l'ingrédient $ingredient ne peut pas être inférieure à 0";
+            }
+           }
 
             // If there are any errors, I stop sending the form and display them
             if(count($errors) > 0) {
