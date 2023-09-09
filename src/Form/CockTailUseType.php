@@ -32,6 +32,10 @@ class CockTailUseType extends AbstractType
             ])
             ->add('quantity', IntegerType::class, [
                 "label" => "quantité",
+                "attr" => [
+                    'min' => 1,
+                    'greather than' => 1
+                    ]
             ])
             ->add('unit', EntityType::class, [
                 "class" => Unit::class,

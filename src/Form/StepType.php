@@ -17,6 +17,7 @@ class StepType extends AbstractType
         $builder
             ->add('number_step', IntegerType::class,[
                 'label' => 'étape',
+                "attr" => ['min' => 1]
             ])
 
             ->add('content', TextareaType::class, [

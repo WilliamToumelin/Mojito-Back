@@ -67,7 +67,8 @@ class CocktailType extends AbstractType
             ->add('preparation_time', IntegerType::class, [
                 "label" => "Temps de préparation",
                 "attr" => [
-                    "placeholder" => "saisir un nombre"
+                    "placeholder" => "saisir un nombre",
+                    "min" => 1
                 ]
             ])
             ->add('trick', TextType::class, [
@@ -150,6 +151,7 @@ class CocktailType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Cocktail::class,
+            'error_bubbling' => true,
 
         ]);
     }
