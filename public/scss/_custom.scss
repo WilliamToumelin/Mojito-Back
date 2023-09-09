@@ -88,20 +88,27 @@ font-size: 1.35rem;
 color: rgb(81, 80, 80);
 }
 
+.icon-add-object {
+  color: rgb(15, 82, 118);
+}
+
 .icon:hover {
 color: rgb(0, 100, 128);
 }
 
-.icon-accept-proposition-cocktail,
-.icon-delete-proposition-cocktail {
+.icon-accept-proposition-cocktail{
   font-size : 1.5rem;
+  color: #00800082;
 }
-
-
 
 .icon-accept-proposition-cocktail:hover
  {
-  color : #008000;
+  color: green;
+}
+
+.icon-delete-proposition-cocktail {
+  font-size : 1.5rem;
+  color: #ff000082;
 }
 
 .icon-delete-proposition-cocktail:hover
@@ -216,6 +223,12 @@ color: rgb(0, 100, 128);
 .container-dynamic-block-link {
   text-align: center;
   margin-top: 16px;
+  font-weight: bold;
+}
+
+.container-dynamic-block-link a {
+  text-decoration: none;
+  color: rgb(15, 82, 118);
 }
 
 .picture-error-403-404-500 {

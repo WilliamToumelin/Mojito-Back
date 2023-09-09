@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
-{% block cocktailActive %}active{% endblock %}
+{% block cocktailActive %}active
+{% endblock %}
 
 
 {% block body %}
@@ -12,7 +13,7 @@
 		<h1 class="display-6  container-dynamic-block-title">Les cocktails
 			<small class=" container-dynamic-block-button-add">
 				<a href="{{path('app_cocktail_new')}}">
-					<i class="bi bi-patch-plus-fill"></i>
+					<i class="bi bi-patch-plus-fill icon-add-object"></i>
 				</small>
 			</a>
 		</h1>

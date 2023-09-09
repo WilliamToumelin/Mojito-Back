@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
-{% block categoryActive %}active{% endblock %}
+{% block categoryActive %}active
+{% endblock %}
 
 {% block body %}
 	<div class="container-dynamic-block">
@@ -8,7 +9,7 @@
 		<h1 class="display-6 container-dynamic-block-title">Les catégories
 			<small class=" container-dynamic-block-button-add">
 				<a href="{{path('app_category_new')}}">
-					<i class="bi bi-patch-plus-fill"></i>
+					<i class="bi bi-patch-plus-fill icon-add-object"></i>
 				</small>
 			</a>
 		</h1>

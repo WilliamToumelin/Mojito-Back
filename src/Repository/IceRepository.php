@@ -39,6 +39,18 @@ class IceRepository extends ServiceEntityRepository
         }
     }
 
+
+      /**
+     * @return Ice[] Returns an array of Ice objects ordered by name
+     */
+    public function findAllOrderByName(): array
+    {
+        return $this->createQueryBuilder('i')
+            ->orderBy('i.name', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
+
 //    /**
 //     * @return Ice[] Returns an array of Ice objects
 //     */

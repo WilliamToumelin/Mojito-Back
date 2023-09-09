@@ -1,7 +1,7 @@
 <div class="container-form">
-{{ form_start(form) }}
-{{form_row(form.name)}}
-{{form_row(form.typeingredient)}}
-<button class="btn btn-success my-2 form-btn-submit" type="submit">{{ button_label|default('valider') }}</button>
-{{ form_end(form) }}
+	{{ form_start(form) }}
+	{{form_row(form.name)}}
+	{{form_row(form.typeingredient)}}
+	<button class="btn btn-success my-2 form-btn-submit" type="submit">{{ button_label|default('Valider') }}</button>
+	{{ form_end(form) }}
 </div>

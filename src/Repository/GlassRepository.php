@@ -39,6 +39,17 @@ class GlassRepository extends ServiceEntityRepository
         }
     }
 
+      /**
+     * @return Glass[] Returns an array of Glass objects ordered by name
+     */
+    public function findAllOrderByName(): array
+    {
+        return $this->createQueryBuilder('g')
+            ->orderBy('g.name', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
+
 //    /**
 //     * @return Glass[] Returns an array of Glass objects
 //     */

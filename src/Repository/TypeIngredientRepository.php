@@ -39,6 +39,17 @@ class TypeIngredientRepository extends ServiceEntityRepository
         }
     }
 
+      /**
+     * @return TypeIngredient[] Returns an array of TypeIngredient objects ordered by name
+     */
+    public function findAllOrderByName(): array
+    {
+        return $this->createQueryBuilder('t')
+            ->orderBy('t.name', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
+
 //    /**
 //     * @return TypeIngredient[] Returns an array of TypeIngredient objects
 //     */

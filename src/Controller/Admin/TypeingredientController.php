@@ -18,7 +18,7 @@ class TypeingredientController extends AbstractController
     public function index(TypeIngredientRepository $typeingredientRepository): Response
     {
         return $this->render('typeingredient/index.html.twig', [
-            'typeingredients' => $typeingredientRepository->findAll(),
+            'typeingredients' => $typeingredientRepository->findAllOrderByName(),
         ]);
     }
 

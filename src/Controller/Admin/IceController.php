@@ -19,7 +19,7 @@ class IceController extends AbstractController
     public function index(IceRepository $iceRepository): Response
     {
         return $this->render('ice/index.html.twig', [
-            'ices' => $iceRepository->findAll(),
+            'ices' => $iceRepository->findAllOrderByName(),
         ]);
     }
 

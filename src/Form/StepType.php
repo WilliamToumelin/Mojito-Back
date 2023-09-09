@@ -21,7 +21,7 @@ class StepType extends AbstractType
             // ])
 
             ->add('content', TextareaType::class, [
-                'label' => 'description',
+                'label' => false,
             ]);
 
     }

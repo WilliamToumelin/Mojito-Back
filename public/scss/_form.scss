@@ -24,12 +24,13 @@ form hr:first-of-type{
 }
 
 form li {
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 }
 
 
 .form-label  {
     text-transform: capitalize;
+    font-weight: bold;
 }
 
 .form-button-add-step, .form-button-add-cocktailuses {
@@ -49,13 +50,24 @@ form li button {
     font-weight: bold;
 }
 
-/* button delete a step */
-form li button {
+/* button delete a step, . button delete a cocktailuse */
+form li button, .button-delete-ingredient, .button-delete-step {
     background-color: #a1a0a0;
     color: white;
     padding: 5px;
     font-size: 0.7rem;
     border: none;
+    width : 70px;
+    font-weight: bold;
+    text-transform: capitalize;
+    background-color: #ff000082;
+    border-radius: 4px;
+    margin-bottom : 30px
+}
+
+form li button:hover, .button-delete-ingredient:hover, .button-delete-step:hover {
+    background-color: red;
+    transition : 1s ease;
 }
 
 /* submit button*/
@@ -71,11 +83,12 @@ fieldset  {
 }
 
 
-.form-title-steps {
+.form-title-steps, .form-title-ingredients {
 text-align : center;
 margin-top : 30px;
 font-size : 1.2rem;
 font-weight : bold;
+margin-bottom : 30px
 }
 
 .form-add-item-link {
@@ -87,6 +100,12 @@ font-weight : bold;
 }
 
 .form-error-message {
+    color: red;
+    text-align: center;
+}
+
+.my-custom-class-for-errors ul {
+    list-style-type: none;
     color: red;
     text-align: center;
 }

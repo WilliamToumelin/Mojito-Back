@@ -28,12 +28,12 @@
 	{{form_row(form.technical)}}
 
 	<hr>
-	<div class="text-center form-title-steps">
+	<div class="text-center form-title-ingredients">
 		Les ingrédients
 	</div>
-	
+
 	{% for key, cocktailuse in form.cocktailuses %}
-	
+
 		{{form_widget(cocktailuse, {'attr': {'class': 'form-container-ingredient'}})}}
 		<p class="button-delete-ingredient">
 			supprimer</p>
@@ -53,13 +53,12 @@
 		<p class="button-delete-step">
 			supprimer</p>
 	{% endfor %}
-		<ul class="steps" data-index="{{ form.steps|length > 0 ? form.steps|last.vars.name + 1 : 0 }}" data-prototype="{{ form_widget(form.steps.vars.prototype)|e('html_attr') }}"></ul>
+	<ul class="steps" data-index="{{ form.steps|length > 0 ? form.steps|last.vars.name + 1 : 0 }}" data-prototype="{{ form_widget(form.steps.vars.prototype)|e('html_attr') }}"></ul>
 	<p class="add_item_link form-button-add-step" data-collection-holder-class="steps">Ajouter une étape</p>
 	{# the data-index attribute is required for the JavaScript code below #}
 
 
-	<button class="btn btn-success my-2 form-btn-submit" formnovalidate type="submit">{{ button_label|default('valider') }}</button>
+	<button class="btn btn-success my-2 form-btn-submit" formnovalidate type="submit">{{ button_label|default('Valider') }}</button>
 	{{ form_end(form) }}
 
 </div>
-

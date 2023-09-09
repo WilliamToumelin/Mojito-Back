@@ -18,7 +18,7 @@ class UnitController extends AbstractController
     public function index(UnitRepository $unitRepository): Response
     {
         return $this->render('unit/index.html.twig', [
-            'units' => $unitRepository->findAll(),
+            'units' => $unitRepository->findAllOrderByName(),
         ]);
     }
 

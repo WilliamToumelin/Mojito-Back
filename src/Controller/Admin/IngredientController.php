@@ -18,7 +18,7 @@ class IngredientController extends AbstractController
     public function index(IngredientRepository $ingredientRepository): Response
     {
         return $this->render('ingredient/index.html.twig', [
-            'ingredients' => $ingredientRepository->findAll(),
+            'ingredients' => $ingredientRepository->findAllOrderByName(),
         ]);
     }
 

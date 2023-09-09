@@ -18,7 +18,7 @@ class TechnicalController extends AbstractController
     public function index(TechnicalRepository $technicalRepository): Response
     {
         return $this->render('technical/index.html.twig', [
-            'technicals' => $technicalRepository->findAll(),
+            'technicals' => $technicalRepository->findAllOrderByName(),
         ]);
     }
 

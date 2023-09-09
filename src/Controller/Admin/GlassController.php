@@ -18,7 +18,7 @@ class GlassController extends AbstractController
     public function index(GlassRepository $glassRepository): Response
     {
         return $this->render('glass/index.html.twig', [
-            'glasses' => $glassRepository->findAll(),
+            'glasses' => $glassRepository->findAllOrderByName(),
         ]);
     }
 
