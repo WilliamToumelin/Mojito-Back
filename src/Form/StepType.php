@@ -15,10 +15,10 @@ class StepType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('number_step', IntegerType::class,[
-                'label' => 'étape',
-                "attr" => ['min' => 1]
-            ])
+            // ->add('number_step', IntegerType::class,[
+            //     'label' => 'étape',
+            //     "attr" => ['min' => 1]
+            // ])
 
             ->add('content', TextareaType::class, [
                 'label' => 'description',
