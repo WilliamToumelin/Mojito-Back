@@ -6,9 +6,14 @@ use App\Entity\Ice;
 use App\Entity\Glass;
 use App\Entity\Category;
 use App\Entity\Cocktail;
-use App\Entity\CocktailUse;
 use App\Entity\Technical;
+use App\Entity\CocktailUse;
 use App\Form\CockTailUseType;
+use Doctrine\ORM\QueryBuilder;
+use App\Repository\IceRepository;
+use App\Repository\GlassRepository;
+use App\Repository\CategoryRepository;
+use App\Repository\TechnicalRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -81,25 +86,41 @@ class CocktailType extends AbstractType
             ->add('categories', EntityType::class, [
                 "class" => Category::class,
                 "label" => "Categorie",
-                //"expanded" => true,
+                //https://symfony.com/doc/current/reference/forms/types/entity.html#using-a-custom-query-for-the-entities
+                'query_builder' => function (CategoryRepository $er): QueryBuilder {
+                    return $er->createQueryBuilder('c')
+                        ->orderBy('c.name', 'ASC');
+                },
                 "multiple" => true,
                 "choice_label" => "name"
             ])
             ->add('glass', EntityType::class, [
                 "class" => Glass::class,
+                'query_builder' => function (GlassRepository $er): QueryBuilder {
+                    return $er->createQueryBuilder('g')
+                        ->orderBy('g.name', 'ASC');
+                },
                 "label" => "Verre",
                 //"expanded" => true,   
                 "choice_label" => "name"
             ])
             ->add('ice', EntityType::class, [
                 "class" => Ice::class,
-                "label" => "Glaçe",
+                'query_builder' => function (IceRepository $er): QueryBuilder {
+                    return $er->createQueryBuilder('i')
+                        ->orderBy('i.name', 'ASC');
+                },
+                "label" => "Glaçon",
                 //"expanded" => true,
                 "choice_label" => "name"
             ])
             ->add('technical', EntityType::class, [
                 "class" => Technical::class,
-                "label" => "Matériel",
+                'query_builder' => function (TechnicalRepository $er): QueryBuilder {
+                    return $er->createQueryBuilder('t')
+                        ->orderBy('t.name', 'ASC');
+                },
+                "label" => "technique",
                 //"expanded" => true,
                 "choice_label" => "name"
             ])
