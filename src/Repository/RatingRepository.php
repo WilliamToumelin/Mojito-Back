@@ -39,20 +39,21 @@ class RatingRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @return Rating[] Returns an array of Rating objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('r')
-//            ->andWhere('r.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('r.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    /**
+     * 
+     */
+    public function findAllRatingForOneCocktail($value)
+    {
+        $conn = $this->getEntityManager()->getConnection();
+        
+        $sql = 'SELECT ROUND(AVG(rating.rating), 2) FROM rating
+        WHERE cocktail_id = :value';
+        
+        $result = $conn->executeQuery($sql, ['value' => $value]);
+
+        return $result->fetchAssociative();
+
+    }
 
 //    public function findOneBySomeField($value): ?Rating
 //    {
