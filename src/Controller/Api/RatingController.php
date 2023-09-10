@@ -78,6 +78,26 @@ class RatingController extends AbstractController
             return $this->json($dataErrors, Response::HTTP_UNPROCESSABLE_ENTITY);
         }
 
+
+
+        /************ RATING OF THE COCKTAIL    ************/
+
+        // when there is a new note, I retrieve the note and place it in the corresponding cocktail.
+
+        // I get the cocktail
+        $cocktail = $rating->getCocktail(); 
+ 
+        // I get the cocktail
+        $ratingInCocktail = $ratingRepository->findAllRatingForOneCocktail($cocktail->getId());
+
+        // I calculate the average score for all cocktails and actualize the cocktail rating        
+        $cocktail->setRating($ratingInCocktail['ROUND(AVG(rating.rating), 2)']);
+
+        // I flush
+        $entityManager->flush($cocktail);        
+
+  
+
         // I persist and flush
         $entityManager->persist($rating);
 
