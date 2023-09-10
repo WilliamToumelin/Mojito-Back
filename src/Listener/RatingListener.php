@@ -18,7 +18,6 @@ class RatingListener {
 
         // je parcours toutes les notes
         foreach ( $cocktail->getRatings() as $rating) {
-
             // ici j'additionne à chaque itération la note dans mes notes
             $allRatings += $rating->getRating();
         }
@@ -28,8 +27,7 @@ class RatingListener {
         $rating = $allRatings / count($cocktail->getRatings());
 
         // ici on set la note du film
-        // $cocktail->setRating(round($rating,1));
-        $cocktail->setRating(5);
+        $cocktail->setRating(round($rating,1));
 
     }
 
