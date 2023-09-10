@@ -28,7 +28,8 @@ class RatingListener {
         $rating = $allRatings / count($cocktail->getRatings());
 
         // ici on set la note du film
-        $cocktail->setRating(round($rating,1));
+        // $cocktail->setRating(round($rating,1));
+        $cocktail->setRating(5);
 
     }
 
