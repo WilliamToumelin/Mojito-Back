@@ -21,12 +21,6 @@ ul {
   font-family: Lexend;
 }
 
-.container-dynamic-block-title-error-403-404-500 {
-  font-size: 1rem;
-  text-align: center;
-  margin-bottom: 30px;
-}
-
 .container-dynamic-block-group {
   display: flex;
   justify-content: center;
@@ -226,37 +220,6 @@ ul {
   color: rgb(15, 82, 118);
 }
 
-.picture-error-403-404-500 {
-  width: 50%;
-  max-width: 850px;
-  margin: 0 auto;
-  display: block;
-}
-
-.link-back-to-cocktails-list {
-  width: 90vw;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.container-picture-picture-error-403-404-500 {
-  margin-bottom: 30px;
-}
-
-.container-block-error-403-404-500 {
-  height: calc(100vh - 180px);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.link-back-to-cocktails-list a {
-  text-decoration: none;
-  color: black;
-  font-style: italic;
-}
-
 /**********************/
 /* MEDIA QUERIES */
 /**********************/
@@ -270,9 +233,6 @@ ul {
   }
   .container-dynamic-block-title {
     margin: 30px 0 50px 0;
-  }
-  .container-dynamic-block-title-error-403-404-500 {
-    font-size: 1.3rem;
   }
   .footer-content {
     font-size: 0.9rem;
@@ -60398,4 +60358,47 @@ textarea.form-control-lg {
   .d-print-none {
     display: none !important;
   }
+}
+.container-picture-picture-error-403-404-500 {
+  margin-bottom: 40px;
+}
+
+.picture-error-403-404-500 {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin: 0 auto;
+  display: block;
+}
+
+.container-block-error-403-404-500 {
+  height: calc(100vh - 180px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 50px;
+}
+
+.container-dynamic-block-title-error-403-404-500 {
+  font-size: 1rem;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.link-back-to-cocktails-list {
+  width: 90vw;
+  margin: 0 auto;
+  text-align: center;
+  font-weight: bold;
+}
+
+.link-back-to-cocktails-list a {
+  text-decoration: none;
+  color: rgb(15, 82, 118);
+  font-style: italic;
+}
+
+.container-dynamic-block-title-error-403-404-500 {
+  font-size: 1.3rem;
 }/*# sourceMappingURL=styles.css.map */

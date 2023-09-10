@@ -1,0 +1,46 @@
+.container-picture-picture-error-403-404-500 {
+    margin-bottom: 40px;
+  }
+
+.picture-error-403-404-500 {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin: 0 auto;
+    display: block;
+}
+
+.container-block-error-403-404-500 {
+    height: calc(100vh - 180px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 50px;
+}
+
+
+.container-dynamic-block-title-error-403-404-500 {
+    font-size : 1rem;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+
+.link-back-to-cocktails-list {
+    width: 90vw;
+    margin : 0 auto;
+    text-align: center;
+    font-weight: bold;
+  }
+
+      
+.link-back-to-cocktails-list a {
+  text-decoration: none;
+  color: rgb(15, 82, 118);
+  font-style: italic;
+}
+
+.container-dynamic-block-title-error-403-404-500 {
+  font-size : 1.3rem;
+}

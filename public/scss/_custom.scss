@@ -20,12 +20,6 @@ ul {
   font-family: Lexend;
 }
 
-.container-dynamic-block-title-error-403-404-500 {
-  font-size : 1rem;
-  text-align: center;
-  margin-bottom: 30px;
-}
-
 .container-dynamic-block-group {
   display: flex;
   justify-content: center;
@@ -119,7 +113,6 @@ color: rgb(0, 100, 128);
 .icon-eye-validation {
   font-size: 1.4rem;
 }
-
 
 .footer {
   margin-top: 20px;
@@ -231,37 +224,6 @@ color: rgb(0, 100, 128);
   color: rgb(15, 82, 118);
 }
 
-.picture-error-403-404-500 {
-width: 50%;
-max-width: 850px;
-margin: 0 auto;
-display: block;
-}
-
-.link-back-to-cocktails-list {
-  width: 90vw;
-  margin : 0 auto;
-  text-align: center;
-}
-
-.container-picture-picture-error-403-404-500 {
-  margin-bottom: 30px;
-}
-
-.container-block-error-403-404-500 {
-  height: calc(100vh - 180px);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.link-back-to-cocktails-list a {
-  text-decoration: none;
-  color: black;
-  font-style: italic;
-}
-
 /**********************/
 /* MEDIA QUERIES */
 /**********************/
@@ -283,9 +245,7 @@ display: block;
     margin: 30px 0 50px 0;
   }
 
-  .container-dynamic-block-title-error-403-404-500 {
-  font-size : 1.3rem;
-}
+
 
   .footer-content {
     font-size: 0.9rem;
