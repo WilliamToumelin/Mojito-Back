@@ -39,14 +39,14 @@ services:
                 event: 'preUpdate'  
                 entity: 'App\Entity\Cocktail'
                 method: 'slugifyName'
-    App\Listener\RatingListener:
+    App\Listener\CategoryListener:
         tags:
             -
                 name: 'doctrine.orm.entity_listener'
                 # this is the only required option for the lifecycle listener tag
-                event: 'preUpdate'  
-                entity: 'App\Entity\Rating'
-                method: 'updateCocktailRating'
+                event: 'prePersist'  
+                entity: 'App\Entity\Category'
+                method: 'slugifyName'
     
     acme_api.event.authentication_success_listener:
          class: App\EventListener\AuthenticationSuccessListener
