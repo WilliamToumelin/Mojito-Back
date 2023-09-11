@@ -41,21 +41,21 @@ class RatingController extends AbstractController
         }
 
 
-        //! A user cannot rate the same cocktail more than once
-        // I retrieve the user ID
-        $userId = $rating->getUser()->getId();
-        // I retrieve the cocktail ID
-        $cocktailId = $rating->getCocktail()->getId();
-
-        // I search the database for a note with the user ID and the cocktail ID
-        $ratingInDatabase = $ratingRepository->findOneBy([
-            'cocktail' => $cocktailId,
-            'user' => $userId
-        ]);
-
-        // if so, I return a json error
-        if ($ratingInDatabase) {
-            return $this->json(["error" => "IMPOSSIBLE DE NOTER PLUSIEURS FOIS UN COCKTAIL"], Response::HTTP_BAD_REQUEST);
+        // //! A user cannot rate the same cocktail more than once
+        // // I retrieve the user ID
+        // $userId = $rating->getUser()->getId();
+        // // I retrieve the cocktail ID
+        // $cocktailId = $rating->getCocktail()->getId();
+// 
+        // // I search the database for a note with the user ID and the cocktail ID
+        // $ratingInDatabase = $ratingRepository->findOneBy([
+        //     'cocktail' => $cocktailId,
+        //     'user' => $userId
+        // ]);
+// 
+        // // if so, I return a json error
+        // if ($ratingInDatabase) {
+        //     return $this->json(["error" => "IMPOSSIBLE DE NOTER PLUSIEURS FOIS UN COCKTAIL"], Response::HTTP_BAD_REQUEST);
         }
 
 
