@@ -9,7 +9,6 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
-
 /**
  * @ORM\Entity(repositoryClass=GlassRepository::class)
  */
@@ -27,6 +26,7 @@ class Glass
      * @ORM\Column(type="string", length=255)
      * @Groups({"glass", "propositionsData", "cocktailsAllInfo"})
      * @Assert\NotBlank
+     * @Assert\Length(min = 2, minMessage = "Minimum {{ limit }} caractères")
      */
     private $name;
 

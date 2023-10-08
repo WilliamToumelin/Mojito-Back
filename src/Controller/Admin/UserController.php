@@ -38,16 +38,16 @@ class UserController extends AbstractController
             $user->setRoles(['ROLE_ADMIN']);
                  
             
-         // hash the password (based on the security.yaml config for the $user class)        
-         $hashedPassword = $passwordHasher->hashPassword(
-         $user,
-         $user->getPassword()
-        );
+            // hash the password (based on the security.yaml config for the $user class)
+            $hashedPassword = $passwordHasher->hashPassword(
+                $user,
+                $user->getPassword()
+            );
         
-        $user->setPassword($hashedPassword);
+            $user->setPassword($hashedPassword);
 
         
-        $userRepository->add($user, true);
+            $userRepository->add($user, true);
 
             return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
         }
